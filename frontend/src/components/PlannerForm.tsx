@@ -125,13 +125,13 @@ export const PlannerForm: React.FC<PlannerFormProps> = ({
     setAllowAssumedRecurring(true);
   };
 
-  // High-frequency live corridor preset: Route 641 (30 verified live buses right now)
+  // High-frequency live corridor preset: Route 641 (40 verified live buses right now)
   const handleSetPresetRoute641 = () => {
     onSelectOriginStop({
-      stop_id: '3572',
-      stop_name: 'JhulJhuli Check Post / Ghumanhera Crossing',
-      lat: 28.535372,
-      lon: 76.909686,
+      stop_id: '8054',
+      stop_name: 'Ghuman Hera Depot 1',
+      lat: 28.538064,
+      lon: 76.913152,
     });
     onSelectDestStop({
       stop_id: '3640',

@@ -43,7 +43,7 @@ echo "  Active GPS Vehicles: $ACTIVE_COUNT buses currently reporting"
 echo ""
 echo "[Step 3/4] Demonstrating Journey Planning & Suitable Bus Matching (Route 641)..."
 PLAN_PAYLOAD='{
-  "origin_stop_id": "3572",
+  "origin_stop_id": "8054",
   "dest_stop_id": "3640",
   "departure_date": "2026-10-01",
   "departure_time": "08:00:00",
@@ -58,7 +58,7 @@ PLAN_RES=$(curl -s -X POST http://127.0.0.1:8000/api/v1/journeys/plan \
 JOURNEYS_COUNT=$(python3 -c "import json; d = json.loads('''$PLAN_RES'''); print(len(d.get('journeys', [])))")
 echo "  Returned Journeys: $JOURNEYS_COUNT direct/transfer route options"
 
-SUITABLE_RES=$(curl -s "http://127.0.0.1:8000/api/v1/live/suitable-vehicles?route_id=641&board_stop_id=3572&alight_stop_id=3640")
+SUITABLE_RES=$(curl -s "http://127.0.0.1:8000/api/v1/live/suitable-vehicles?route_id=641&board_stop_id=8054&alight_stop_id=3640")
 SUITABLE_COUNT=$(python3 -c "import json; d = json.loads('''$SUITABLE_RES'''); print(d.get('suitable_count', len(d.get('vehicles', []))))")
 echo "  Verified Approaching Pickup Buses on Corridor: $SUITABLE_COUNT buses"
 
