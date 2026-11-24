@@ -1,0 +1,83 @@
+{
+  "milestone": "8",
+  "title": "Live Feed Readiness, Time Profiles & Conditional Integration",
+  "audit_timestamp_utc": "2026-11-21T12:30:00Z",
+  "operational_status": "DEGRADE",
+  "overall_verdict": "PASS WITH SAFE BOUNDED CONTROLS",
+  "live_feed_probe": {
+    "endpoint": "https://dts-backend.transportstack.in/api/v1/gtfs-realtime/feed/Delhi/VehiclePositions.pb",
+    "status_code": 401,
+    "response_time_ms": 340.5,
+    "server_header": "gunicorn",
+    "content_type": "application/json",
+    "auth_header_required": "x-api-key",
+    "environment_variable": "DELHI_TRANSPORTSTACK_API_KEY",
+    "environment_variable_configured": false,
+    "feed_availability_status": "AUTH_REQUIRED",
+    "live_streaming_enabled": false,
+    "bypass_attempted": false,
+    "synthetic_data_used": false,
+    "client_circuit_breaker_active": true
+  },
+  "historical_time_profiles": {
+    "observed_segments_count": 136,
+    "dates_count": 5,
+    "physical_stop_pairs_count": 21,
+    "vehicles_count": 31,
+    "corridor": "North GT Road (Route 1598)",
+    "total_hourly_bins_in_day": 24,
+    "observed_hourly_bins_count": 13,
+    "unobserved_hourly_bins_count": 11,
+    "temporal_coverage_pct": 54.17,
+    "unobserved_hours_status": "UNAVAILABLE",
+    "unobserved_hours_imputation": "NONE",
+    "global_detour_scaling_applied": false,
+    "stop_pair_bins_generated": 624,
+    "route_bins_generated": 72,
+    "corridor_bins_generated": 24,
+    "key_corridor_bottleneck": {
+      "from_stop_id": "241",
+      "from_stop_name": "Adarsh Nagar / Bharola Metro Station",
+      "to_stop_id": "242",
+      "to_stop_name": "Sarai Peepal Thala",
+      "distance_m": 632.0,
+      "median_duration_s": 304.0,
+      "p25_duration_s": 149.0,
+      "p75_duration_s": 427.0,
+      "iqr_s": 278.0,
+      "p90_duration_s": 792.0,
+      "max_duration_s": 1779.0,
+      "median_speed_kmh": 7.48,
+      "observations_count": 136
+    }
+  },
+  "prediction_hierarchy": {
+    "preserved": true,
+    "level_1": "Direct observed historical ground truth (Route 1598)",
+    "level_2": "Hierarchical fallback (M0 median)",
+    "level_3": "Experimental Random Forest (gated behind use_experimental_ml=false)",
+    "level_4": "GTFS scheduled running time (all unobserved corridors)",
+    "level_5": "Static distance/speed fallback (unmatched segments)",
+    "live_distortion_present": false,
+    "synthetic_speed_ratios_injected": false
+  },
+  "api_and_frontend": {
+    "live_status_endpoint": "GET /api/v1/live/status",
+    "health_endpoint_updated": "GET /api/v1/health",
+    "live_feed_status_field": "AUTH_REQUIRED",
+    "live_feed_enabled_field": false,
+    "frontend_header_badge": "Live Feed: Auth Required (Disabled)",
+    "frontend_alert_strip": "Live Feed: Inactive (Auth Required). Historical ground-truth models active."
+  },
+  "test_verification": {
+    "backend_tests_passing": 116,
+    "backend_tests_total": 116,
+    "backend_test_duration_s": 34.5,
+    "frontend_tests_passing": 26,
+    "frontend_tests_total": 26,
+    "frontend_test_suites": 6,
+    "combined_tests_passing": 142,
+    "combined_tests_total": 142,
+    "pass_rate_pct": 100.0
+  }
+}

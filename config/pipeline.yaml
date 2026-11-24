@@ -1,0 +1,56 @@
+# Pipeline Configuration
+# Delhi Real-Time Bus Traffic Model & Journey Planner
+
+raw_data:
+  gps_dir: "data/raw/gps"
+  gtfs_dir: "data/raw/gtfs"
+  archive_url: "https://pub-091bd9e794bb4877b10b29e6df80f065.r2.dev/2026-10/delhi-dtc-bus-gtfs-rt-2026-10.7z"
+
+processed_data:
+  parquet_dir: "data/processed/gps_parquet"
+  clean_dir: "data/processed/clean_gps"
+  segments_dir: "data/processed/segments"
+
+spatial:
+  crs_geographic: "EPSG:4326"
+  crs_projected: "EPSG:32643"  # UTM Zone 43N for metric Delhi geometry
+  delhi_bbox:
+    min_lat: 28.20
+    max_lat: 29.10
+    min_lon: 76.60
+    max_lon: 77.60
+
+cleaning_rules:
+  # E01: Exact duplicates
+  remove_exact_duplicates: true
+  # E02: Same vehicle and timestamp, differing locations
+  resolve_conflicting_timestamps: true
+  # E03: Coordinates outside plausible bounding box
+  drop_out_of_bounds: true
+  # E04: Timestamps outside service day
+  service_day_buffer_seconds: 3600
+  # E05: Implausible movement jumps
+  max_speed_kmh: 90.0
+  max_acceleration_ms2: 4.0
+  # E06: Speed consistency
+  speed_discrepancy_ratio_threshold: 3.0
+  # E07: Excessive reporting gap - split vehicle trip
+  trip_split_gap_seconds: 600
+  # E08: Zero or negative time difference
+  drop_non_increasing_timestamps: true
+  # Stationary bus preservation
+  preserve_stationary_buses: true
+
+shape_matching:
+  max_perpendicular_distance_m: 50.0
+  heading_tolerance_degrees: 45.0
+  monotonicity_penalty: 10.0
+  candidate_margin_ratio: 1.25
+
+stop_crossing:
+  # Initial proposed maximum interpolation gap (checked against Gate 0 findings: median ping interval = 11.0s)
+  max_interpolation_gap_seconds: 120
+  min_stop_distance_threshold_m: 50.0
+  target_definition: "arrival_to_arrival"  # Includes dwell at first stop
+  dwell_estimation_enabled: false  # Dwell estimated only where observable clusters exist
+

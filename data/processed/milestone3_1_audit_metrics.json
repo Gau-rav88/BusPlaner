@@ -1,0 +1,334 @@
+{
+  "milestone": "3.1.1",
+  "audit_timestamp": "2026-11-21T13:22:00+05:30",
+  "ground_truth_inventory": {
+    "total_observed_stop_crossings": 199,
+    "total_observed_stop_segments": 136,
+    "total_distinct_stop_pairs": 26,
+    "route_distribution": {
+      "1598": 124,
+      "1445": 11,
+      "1657": 1
+    },
+    "route_1657_status": {
+      "observation_id": "DL1PD9231_c1657_seg0003_s3_to_s4",
+      "vehicle_id": "DL1PD9231",
+      "service_date": "2026-10-03",
+      "segment_key": "1657_dir0_pat0_seq3",
+      "stop_id_from": 242,
+      "stop_id_to": 1245,
+      "stop_name_from": "Sarai Peepal Thala",
+      "stop_name_to": "Jahangirpuri GT Road",
+      "distance_m": 691.23,
+      "segment_time_s": 273.26,
+      "speed_kmh": 9.11,
+      "split_assignment": "Train (2026-10-03)",
+      "explanation": "Route 1657 is a co-running transit service that shares North GT Road infrastructure between Sarai Peepal Thala (stop 242) and Jahangirpuri GT Road (stop 1245). A single vehicle (DL1PD9231) on October 3 was successfully map-matched to this segment. It is preserved in the training partition (n=84) as a valid North GT Road corridor observation, contributing to physical stop-pair pooling and route baselines, but had no observations in validation or test."
+    },
+    "train_observations": 84,
+    "val_observations": 22,
+    "test_observations": 30,
+    "train_dates": [
+      "2026-10-01",
+      "2026-10-02",
+      "2026-10-03"
+    ],
+    "val_dates": [
+      "2026-10-04"
+    ],
+    "test_dates": [
+      "2026-10-07"
+    ],
+    "unique_vehicles_total": 31,
+    "unique_stop_pairs_total": 26,
+    "observations_per_date": {
+      "2026-10-01": 34,
+      "2026-10-02": 20,
+      "2026-10-03": 30,
+      "2026-10-04": 22,
+      "2026-10-07": 30
+    }
+  },
+  "conformal_prediction_audit": {
+    "discrepancy_resolution": {
+      "reported_conformal_radius_s": 349.1,
+      "reported_average_interval_width_s": 532.03,
+      "unclipped_theoretical_width_s": 698.2,
+      "mathematical_cause": "In backend/ml/conformal.py line 39, lower bound is enforced as: lower = np.maximum(y_pred - q, 5.0). When y_pred < q + 5.0 (y_pred < 354.10s), the lower bound is clipped to 5.0s. For 25 of the 30 test predictions, y_pred < 354.10s, truncating the lower interval span from q (349.10s) to (y_pred - 5.0s). The resulting interval width is y_pred + 344.10s, which mathematically reduces the average test interval width from 698.20s to exactly 532.03s.",
+      "predictions_clipped_count": 25,
+      "predictions_unclipped_count": 5
+    },
+    "lower_bound_verification": {
+      "global_minimum_target_time_s": 21.4489107131958,
+      "train_minimum_target_time_s": 32.55775213241577,
+      "val_minimum_target_time_s": 27.641493558883667,
+      "test_minimum_target_time_s": 21.4489107131958,
+      "target_below_5s_global": false,
+      "target_below_5s_test": false,
+      "coverage_identity_verified": true,
+      "coverage_impact_analysis": "Across all 136 ground-truth segments, the minimum actual segment time is 21.45 seconds. Zero actual segment times are below 5.0 seconds. Because all actual values satisfy y_true >= 21.45s > 5.0s, clipping the lower bound at 5.0s does NOT alter the coverage status of any test observation: unclipped coverage is exactly 26/30 (86.67%), and clipped coverage is exactly 26/30 (86.67%). The 5.0s clipping physically excludes impossible negative travel times without inducing miscoverage."
+    },
+    "calibration_quantile": {
+      "sample_count_n": 22,
+      "target_coverage_nominal": 0.9,
+      "finite_sample_formula": "ceil((n + 1) * (1 - alpha)) / n",
+      "calculated_quantile_level": 0.9545,
+      "conformal_radius_s": 349.1
+    },
+    "test_evaluation": {
+      "test_sample_count": 30,
+      "covered_observations_count": 26,
+      "outside_observations_count": 4,
+      "empirical_coverage_pct": 86.67,
+      "illustrative_clopper_pearson_95ci_pct": [
+        69.28,
+        96.24
+      ],
+      "avg_interval_width_s": 532.03,
+      "median_interval_width_s": 539.7,
+      "unclipped_width_s": 698.2,
+      "outside_observations_details": [
+        {
+          "test_index": 7,
+          "segment_key": "1598_dir0_pat0_seq9",
+          "vehicle_id": "DL1PD7932",
+          "hour_ist": 8,
+          "actual_time_s": 252.06,
+          "m0_predicted_s": 674.8699951171875,
+          "lower_bound_s": 325.7699890136719,
+          "upper_bound_s": 1023.969970703125,
+          "error_s": 422.81,
+          "miss_type": "BELOW_LOWER",
+          "explanation": "Link travel time was faster than Tier 4 corridor fallback; free-flow link predicted with corridor-wide slow speed"
+        },
+        {
+          "test_index": 12,
+          "segment_key": "1598_dir0_pat0_seq9",
+          "vehicle_id": "DL1PD5198",
+          "hour_ist": 9,
+          "actual_time_s": 239.02,
+          "m0_predicted_s": 674.8699951171875,
+          "lower_bound_s": 325.7699890136719,
+          "upper_bound_s": 1023.969970703125,
+          "error_s": 435.85,
+          "miss_type": "BELOW_LOWER",
+          "explanation": "Link travel time was faster than Tier 4 corridor fallback; free-flow link predicted with corridor-wide slow speed"
+        },
+        {
+          "test_index": 22,
+          "segment_key": "1598_dir0_pat0_seq2",
+          "vehicle_id": "DL51EV4080",
+          "hour_ist": 17,
+          "actual_time_s": 1643.58,
+          "m0_predicted_s": 595.8499755859375,
+          "lower_bound_s": 246.75999450683594,
+          "upper_bound_s": 944.9500122070312,
+          "error_s": -1047.72,
+          "miss_type": "ABOVE_UPPER",
+          "explanation": "Severe evening rush-hour standstill congestion on October 7 exceeded upper uncertainty bound"
+        },
+        {
+          "test_index": 29,
+          "segment_key": "1598_dir0_pat0_seq9",
+          "vehicle_id": "DL51EV4080",
+          "hour_ist": 18,
+          "actual_time_s": 249.59,
+          "m0_predicted_s": 674.8699951171875,
+          "lower_bound_s": 325.7699890136719,
+          "upper_bound_s": 1023.969970703125,
+          "error_s": 425.28,
+          "miss_type": "BELOW_LOWER",
+          "explanation": "Link travel time was faster than Tier 4 corridor fallback; free-flow link predicted with corridor-wide slow speed"
+        }
+      ],
+      "coverage_uncertainty_and_clustered_variance": "The Clopper-Pearson 95% confidence interval [69.28%, 96.24%] and binomial p-value (p=0.61) are reported strictly as illustrative calculations under an independent Bernoulli trials assumption. In transit reality, clustered observations (intra-vehicle trips and corridor-level spatial correlation) violate independent sampling. Therefore, 90% conformal coverage CANNOT be claimed as statistically demonstrated. Future validation must adopt date/vehicle/stop-pair clustered evaluation strategies."
+    }
+  },
+  "m0_fallback_tier_reliability": {
+    "training_observations_available_by_tier": {
+      "TIER_1_DIRECT_OBSERVED": {
+        "min_samples_threshold": 3,
+        "fitted_cells_count": 1,
+        "training_observations_count": 3,
+        "share_of_training": 3.57
+      },
+      "TIER_2_CORRIDOR_POOLED": {
+        "min_samples_threshold": 3,
+        "fitted_cells_count": 1,
+        "training_observations_count": 3,
+        "share_of_training": 3.57
+      },
+      "TIER_3_TIMEPOINT_AGGREGATED": {
+        "min_samples_threshold": 3,
+        "fitted_cells_count": 10,
+        "training_observations_count": 77,
+        "share_of_training": 91.67
+      },
+      "TIER_4_ROUTE_BASELINE": {
+        "min_samples_threshold": 0,
+        "training_observations_count": 84,
+        "share_of_training": 100.0
+      }
+    },
+    "test_performance_by_tier": [
+      {
+        "tier": "TIER_3_TIMEPOINT_AGGREGATED",
+        "test_query_count": 7,
+        "m0_mae_s": 221.87,
+        "m0_rmse_s": 411.16,
+        "m0_med_ae_s": 121.91,
+        "m1_mae_s": 242.43,
+        "m2_mae_s": 241.76,
+        "m2_rmse_s": 384.16,
+        "m2_med_ae_s": 90.5
+      },
+      {
+        "tier": "TIER_4_ROUTE_BASELINE",
+        "test_query_count": 23,
+        "m0_mae_s": 123.63,
+        "m0_rmse_s": 175.12,
+        "m0_med_ae_s": 80.27,
+        "m1_mae_s": 112.27,
+        "m2_mae_s": 86.78,
+        "m2_rmse_s": 137.1,
+        "m2_med_ae_s": 48.23
+      }
+    ],
+    "seq9_failure_diagnosis": "Segment 1598_dir0_pat0_seq9 had only 2 training observations (count=2 < 3), failing the Tier 1 threshold. Because hourly speed cells for test queries were sparse or absent, M0 fell back to Tier 4 Route Baseline. Tier 4 applied the corridor-wide congested speed (~11 km/h) scaled by detour factor 1.262, predicting 674.87s. In reality, seq9 is a fast free-flow arterial link where buses ran at 24 km/h (239s-252s). This sparse-history fallback caused an error > 420s, pushing the conformal interval lower bound to 325.77s and making all 3 test observations fall below the interval."
+  },
+  "independence_audit": {
+    "vehicles": {
+      "train_count": 21,
+      "val_count": 3,
+      "test_count": 7,
+      "train_val_overlap_count": 0,
+      "train_test_overlap_count": 0,
+      "val_test_overlap_count": 0,
+      "three_way_overlap_count": 0,
+      "repeated_vehicles_across_splits": false,
+      "notes": "Vehicle IDs are strictly mutually exclusive across splits (0 overlap). However, within splits, individual vehicles have multiple observations (up to 12), introducing intra-vehicle trip clustering and auto-correlation."
+    },
+    "stop_pairs": {
+      "train_count": 23,
+      "val_count": 15,
+      "test_count": 14,
+      "train_val_overlap_count": 14,
+      "train_test_overlap_count": 12,
+      "val_test_overlap_count": 9,
+      "three_way_overlap_count": 9,
+      "unseen_test_stop_pairs": [
+        "1445_dir0_pat0_seq2",
+        "1445_dir0_pat0_seq3"
+      ],
+      "repeated_stop_pairs_across_splits": true,
+      "notes": "12 of 14 test stop pairs overlap with training, reflecting repeated transit link traversals on the corridor. 2 stop pairs in test (Route 1445 seq 2 and 3) are completely unseen in training."
+    },
+    "chronological_leakage_vs_statistical_independence": {
+      "chronological_leakage_prevented": true,
+      "max_train_utc": "1791042610.1432755",
+      "min_val_utc": "1791078945.3832166",
+      "max_val_utc": "1791119864.5888999",
+      "min_test_utc": "1791342872.3156412",
+      "statistical_independence_holds": false,
+      "reasons_non_iid": [
+        "Repeated road link geometry across dates induces spatial autocorrelation.",
+        "Same-vehicle sequential runs on a single date introduce driver/vehicle clustering.",
+        "Network-level temporal events (Oct 7 outage and evening congestion) induce correlated shock across observations."
+      ]
+    }
+  },
+  "random_forest_audit": {
+    "leakage_verification": {
+      "target_derived_features_present": false,
+      "test_information_used_in_training": false,
+      "preprocessing_fitted_on_test": false,
+      "duplicated_observations_present": false,
+      "oof_leave_one_day_out_training_used": true,
+      "target_variable": "log(segment_time_s)"
+    },
+    "model_hyperparameters": {
+      "n_estimators": 50,
+      "max_depth": 4,
+      "min_samples_leaf": 3,
+      "random_state": 42,
+      "mean_tree_depth": 4.0,
+      "mean_leaves_per_tree": 10.76
+    },
+    "feature_importances_pct": {
+      "hist_median_log_time": 29.52,
+      "hour_median_speed": 28.8,
+      "hour_sin": 18.01,
+      "hist_sample_count": 4.65,
+      "log_distance_m": 4.38,
+      "is_holiday": 4.32,
+      "distance_m": 3.79,
+      "hour_cos": 3.12,
+      "stop_sequence_from": 2.2,
+      "is_weekend": 1.22
+    },
+    "status_recommendation": "Retain Random Forest strictly as an experimental baseline under DEGRADE status, with M0 Historical Median remaining the primary auditable baseline. Although RF achieves 16.11% MAE reduction over M0 on the test partition, the training sample size (n=84) is small, observations are restricted to North GT Road, and trees cannot safely extrapolate to unobserved corridors across Delhi."
+  },
+  "metric_verification": {
+    "M0_Historical_Median": {
+      "mae": 146.55,
+      "rmse": 250.91,
+      "med_ae": 87.44,
+      "bias": 67.0,
+      "mape": 100.28,
+      "med_ape": 92.99,
+      "within_10": 0.0,
+      "within_20": 10.0,
+      "improvement_pct": 0.0
+    },
+    "M1_Ridge_Regression": {
+      "mae": 142.64,
+      "rmse": 246.07,
+      "med_ae": 88.31,
+      "bias": 60.45,
+      "mape": 125.1,
+      "med_ape": 85.76,
+      "within_10": 6.67,
+      "within_20": 6.67,
+      "improvement_pct": 2.67
+    },
+    "M2_Random_Forest": {
+      "mae": 122.94,
+      "rmse": 221.01,
+      "med_ae": 68.29,
+      "bias": 47.48,
+      "mape": 101.9,
+      "med_ape": 51.64,
+      "within_10": 16.67,
+      "within_20": 26.67,
+      "improvement_pct": 16.11
+    },
+    "mape_vs_medape_audit": {
+      "m0_mape_all": 102.17,
+      "m0_mape_ge_30s": 100.28,
+      "m0_med_ape_ge_30s": 92.99,
+      "m1_mape_all": 134.89,
+      "m1_mape_ge_30s": 125.1,
+      "m1_med_ape_ge_30s": 85.76,
+      "m2_mape_all": 120.86,
+      "m2_mape_ge_30s": 101.9,
+      "m2_med_ape_ge_30s": 51.64,
+      "observations_lt_30s_count": 3,
+      "observations_ge_30s_count": 27,
+      "max_individual_ape_m0": 236.31,
+      "max_individual_ape_m2": 434.63,
+      "explanation": "MAPE divides absolute error by actual travel time. In urban bus corridors, short stop-to-stop links (20s-60s) yield 200%-435% relative error when models predict conservative corridor speeds. Because MAPE is asymmetric and heavily penalizes over-predictions on small denominators, a small number of high-percentage outliers inflates the arithmetic mean above 100%. MedAPE is robust to this skew: M2 MedAPE is 51.64% vs M0 MedAPE of 92.99%, demonstrating substantial predictive gain."
+    }
+  },
+  "clustered_evaluation_strategy_recommendation": {
+    "date_clustered_validation": "Leave-One-Date-Out cross-validation across all 31 October dates when extracted.",
+    "vehicle_run_block_conformal": "Block conformal prediction grouping consecutive segments by vehicle_id and trip_id.",
+    "cluster_robust_variance": "Cluster-robust standard error estimation grouping by (service_date, segment_key)."
+  },
+  "scope_and_provenance_levels": {
+    "LEVEL_1_DIRECT_OBSERVATION": "136 GPS-verified stop-to-stop segment observations derived from 199 stop crossings on 26 distinct stop pairs across 5 dates (Oct 1-4, 7). Highest fidelity, narrow spatial scope.",
+    "LEVEL_2_HISTORICAL_STATISTICAL_BASELINE": "Hierarchical Historical Median (M0) with Tiers 1-4 fallback. Deterministic, transparent, distribution-free quantiles. Primary auditable baseline.",
+    "LEVEL_3_EXPERIMENTAL_ML": "Ridge (M1) and Random Forest (M2) trained on log travel time. Evaluated on Oct 7; retained as experimental benchmark under DEGRADE.",
+    "LEVEL_4_TIMETABLE_FALLBACK": "Static GTFS scheduled times and corridor default velocity (18 km/h). Used when no GPS ground truth exists.",
+    "detour_factor_scope": "Calibrated detour factor k=1.262 is local to North GT Road (ISBT Kashmiri Gate to Jahangirpuri) and must NOT be applied network-wide."
+  }
+}

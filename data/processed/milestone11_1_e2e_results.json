@@ -1,0 +1,85 @@
+{
+  "scenario_1_health_check": {
+    "status": "PASS",
+    "operational_status": "DEGRADE",
+    "database_available": true
+  },
+  "scenario_2_timetable_status": {
+    "status": "PASS",
+    "timetable_status": "CURRENT_VERIFIED",
+    "feed_start_date": "2025-01-01",
+    "feed_end_date": "2040-01-01"
+  },
+  "scenario_3_stop_search": {
+    "status": "PASS",
+    "total_found": 5,
+    "sample_stops": [
+      {
+        "stop_id": "7571",
+        "stop_name": "GGS University ISBT Kashmere Gate",
+        "lat": 28.66547562688361,
+        "lon": 77.2301732003689
+      },
+      {
+        "stop_id": "271",
+        "stop_name": "GGS University ISBT Kashmere Gate",
+        "lat": 28.66528072332212,
+        "lon": 77.23019465804101
+      },
+      {
+        "stop_id": "267",
+        "stop_name": "ISBT Kashmere Gate",
+        "lat": 28.669372,
+        "lon": 77.227137
+      }
+    ]
+  },
+  "scenario_4_nearby_stops": {
+    "status": "PASS",
+    "total_found": 10,
+    "closest_stop": {
+      "stop_id": "4109",
+      "stop_name": "ISBT Kashmere Gate Terminal",
+      "lat": 28.66696,
+      "lon": 77.227456,
+      "distance_m": 53.4,
+      "walking_time_s": 55.5
+    }
+  },
+  "scenario_5_route_1598_shape": {
+    "status": "PASS",
+    "route_short_name": "144UP",
+    "stops_count": 59,
+    "has_shape_geometry": true,
+    "shape_points_count": 416
+  },
+  "scenario_6_direct_journey": {
+    "status": "PASS",
+    "journeys_count": 1,
+    "total_duration_s": 527.0,
+    "board_stop": "Adarsh Nagar  / Bharola Village",
+    "alight_stop": "GTK ByPass / Mukarba chowk"
+  },
+  "scenario_7_transfer_journey": {
+    "status": "PASS",
+    "journeys_count": 1,
+    "transfers": 1,
+    "legs_count": 4
+  },
+  "scenario_8_invalid_stop": {
+    "status": "PASS",
+    "status_code": 200,
+    "journeys_count": 0
+  },
+  "scenario_9_missing_route": {
+    "status": "PASS",
+    "status_code": 404,
+    "error_code": "HTTP_404"
+  },
+  "scenario_10_live_vehicles": {
+    "status": "PASS",
+    "feed_status": "AVAILABLE_VALIDATED",
+    "sample_count": 100,
+    "sample_vehicle_id": "DL1PD7233"
+  }
+}

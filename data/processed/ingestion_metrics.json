@@ -1,0 +1,17 @@
+{
+  "2026-10-01": {
+    "service_date": "2026-10-01",
+    "raw_records": 31290299,
+    "e01_exact_duplicates_removed": 0,
+    "e02_conflicts_quarantined": 12071325,
+    "e03_out_of_bounds_removed": 3466,
+    "clean_records_retained": 19215508,
+    "retention_rate_pct": 61.41,
+    "distinct_vehicles": 6264,
+    "distinct_routes": 2201,
+    "distinct_trips_canonical": 76249,
+    "parquet_path": "/Users/gauravchauhan/Downloads/delhi_hacks/data/processed/gps_parquet/service_date=2026-10-01/data.parquet",
+    "parquet_size_mb": 483.99,
+    "elapsed_seconds": 104.14
+  }
+}

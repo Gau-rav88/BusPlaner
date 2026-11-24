@@ -1,0 +1,176 @@
+{
+  "milestone": "11.1",
+  "title": "Full Application Validation Against Staged DLM1",
+  "generated_at": "2026-11-21T23:07:00+05:30",
+  "governing_operational_status": "DEGRADE",
+  "final_verdict": "READY_WITH_LIMITATIONS",
+  "database_isolation": {
+    "active_primary_db": {
+      "path": "/tmp/delhi_mdb.db",
+      "size_bytes": 281034752,
+      "port": 8000,
+      "status": "UNTOUCHED_PRESERVED"
+    },
+    "staged_dlm1_db": {
+      "path": "/tmp/delhi_dlm1.db",
+      "size_bytes": 362852352,
+      "port": 8001,
+      "status": "FULLY_VALIDATED"
+    }
+  },
+  "runtime_environments": {
+    "backend_legacy": "http://127.0.0.1:8000/api/v1 (Serving /tmp/delhi_mdb.db)",
+    "backend_dlm1": "http://127.0.0.1:8001/api/v1 (Serving /tmp/delhi_dlm1.db)",
+    "frontend_legacy": "http://127.0.0.1:3000 (Proxying :8000)",
+    "frontend_dlm1": "http://127.0.0.1:3002 (Proxying :8001)"
+  },
+  "dlm1_backend_validation": {
+    "health_endpoint": {
+      "status_code": 200,
+      "application_status": "ok",
+      "overall_operational_status": "DEGRADE",
+      "database_available": true,
+      "gtfs_loaded": true
+    },
+    "timetable_freshness": {
+      "status_code": 200,
+      "timetable_status": "CURRENT_VERIFIED",
+      "feed_start_date": "2025-01-01",
+      "feed_end_date": "2040-01-01",
+      "is_date_within_feed_validity": true,
+      "actual_operations_verified": false
+    },
+    "stop_search": {
+      "query": "kashmere",
+      "total_found": 10,
+      "dlm1_stop_ids_verified": ["1025", "1046", "7571", "271", "267", "4822", "4232"]
+    },
+    "nearby_stops": {
+      "query_coords": [28.667, 77.228],
+      "radius_m": 800,
+      "stops_discovered": 10,
+      "closest_stop_m": 53.3
+    },
+    "route_1598_audit": {
+      "route_id": "1598",
+      "route_short_name": "144UP",
+      "route_long_name": "Old Delhi Railway Station (T) to Singhu Border GT Road",
+      "ordered_stops_count": 59,
+      "has_shape_geometry": true,
+      "shape_coordinates_count": 416,
+      "road_centerline_length_km": 32.463
+    },
+    "journey_planning": {
+      "direct_journey": {
+        "origin_stop_id": "284",
+        "origin_stop_name": "Adarsh Nagar / Bharola Village",
+        "dest_stop_id": "5146",
+        "dest_stop_name": "GTK ByPass / Mukarba chowk",
+        "num_transfers": 0,
+        "duration_s": 527.0,
+        "legs_count": 1
+      },
+      "transfer_journey": {
+        "origin_stop_id": "2280",
+        "origin_stop_name": "Nehru Nagar",
+        "dest_stop_id": "5321",
+        "dest_stop_name": "Alipur Blk.(BDO Office)",
+        "num_transfers": 1,
+        "legs_count": 4,
+        "transfer_station": "GTB Nagar / GTB Nagar Metro Station"
+      },
+      "unknown_stop_handling": {
+        "query_stop_id": "99999999",
+        "status_code": 200,
+        "journeys_count": 0,
+        "journeys": []
+      },
+      "missing_route_handling": {
+        "query_route_id": "UNKNOWN_ROUTE_9999",
+        "status_code": 404,
+        "error_code": "HTTP_404"
+      }
+    }
+  },
+  "live_gtfs_rt_compatibility": {
+    "feed_status": "AVAILABLE_VALIDATED",
+    "active_vehicles_parsed": 1895,
+    "unique_routes_sampled": 88,
+    "matching_routes_in_dlm1": 88,
+    "dlm1_match_percentage": 100.0,
+    "invalid_route_filtering": "Gracefully returns empty array for non-existent route filters without errors"
+  },
+  "crosswalk_audit_reconciliation": {
+    "total_legacy_stops_evaluated": 6342,
+    "high_confidence_matches": 2581,
+    "high_confidence_pct": 40.70,
+    "high_confidence_unique_dlm1_stops": 2144,
+    "dlm1_stops_with_duplicate_legacy_mappings": 395,
+    "duplicate_mapping_justification": "Verified that legacy mdb-1262 contained duplicate identical stops for DTC vs DIMTS Cluster codes (e.g., stops 1234 and 15264 both named Sec A 5 Crossing Narela at identical lat 28.85772, lon 77.10377). DLM1 unifies these into a single clean stop.",
+    "review_required_matches": 3413,
+    "review_required_pct": 53.82,
+    "review_required_cause": "Directional carriageway splitting (UP vs DOWN platforms across medians) and metro station gate disambiguation in DLM1.",
+    "unmatched_stops": 348,
+    "unmatched_pct": 5.49,
+    "unmatched_status": "Preserved without forced synthetic interpolation."
+  },
+  "frontend_validation": {
+    "vite_server_port": 3002,
+    "backend_target": "http://127.0.0.1:8001",
+    "screenshots_captured": [
+      {
+        "file": "reports/screenshots/dlm1_main_planner.png",
+        "size_bytes": 1795846,
+        "description": "Main planner desktop view showing CURRENT_VERIFIED timetable and live vehicles"
+      },
+      {
+        "file": "reports/screenshots/dlm1_stop_search.png",
+        "size_bytes": 1809131,
+        "description": "Interactive stop autocomplete dropdown displaying DLM1 stop IDs"
+      },
+      {
+        "file": "reports/screenshots/dlm1_journey_results_road_geometry.png",
+        "size_bytes": 1939765,
+        "description": "Direct journey results rendering DLM1 road geometry polyline with road centerline badge"
+      },
+      {
+        "file": "reports/screenshots/dlm1_expanded_details.png",
+        "size_bytes": 1909014,
+        "description": "Expanded step-by-step route and transfer details"
+      },
+      {
+        "file": "reports/screenshots/dlm1_mobile_view.png",
+        "size_bytes": 550498,
+        "description": "Mobile layout at 375x812 with responsive navigation and zero layout overflow"
+      }
+    ],
+    "console_errors_count": 0,
+    "broken_api_requests_count": 0
+  },
+  "regression_testing_summary": {
+    "existing_regression_tests": {
+      "backend_pytest": 139,
+      "frontend_component": 18,
+      "frontend_integration_legacy": 8,
+      "standalone_e2e_legacy": 18,
+      "subtotal": 183,
+      "passed": 183,
+      "failed": 0
+    },
+    "dlm1_specific_tests": {
+      "backend_pytest_dlm1": 12,
+      "frontend_integration_dlm1": 7,
+      "standalone_e2e_dlm1": 10,
+      "browser_puppeteer_scenarios": 5,
+      "subtotal": 34,
+      "passed": 34,
+      "failed": 0
+    },
+    "total_unique_test_definitions": 217,
+    "total_executions": 217,
+    "total_passed": 217,
+    "total_failed": 0,
+    "pass_rate_pct": 100.0
+  }
+}
+

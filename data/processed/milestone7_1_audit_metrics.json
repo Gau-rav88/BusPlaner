@@ -1,0 +1,121 @@
+{
+  "milestone": "7.1",
+  "title": "Frontend Accuracy, Authenticity & Integration Audit",
+  "audit_timestamp_utc": "2026-11-21T11:27:00Z",
+  "operational_status": "DEGRADE",
+  "overall_verdict": "PASS WITH LIMITATIONS",
+  "area_classifications": {
+    "map_geometry_accuracy": "PASS WITH LIMITATIONS",
+    "screenshot_authenticity": "PASS",
+    "prediction_interval_attribution": "PASS",
+    "timetable_and_warning_behavior": "PASS",
+    "responsive_and_interaction_design": "PASS",
+    "test_and_build_verification": "PASS"
+  },
+  "geometry_metrics": {
+    "shapes_txt_present_in_gtfs": false,
+    "shapes_table_row_count": 0,
+    "trips_with_shape_id_count": 0,
+    "total_trips_in_gtfs": 114354,
+    "bus_route_geometry_type": "STOP_TO_STOP_STRAIGHT_LINE",
+    "walking_geometry_type": "STRAIGHT_LINE_ESTIMATE",
+    "geometry_disclaimer_banner_present": true,
+    "geometry_disclaimer_text": "Approximate Stop-to-Stop Geometry: Delhi GTFS feed lacks shapes.txt. Plotted paths connect stop coordinates via straight segments; actual road curvature and street geometry are not represented.",
+    "legend_disclaimer_present": true
+  },
+  "screenshot_metrics": {
+    "total_screenshots_audited": 4,
+    "all_screenshots_live_backend_verified": true,
+    "mock_data_in_screenshots": false,
+    "discrepancy_with_prior_report_text_resolved": true,
+    "active_preset": {
+      "name": "North GT Road",
+      "origin_stop_id": "239",
+      "origin_stop_name": "Azad Pur Terminal",
+      "origin_lat": 28.707535,
+      "origin_lon": 77.178192,
+      "dest_stop_id": "247",
+      "dest_stop_name": "Mukarba Chowk",
+      "dest_lat": 28.73465,
+      "dest_lon": 77.155769,
+      "route_id": "1598",
+      "trip_id": "1598_12_38",
+      "intermediate_stops_count": 7,
+      "ride_duration_s": 1200.5,
+      "num_transfers": 0,
+      "prediction_tier": "LEVEL_1_DIRECT_OBSERVED",
+      "prediction_source": "GROUND_TRUTH_OBSERVED",
+      "heuristic_confidence_score": 0.93,
+      "confidence_score_type": "HEURISTIC",
+      "timetable_status": "ASSUMED_RECURRING",
+      "actual_operations_verified": false
+    },
+    "screenshots": [
+      {
+        "file": "reports/screenshots/main_planner.png",
+        "viewport": "1280x850",
+        "scale_factor": 2,
+        "provenance": "LIVE_BACKEND"
+      },
+      {
+        "file": "reports/screenshots/journey_results.png",
+        "viewport": "1280x850",
+        "scale_factor": 2,
+        "provenance": "LIVE_BACKEND"
+      },
+      {
+        "file": "reports/screenshots/expanded_journey_details.png",
+        "viewport": "1280x850",
+        "scale_factor": 2,
+        "provenance": "LIVE_BACKEND"
+      },
+      {
+        "file": "reports/screenshots/mobile_layout.png",
+        "viewport": "375x812",
+        "scale_factor": 2,
+        "provenance": "LIVE_BACKEND"
+      }
+    ]
+  },
+  "prediction_interval_metrics": {
+    "backend_transit_leg_schema_includes_intervals": false,
+    "frontend_fabricates_conformal_intervals": false,
+    "level_4_scheduled_fallback_interval_present": false,
+    "level_5_static_fallback_interval_present": false,
+    "confidence_scores_labeled_heuristic": true,
+    "heuristic_tooltip_warning_present": true
+  },
+  "integration_scenarios_tested": {
+    "expired_timetable_no_optin_rejected_400": true,
+    "explicit_assumed_recurring_optin_accepted": true,
+    "warnings_visible_on_all_affected_levels": true,
+    "backend_unavailable_handled_cleanly": true,
+    "no_journeys_found_empty_state_rendered": true,
+    "invalid_inputs_handled_cleanly": true,
+    "retry_behavior_after_enabling_demo_verified": true,
+    "silent_recurring_optin_permitted": false
+  },
+  "responsive_viewport_metrics": {
+    "desktop_1440x900": { "has_horizontal_overflow": false, "scroll_width": 1440, "inner_width": 1440 },
+    "tablet_1024x768": { "has_horizontal_overflow": false, "scroll_width": 1024, "inner_width": 1024 },
+    "mobile_375x812": { "has_horizontal_overflow": false, "scroll_width": 375, "inner_width": 375 },
+    "small_mobile_320x640": { "has_horizontal_overflow": false, "scroll_width": 320, "inner_width": 320 },
+    "min_touch_target_px": 44
+  },
+  "test_and_build_metrics": {
+    "frontend_test_files_total": 6,
+    "frontend_test_files_passed": 6,
+    "frontend_tests_total": 25,
+    "frontend_tests_passed": 25,
+    "frontend_mocked_component_tests": 18,
+    "frontend_live_backend_integration_tests": 7,
+    "backend_pytest_tests_total": 98,
+    "backend_pytest_tests_passed": 98,
+    "production_build_succeeded": true,
+    "bundle_js_raw_kb": 352.43,
+    "bundle_js_gzip_kb": 106.22,
+    "bundle_css_raw_kb": 25.68,
+    "bundle_css_gzip_kb": 5.16
+  }
+}
+

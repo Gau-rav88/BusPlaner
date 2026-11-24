@@ -1,0 +1,113 @@
+{
+  "milestone": "11.3",
+  "timestamp_utc": "2026-11-21T18:38:09Z",
+  "verdict": "CUTOVER_SUCCESSFUL_WITH_LIMITATIONS",
+  "governing_status": "DEGRADE",
+  "primary_runtime": {
+    "port": 8000,
+    "db_path": "/tmp/delhi_dlm1.db",
+    "timetable_status": "CURRENT_VERIFIED",
+    "calendar_range": "2025-01-01 to 2040-01-01",
+    "shapes_count": 965607,
+    "stops_count": 6862,
+    "routes_count": 2574,
+    "trips_count": 80357
+  },
+  "rollback_runtime": {
+    "port": 8001,
+    "db_path": "/tmp/delhi_mdb.db",
+    "timetable_status": "EXPIRED",
+    "calendar_range": "2022-01-01 to 2024-01-01",
+    "stops_count": 6342,
+    "routes_count": 2964,
+    "trips_count": 78515
+  },
+  "historical_pilot_data": {
+    "dataset_version": "pilot_v1_legacy",
+    "total_observations": 136,
+    "eligible_dlm1_1to1_observations": 29,
+    "retained_legacy_observations": 107,
+    "service_dates": 5
+  },
+  "validation_checks": {
+    "health_check": {
+      "status": "PASS",
+      "overall_operational_status": "DEGRADE",
+      "database_available": true,
+      "live_feed_status": "AVAILABLE_VALIDATED"
+    },
+    "timetable_status": {
+      "status": "PASS",
+      "timetable_status": "CURRENT_VERIFIED",
+      "feed_start_date": "2025-01-01",
+      "feed_end_date": "2040-01-01",
+      "actual_operations_verified": false
+    },
+    "stop_search_and_nearby": {
+      "status": "PASS",
+      "search_matches": 10,
+      "nearby_matches": 10,
+      "sample_stop_id": "1417",
+      "sample_stop_name": "Azadpur / Kewal Park"
+    },
+    "route_1598_details": {
+      "status": "PASS",
+      "route_id": "1598",
+      "has_shape_geometry": true,
+      "shape_coordinate_count": 416,
+      "stop_count": 59
+    },
+    "direct_journey_planning": {
+      "status": "PASS",
+      "journeys_count": 1,
+      "total_duration_s": 527.0,
+      "prediction_tier": "LEVEL_4_GTFS_SCHEDULED",
+      "prediction_source": "GTFS_TIMETABLE",
+      "confidence_score_type": "HEURISTIC",
+      "discrepancy_s": 0.0
+    },
+    "transfer_journey_planning": {
+      "status": "PASS",
+      "journeys_count": 1,
+      "num_transfers": 1,
+      "total_duration_s": 35324.0,
+      "discrepancy_s": 0.0
+    },
+    "crosswalk_lookup": {
+      "status": "PASS",
+      "matched_legacy_239_to": "7587",
+      "match_classification": "HIGH_CONFIDENCE",
+      "distance_m": 16.02,
+      "unknown_id_404_verified": true
+    },
+    "live_vehicles_and_matching": {
+      "status": "PASS",
+      "active_vehicle_count": 50,
+      "live_feed_status": "AVAILABLE_VALIDATED",
+      "route_match_percentage": 100.0,
+      "sample_vehicle_id": "DL1PD7233",
+      "sample_route_id": "3407"
+    },
+    "historical_prediction_compatibility": {
+      "status": "PASS",
+      "dlm1_fallback_tier": "LEVEL_4_GTFS_SCHEDULED",
+      "dlm1_fallback_source": "GTFS_TIMETABLE",
+      "confidence_score_type": "HEURISTIC",
+      "pilot_v1_legacy_total_obs": 136,
+      "pilot_v1_legacy_eligible_dlm1_obs": 29,
+      "pilot_v1_legacy_retained_obs": 107
+    },
+    "rollback_readiness": {
+      "status": "PASS",
+      "port_8001_operational": true,
+      "legacy_timetable_status": "EXPIRED",
+      "legacy_feed_end_date": "2024-01-01",
+      "rollback_script_verified": true
+    },
+    "secret_leakage_audit": {
+      "status": "PASS",
+      "endpoints_checked": 5,
+      "leaks_detected": 0
+    }
+  }
+}

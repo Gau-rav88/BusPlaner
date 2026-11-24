@@ -1,0 +1,164 @@
+{
+  "1_health_check": {
+    "status_code": 200,
+    "duration_ms": 5.61,
+    "payload": {
+      "application_status": "ok",
+      "backend_version": "1.0.0",
+      "database_available": true,
+      "gtfs_loaded": true,
+      "model_available": true,
+      "overall_operational_status": "DEGRADE",
+      "live_feed_status": "AVAILABLE_VALIDATED",
+      "live_feed_enabled": true,
+      "timestamp_utc": "2026-11-21T18:34:45.783333+00:00"
+    },
+    "verified": true
+  },
+  "2_timetable_status": {
+    "status_code": 200,
+    "duration_ms": 1.67,
+    "payload": {
+      "timetable_status": "ASSUMED_RECURRING",
+      "feed_start_date": "2022-01-01",
+      "feed_end_date": "2024-01-01",
+      "feed_provenance": "Mobility Database / Delhi Transport Corporation (DTC) Static GTFS archive",
+      "is_date_within_feed_validity": false,
+      "actual_operations_verified": false,
+      "demonstration_mode_available": true,
+      "service_date_evaluated": "2026-10-01",
+      "warnings": [
+        "STALE TIMETABLE WARNING: The underlying GTFS schedule expired on 2024-01-01. Requested service date (2026-10-01) is outside feed validity [2022-01-01 to 2024-01-01]. Historical weekly service patterns are being reused under demonstration assumption (ASSUMED_RECURRING). Departures and trip times are NOT verified as currently operating in Delhi in 2026."
+      ]
+    },
+    "verified": true
+  },
+  "3_stop_search": {
+    "status_code": 200,
+    "duration_ms": 5.97,
+    "results_count": 5,
+    "first_match": {
+      "stop_id": "109",
+      "stop_name": "Guru Govind Singh University (Kashmere Gate)",
+      "lat": 28.6657,
+      "lon": 77.23
+    },
+    "verified": true
+  },
+  "4_nearby_stops": {
+    "status_code": 200,
+    "duration_ms": 4.15,
+    "results_count": 10,
+    "nearest_stop": {
+      "stop_id": "3304",
+      "stop_name": "ISBT Kashmere Gate Terminal",
+      "lat": 28.667007,
+      "lon": 77.22751,
+      "distance_m": 47.9,
+      "walking_time_s": 49.8
+    },
+    "verified": true
+  },
+  "5_route_detail": {
+    "status_code": 200,
+    "duration_ms": 13.29,
+    "route_id": "1598",
+    "ordered_stops_count": 29,
+    "verified": true
+  },
+  "6_direct_journey": {
+    "status_code": 200,
+    "duration_ms": 38.47,
+    "journeys_count": 1,
+    "direct_journey_duration_s": 1220.5,
+    "intermediate_stops": 7,
+    "prediction_tier": "LEVEL_1_DIRECT_OBSERVED",
+    "verified": true
+  },
+  "7_transfer_journey": {
+    "status_code": 200,
+    "duration_ms": 107.19,
+    "journeys_found": 1,
+    "has_transfer_alternatives": true,
+    "transfers": 1,
+    "verified": true
+  },
+  "8_no_route_journey": {
+    "status_code": 200,
+    "duration_ms": 1.95,
+    "journeys_count": 0,
+    "verified": true
+  },
+  "9_invalid_coordinates": {
+    "status_code": 422,
+    "duration_ms": 2.48,
+    "error_type": "RequestValidationError",
+    "verified": true
+  },
+  "10_expired_timetable_rejected": {
+    "status_code": 400,
+    "duration_ms": 1.23,
+    "error": "EXPIRED_TIMETABLE",
+    "feed_end_date": "2024-01-01",
+    "verified": true
+  },
+  "11_assumed_recurring_accepted": {
+    "status_code": 200,
+    "duration_ms": 19.3,
+    "timetable_status": "ASSUMED_RECURRING",
+    "has_stale_warning": true,
+    "verified": true
+  },
+  "12_level_1_prediction": {
+    "prediction_tier": "LEVEL_1_DIRECT_OBSERVED",
+    "prediction_source": "GROUND_TRUTH_OBSERVED",
+    "confidence_score": 0.82,
+    "confidence_score_type": "HEURISTIC",
+    "verified": true
+  },
+  "13_scheduled_fallback": {
+    "route_id": "1957",
+    "prediction_tier": "LEVEL_4_GTFS_SCHEDULED",
+    "prediction_source": "GTFS_TIMETABLE",
+    "verified": true
+  },
+  "14_static_fallback": {
+    "walking_legs_count": 0,
+    "walking_speed_kmh": 4.5,
+    "prediction_tier": "LEVEL_5_STATIC_FALLBACK",
+    "verified": true
+  },
+  "15_live_feed_auth_required": {
+    "status_code": 200,
+    "duration_ms": 3.47,
+    "feed_availability_status": "AVAILABLE_VALIDATED",
+    "feed_enabled": true,
+    "max_staleness_seconds": 900,
+    "verified": true
+  },
+  "16_confidence_disclosure": {
+    "confidence_score_type": "HEURISTIC",
+    "heuristic_confidence_score": 0.82,
+    "verified": true
+  },
+  "17_duration_accounting": {
+    "access_walking_s": 0.0,
+    "initial_waiting_s": 90.0,
+    "in_vehicle_s": 1014.72,
+    "transfer_walking_s": 0.0,
+    "transfer_waiting_s": 0.0,
+    "egress_walking_s": 0.0,
+    "total_duration_s": 1104.72,
+    "discrepancy_s": 0.0,
+    "is_valid_identity": true,
+    "verified": true
+  },
+  "18_mobile_and_map_disclaimer": {
+    "geometry_type": "STOP_TO_STOP_STRAIGHT_LINE",
+    "shapes_txt_present": false,
+    "disclaimer_text": "Approximate Stop-to-Stop Geometry: Delhi GTFS feed lacks shapes.txt.",
+    "mobile_viewport": "375x812",
+    "horizontal_overflow": false,
+    "verified": true
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "milestone": "10",
+  "title": "Real-Time GTFS-RT Integration & Data Upgrade Audit",
+  "audit_timestamp_utc": "2026-11-21T15:45:00Z",
+  "operational_status": "DEGRADE",
+  "live_feed_status": "AVAILABLE_VALIDATED",
+  "overall_verdict": "PASS",
+  "test_reconciliation": {
+    "test_definitions": {
+      "backend_pytest_tests": 139,
+      "frontend_vitest_unit_tests": 18,
+      "frontend_vitest_live_integration_tests": 8,
+      "standalone_e2e_scenarios": 18,
+      "total_distinct_test_definitions": 183
+    },
+    "total_test_and_scenario_executions": 183,
+    "pass_fail_counts": {
+      "passed": 183,
+      "failed": 0,
+      "pass_rate_pct": 100.0
+    }
+  },
+  "live_feed_telemetry": {
+    "official_catalog_url": "https://delhi.transportstack.in/api/dataset/otd/get-file?agency=delhi-buses&category=realtime_gtfs&filename=VehiclePositions.pb",
+    "operational_backend_url": "https://dts-backend.transportstack.in/api/dataset/otd/get-file?agency=delhi-buses&category=realtime_gtfs&filename=VehiclePositions.pb",
+    "auth_header": "x-api-key",
+    "auth_configured": true,
+    "feed_availability_status": "AVAILABLE_VALIDATED",
+    "feed_enabled": true,
+    "poll_interval_seconds": 30,
+    "max_staleness_seconds": 900,
+    "payload_size_bytes": 544776,
+    "total_entities_parsed": 4980,
+    "active_vehicles_count": 4607,
+    "valid_vehicles_count": 4607,
+    "valid_routes_count": 1380,
+    "stale_vehicles_count": 1,
+    "future_timestamp_drift_count": 1,
+    "average_speed_kmh": 38.9,
+    "average_speed_ms": 10.8,
+    "bearing_present_pct": 0.0,
+    "agency_coverage": "UNKNOWN_MIXED",
+    "freshness_pct_under_5_min": 98.9,
+    "freshness_pct_under_15_min": 99.96,
+    "fleet_registration_breakdown": {
+      "DL1PD_cng_standard": 3477,
+      "DL51EV_electric_low_floor": 871,
+      "DL51GD_cng_midi": 501,
+      "DL1PE_express_cluster": 130,
+      "other": 1
+    }
+  },
+  "static_gtfs_comparison": {
+    "loaded_feed_id": "mdb-1262",
+    "loaded_feed_expiry_date": "2024-01-01",
+    "loaded_stops_count": 6342,
+    "loaded_routes_count": 2964,
+    "loaded_trips_count": 78515,
+    "dts_catalog_stops_count": 10559,
+    "dts_catalog_routes_count": 2403,
+    "dts_catalog_trips_count": 89393,
+    "live_routes_count": 1413,
+    "live_routes_matched_to_static_gtfs": 658,
+    "live_routes_match_pct": 46.64,
+    "study_corridor_route_1598_matched": true,
+    "study_corridor_route_1657_matched": true
+  },
+  "historical_data_audit": {
+    "archive_filename": "/tmp/delhi_archive_header.7z",
+    "archive_size_bytes": 16073932800,
+    "archive_size_gb": 14.97,
+    "daily_sqlite_files_in_archive": 31,
+    "host_available_disk_space_gb": 11.33,
+    "required_transient_space_gb": 88.0,
+    "required_permanent_parquet_space_gb": 12.5,
+    "full_month_processing_gated": true,
+    "gating_reason": "INSUFFICIENT_HOST_DISK_CAPACITY",
+    "processed_pilot_dates_count": 5,
+    "ground_truth_observations_total": 136,
+    "observations_by_route": {
+      "1598": 124,
+      "1445": 11,
+      "1657": 1
+    },
+    "route_specific_stop_pairs_count": 26,
+    "physical_stop_pairs_count": 21
+  },
+  "security_audit": {
+    "secrets_committed": false,
+    "env_example_complete": true,
+    "cors_origins_restricted": true,
+    "api_key_leakage_detected": false,
+    "payload_sanitation_verified": true
+  }
+}
+

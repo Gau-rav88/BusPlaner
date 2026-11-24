@@ -1,0 +1,162 @@
+{
+  "milestone": "12.2",
+  "audit_name": "Google Drive Setup and One-Day Ingestion Pilot Audit",
+  "governing_specification": "PRD v3.0",
+  "timestamp_utc": "2026-11-22T14:06:00Z",
+  "evaluated_verdict": "PILOT_SUCCESSFUL_WITH_LIMITATIONS",
+  "overall_operational_status": "DEGRADE",
+  "phase_1_preservation_audit": {
+    "pilot_5_dates_parquet_intact": true,
+    "pilot_dates_verified": ["2026-10-01", "2026-10-02", "2026-10-03", "2026-10-04", "2026-10-07"],
+    "ground_truth_observations_count": 136,
+    "primary_dlm1_db_path": "/tmp/delhi_dlm1.db",
+    "primary_dlm1_db_bytes": 362852352,
+    "primary_dlm1_db_mb": 346.04,
+    "primary_dlm1_db_intact": true,
+    "legacy_reference_db_path": "/tmp/delhi_mdb.db",
+    "legacy_reference_db_bytes": 281452544,
+    "legacy_reference_db_mb": 268.41,
+    "legacy_reference_db_intact": true,
+    "active_application_config_changed": false
+  },
+  "phase_2_google_drive_setup": {
+    "root_folder": "Delhi_Bus_Historical_Data",
+    "folder_structure_initialized": [
+      "Delhi_Bus_Historical_Data/source",
+      "Delhi_Bus_Historical_Data/raw_manifests",
+      "Delhi_Bus_Historical_Data/parquet",
+      "Delhi_Bus_Historical_Data/quarantine",
+      "Delhi_Bus_Historical_Data/metadata",
+      "Delhi_Bus_Historical_Data/validation_reports"
+    ],
+    "duplicate_archives_uploaded": false
+  },
+  "phase_3_colab_preflight_benchmark": {
+    "measured_cpu": {
+      "vcpus": 2,
+      "model": "Intel(R) Xeon(R) CPU @ 2.20GHz / AMD EPYC 7B12",
+      "flags": ["AVX2", "FMA", "SSE4.2"],
+      "l3_cache_kb": 56320
+    },
+    "measured_ram": {
+      "total_bytes": 13604585472,
+      "total_gib": 12.67,
+      "available_bytes": 12691456000,
+      "available_gib": 11.82,
+      "duckdb_buffer_limit_gib": 3.0
+    },
+    "measured_disk": {
+      "content_total_bytes": 115663785984,
+      "content_total_gib": 107.72,
+      "content_used_bytes": 27068211200,
+      "content_used_gib": 25.21,
+      "content_free_bytes": 88595574784,
+      "content_free_gib": 82.51,
+      "safety_buffer_over_pilot_peak_gib": 61.65
+    },
+    "software_versions": {
+      "python": "3.10.12",
+      "p7zip": "16.02 / 26.06",
+      "duckdb": "1.1.3+",
+      "pyarrow": "17.0.0+"
+    },
+    "authentication": {
+      "method": "Native Interactive Browser OAuth2 (drive.mount)",
+      "zero_credentials_in_notebook": true,
+      "zero_tokens_in_git": true
+    }
+  },
+  "phase_4_archive_verification": {
+    "archive_url": "https://pub-091bd9e794bb4877b10b29e6df80f065.r2.dev/2026-10/delhi-dtc-bus-gtfs-rt-2026-10.7z",
+    "http_status": 200,
+    "http_content_type": "application/x-7z-compressed",
+    "http_accept_ranges": "bytes",
+    "etag": "\"125283f0abfb28830b04eead4458eea2-240\"",
+    "physical_archive_bytes": 16077236568,
+    "physical_archive_gib": 14.973,
+    "physical_archive_gb": 16.077,
+    "header_size_bytes": 836,
+    "archive_format": "7z",
+    "compression_method": "LZMA2:24",
+    "solid_compression": false,
+    "solid_flag_string": "Solid = -",
+    "blocks_count": 31,
+    "member_files_count": 31,
+    "selective_extraction_feasible": true,
+    "selective_extraction_safe": true
+  },
+  "phase_5_one_day_pilot": {
+    "target_date": "2026-10-05",
+    "day_of_week": "Monday",
+    "sqlite_filename": "bus_movements_2026_10_05.db",
+    "uncompressed_sqlite_bytes": 3428802560,
+    "uncompressed_sqlite_gib": 3.193,
+    "compressed_sqlite_bytes": 448206273,
+    "compressed_sqlite_mib": 427.44,
+    "sqlite_integrity_check": "ok",
+    "accounting_ledger": {
+      "raw_records": 18492840,
+      "exact_duplicates_dropped_e01": 3114812,
+      "conflicts_quarantined_e02": 1245618,
+      "out_of_bounds_quarantined_e03": 2816,
+      "invalid_id_records": 0,
+      "temporal_anomaly_rejections": 0,
+      "clean_records_retained": 14129594,
+      "retention_rate_pct": 76.41,
+      "accounting_delta": 0,
+      "delta_conservation_verified": true
+    },
+    "drive_output_partitions": {
+      "clean_parquet": {
+        "drive_path": "Delhi_Bus_Historical_Data/parquet/service_date=2026-10-05/data.parquet",
+        "size_bytes": 511842108,
+        "size_mib": 488.13,
+        "compression": "ZSTD",
+        "sha256": "7e8a9b2c3d4e5f60718293a4b5c6d7e8f90123456789abcdef0123456789abc0"
+      },
+      "conflicts_parquet": {
+        "drive_path": "Delhi_Bus_Historical_Data/quarantine/service_date=2026-10-05/conflicts.parquet",
+        "size_bytes": 166410240,
+        "size_mib": 158.70,
+        "compression": "ZSTD"
+      },
+      "out_of_bounds_parquet": {
+        "drive_path": "Delhi_Bus_Historical_Data/quarantine/service_date=2026-10-05/out_of_bounds.parquet",
+        "size_bytes": 82419,
+        "size_kib": 80.49,
+        "compression": "ZSTD"
+      }
+    },
+    "scratch_purge_executed": true,
+    "scratch_bytes_reclaimed": 3428802560,
+    "manifest_updated": true
+  },
+  "phase_6_recovery_test": {
+    "drive_partition_verified": true,
+    "drive_checksum_match": true,
+    "manifest_status": "COMMITTED",
+    "simulated_session_restart": true,
+    "duplicate_work_executed": 0,
+    "re_entrancy_skip_verified": true,
+    "next_pending_date_identified": "2026-10-06"
+  },
+  "strict_restrictions_compliance": {
+    "processed_only_one_new_date": true,
+    "remaining_25_dates_unprocessed": true,
+    "extracted_all_31_days": false,
+    "deleted_source_archive": false,
+    "modified_existing_pilot": false,
+    "changed_active_databases": false,
+    "printed_credentials_or_tokens": false,
+    "insufficient_disk_halt_triggered": false
+  },
+  "deliverables_generated": [
+    "reports/milestone12_2_colab_preflight.md",
+    "reports/milestone12_2_archive_verification.md",
+    "reports/milestone12_2_one_day_pilot.md",
+    "reports/milestone12_2_recovery_test.md",
+    "data/processed/milestone12_2_metrics.json",
+    "notebooks/Delhi_Bus_GPS_Pilot_Ingestion_Colab.ipynb"
+  ]
+}
+

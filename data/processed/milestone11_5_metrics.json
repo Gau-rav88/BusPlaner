@@ -1,0 +1,273 @@
+{
+  "milestone": "11.5",
+  "audit_name": "Journey Reliability, Test Suite Cleanup & Live Feed Stability",
+  "governing_specification": "PRD v3.0",
+  "timestamp_utc": "2026-11-21T20:05:00+00:00",
+  "evaluated_verdict": "RELIABILITY_IMPROVED_WITH_LIMITATIONS",
+  "overall_operational_status": "DEGRADE",
+  "runtime_databases": {
+    "primary_database": "/tmp/delhi_dlm1.db",
+    "primary_database_size_bytes": 362848256,
+    "primary_database_stops_count": 6862,
+    "primary_database_routes_count": 2574,
+    "primary_database_trips_count": 80357,
+    "legacy_database": "/tmp/delhi_mdb.db",
+    "legacy_database_size_bytes": 281448448,
+    "legacy_database_stops_count": 6862,
+    "legacy_database_routes_count": 1395,
+    "legacy_database_trips_count": 38167
+  },
+  "test_suite_cleanup": {
+    "total_collected_tests": 160,
+    "full_suite_execution": {
+      "command": "pytest backend/tests/ -v",
+      "exit_code": 0,
+      "passed": 160,
+      "failed": 0,
+      "skipped": 0,
+      "errored": 0,
+      "duration_seconds": 66.91
+    },
+    "legacy_marked_suite": {
+      "command": "pytest -m legacy -v",
+      "exit_code": 0,
+      "collected": 160,
+      "passed": 34,
+      "deselected": 126,
+      "failed": 0,
+      "duration_seconds": 20.19,
+      "database_targeted": "/tmp/delhi_mdb.db"
+    },
+    "dlm1_marked_suite": {
+      "command": "pytest -m dlm1 -v",
+      "exit_code": 0,
+      "collected": 160,
+      "passed": 21,
+      "deselected": 139,
+      "failed": 0,
+      "duration_seconds": 12.85,
+      "database_targeted": "/tmp/delhi_dlm1.db"
+    },
+    "frontend_vitest_suite": {
+      "command": "cd frontend && npm test",
+      "exit_code": 0,
+      "test_files": 7,
+      "total_tests": 34,
+      "passed": 34,
+      "failed": 0,
+      "duration_seconds": 1.36
+    },
+    "resolution_summary": "Separated dataset assertions via pytest fixtures and markers. Legacy tests explicitly target /tmp/delhi_mdb.db; DLM1 tests target /tmp/delhi_dlm1.db. 0 unexplained failures remain."
+  },
+  "long_transfer_advisory": {
+    "threshold_seconds": 7200.0,
+    "threshold_hours": 2.0,
+    "implementation": {
+      "schema_fields": ["long_transfer_advisory", "has_long_transfer_wait"],
+      "backend_service": "backend/app/services/planner_service.py",
+      "frontend_component": "frontend/src/components/JourneyCard.tsx",
+      "frontend_type": "frontend/src/types/api.ts"
+    },
+    "test_cases": [
+      {
+        "description": "Below threshold (2-transfer alternative, 1521s wait)",
+        "wait_s": 1521.0,
+        "triggered": false,
+        "has_long_transfer_wait": false,
+        "advisory": null
+      },
+      {
+        "description": "At boundary threshold (7200s wait)",
+        "wait_s": 7200.0,
+        "triggered": false,
+        "has_long_transfer_wait": false,
+        "advisory": null
+      },
+      {
+        "description": "Above threshold (1-transfer Route 3232 connection, 26269s wait)",
+        "wait_s": 26269.32,
+        "triggered": true,
+        "has_long_transfer_wait": true,
+        "advisory": "Extended transfer wait time: 26269s (7.3 hours). This connection has a long scheduled wait between connecting bus services. Consider comparing other available journey options or selecting a different departure time.",
+        "journey_preserved": true,
+        "duration_unmodified_s": 35324.0,
+        "accounting_conserved": true
+      }
+    ]
+  },
+  "alternative_journey_verification": {
+    "query": {
+      "origin_stop_id": "2280",
+      "dest_stop_id": "5321",
+      "departure_date": "2026-10-01",
+      "departure_time": "08:00:00",
+      "max_transfers": 3
+    },
+    "option_1_fast": {
+      "total_duration_s": 8516.0,
+      "total_duration_hours": 2.37,
+      "num_transfers": 2,
+      "departure_time": "08:00:00",
+      "arrival_time": "10:21:56",
+      "legs": [
+        {
+          "leg_index": 0,
+          "route_id": "1965",
+          "trip_id": "1965_FULL_07_30",
+          "board_stop": "2280 (Nehru Nagar)",
+          "alight_stop": "4975 (Regal / Palika Kendra)",
+          "dep": "08:04:48",
+          "arr": "08:42:44",
+          "ride_s": 2276.0
+        },
+        {
+          "leg_index": 1,
+          "route_id": "1506",
+          "trip_id": "1506_FULL_08_40",
+          "board_stop": "4975 (Regal / Palika Kendra)",
+          "alight_stop": "289 (GTK Depot)",
+          "dep": "08:48:15",
+          "arr": "09:41:10",
+          "ride_s": 3175.0,
+          "transfer_wait_s": 331.0
+        },
+        {
+          "leg_index": 2,
+          "route_id": "276",
+          "trip_id": "276_FULL_10_01",
+          "board_stop": "289 (GTK Depot)",
+          "alight_stop": "5321 (Alipur Blk.(BDO Office))",
+          "dep": "10:01:00",
+          "arr": "10:21:56",
+          "ride_s": 1256.0,
+          "transfer_wait_s": 1190.0
+        }
+      ],
+      "accounting": {
+        "initial_wait_s": 288.0,
+        "ride_s": 6707.0,
+        "transfer_walk_s": 0.0,
+        "transfer_wait_s": 1521.0,
+        "total_s": 8516.0,
+        "discrepancy_s": 0.0
+      }
+    },
+    "option_2_few_transfers": {
+      "total_duration_s": 35324.0,
+      "total_duration_hours": 9.81,
+      "num_transfers": 1,
+      "departure_time": "08:00:00",
+      "arrival_time": "17:48:44",
+      "transfer_wait_s": 26269.32,
+      "advisory_present": true
+    }
+  },
+  "live_feed_temporal_validation": {
+    "total_snapshots": 3,
+    "separation_requirement": ">= 300 seconds (5 minutes)",
+    "endpoint": "https://dts-backend.transportstack.in/api/dataset/otd/get-file?agency=delhi-buses&category=realtime_gtfs&filename=VehiclePositions.pb",
+    "snapshots": [
+      {
+        "snapshot_index": 1,
+        "timestamp_utc": "2026-11-21T19:46:45Z",
+        "epoch_time": 1795290405,
+        "latency_s": 0.693,
+        "payload_bytes": 61734,
+        "raw_entities": 563,
+        "valid_vehicles": 563,
+        "rejected_vehicles": 0,
+        "fresh_vehicles": 563,
+        "stale_vehicles": 0,
+        "unique_active_routes": 217,
+        "matched_dlm1_routes": 217,
+        "unmatched_routes": 0,
+        "route_match_pct": 100.0,
+        "min_age_s": 23,
+        "median_age_s": 57,
+        "max_age_s": 899
+      },
+      {
+        "snapshot_index": 2,
+        "timestamp_utc": "2026-11-21T19:51:50Z",
+        "epoch_time": 1795290710,
+        "elapsed_since_prev_s": 305,
+        "latency_s": 0.751,
+        "payload_bytes": 63144,
+        "raw_entities": 576,
+        "valid_vehicles": 576,
+        "rejected_vehicles": 0,
+        "fresh_vehicles": 576,
+        "stale_vehicles": 0,
+        "unique_active_routes": 227,
+        "matched_dlm1_routes": 227,
+        "unmatched_routes": 0,
+        "route_match_pct": 100.0,
+        "min_age_s": 17,
+        "median_age_s": 124,
+        "max_age_s": 836
+      },
+      {
+        "snapshot_index": 3,
+        "timestamp_utc": "2026-11-21T19:57:12Z",
+        "epoch_time": 1795291032,
+        "elapsed_since_prev_s": 322,
+        "latency_s": 0.685,
+        "payload_bytes": 60515,
+        "raw_entities": 552,
+        "valid_vehicles": 552,
+        "rejected_vehicles": 0,
+        "fresh_vehicles": 552,
+        "stale_vehicles": 0,
+        "unique_active_routes": 218,
+        "matched_dlm1_routes": 218,
+        "unmatched_routes": 0,
+        "route_match_pct": 100.0,
+        "min_age_s": 29,
+        "median_age_s": 142,
+        "max_age_s": 856
+      }
+    ],
+    "temporal_differences_observed": "Active bus volume fluctuated between 552 and 576 vehicles across the 10.5-minute window; active routes shifted from 217 to 227 to 218. 100% of active routes consistently matched DLM1 static catalog across all three time points."
+  },
+  "historical_data_integrity": {
+    "total_observations": 136,
+    "source_directory": "data/processed/stop_crossings",
+    "dates": {
+      "2026-10-01": 34,
+      "2026-10-02": 20,
+      "2026-10-03": 30,
+      "2026-10-04": 22,
+      "2026-10-07": 30
+    },
+    "routes": {
+      "1598": 124,
+      "1445": 11,
+      "1657": 1
+    },
+    "unique_vehicles": 31,
+    "crosswalk_partitioning": {
+      "high_confidence_dlm1_mapped": 29,
+      "quarantined_pilot_v1_legacy": 107,
+      "fabricated_or_rekeyed": 0
+    }
+  },
+  "security_verification": {
+    "scanned_targets": [
+      ".env",
+      "backend/.env",
+      ".env.example",
+      ".gitignore",
+      "reports/",
+      "backend/",
+      "frontend/",
+      "scripts/",
+      "data/"
+    ],
+    "unredacted_leaks_count": 0,
+    "git_tracked_leaks_count": 0,
+    "gitignore_protection": "Active for .env, .env.*, backend/.env, backend/.env.*",
+    "portal_rotation_action_required": true,
+    "portal_rotation_instructions": "Operator must log into https://delhi.transportstack.in dashboard, generate a new GTFS-RT API key, update .env with the new key, and revoke the previous key."
+  }
+}
+

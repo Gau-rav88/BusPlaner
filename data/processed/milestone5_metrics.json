@@ -1,0 +1,75 @@
+{
+  "milestone": "5",
+  "status": "COMPLETED",
+  "governing_status": "DEGRADE",
+  "timestamp_utc": "2026-11-21T08:26:52Z",
+  "network_scale": {
+    "gtfs_database": "/tmp/delhi_mdb.db",
+    "total_stops": 6342,
+    "total_patterns": 2473,
+    "total_footpaths": 36640,
+    "timetable_load_time_seconds": 4.91,
+    "planner_init_time_seconds": 5.14
+  },
+  "footpath_statistics": {
+    "total_transfer_footpaths": 36640,
+    "mean_distance_m": 206.37,
+    "median_distance_m": 227.26,
+    "max_distance_m": 399.99,
+    "p90_distance_m": 371.35
+  },
+  "performance_benchmarks": {
+    "num_queries": 50,
+    "mean_latency_ms": 94.27,
+    "median_latency_ms": 108.49,
+    "p90_latency_ms": 175.47,
+    "p95_latency_ms": 192.91,
+    "min_latency_ms": 1.1,
+    "max_latency_ms": 218.45
+  },
+  "journey_accounting_validation": {
+    "total_journeys_evaluated": 76,
+    "accounting_identity_violations": 0,
+    "accounting_pass_rate_pct": 100.0,
+    "transfer_buffer_violations": 0,
+    "transfer_buffer_pass_rate_pct": 100.0,
+    "identity_formula": "TotalJourneyTime = AccessWalk + InitialWait + sum(RideTime) + sum(TransferWalk) + sum(TransferWait) + EgressWalk"
+  },
+  "transfer_breakdown": {
+    "0": 32,
+    "1": 32,
+    "2": 12
+  },
+  "prediction_hierarchy_breakdown": {
+    "counts": {
+      "LEVEL_1_DIRECT_OBSERVED": 72,
+      "LEVEL_2_CORRIDOR_POOLED": 0,
+      "LEVEL_3_CORRIDOR_SPEED": 0,
+      "LEVEL_4_TIMETABLE_FALLBACK": 60
+    },
+    "total_transit_legs": 132,
+    "level1_share_pct": 54.55,
+    "level2_share_pct": 0.0,
+    "level3_share_pct": 0.0,
+    "level4_share_pct": 45.45,
+    "detour_factor_restricted_to_corridor": true
+  },
+  "dijkstra_comparison": {
+    "algorithm": "Dijkstra Static Distance Graph",
+    "mean_latency_ms": 8.52,
+    "supports_trip_timetables": false,
+    "supports_service_calendars": false,
+    "supports_bounded_transfers": false,
+    "supports_transfer_buffer_guarantee": false,
+    "supports_traffic_delay_propagation": false,
+    "raptor_speedup_factor": 0.09
+  },
+  "time_profile_comparison": {
+    "origin_stop_id": "239",
+    "dest_stop_id": "247",
+    "quietest_hour": 10,
+    "quietest_travel_time_s": 947.3100388050079,
+    "has_sufficient_empirical_evidence": true,
+    "hourly_estimates_count": 9
+  }
+}

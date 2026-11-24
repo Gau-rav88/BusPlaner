@@ -1,0 +1,320 @@
+{
+  "milestone": "11.4",
+  "audit_name": "Post-Cutover Quality Audit and Journey Reliability",
+  "governing_specification": "PRD v3.0",
+  "timestamp_utc": "2026-11-21T19:15:00+00:00",
+  "evaluated_verdict": "QUALITY_AUDIT_PASSED_WITH_LIMITATIONS",
+  "overall_operational_status": "DEGRADE",
+  "runtime_databases": {
+    "primary_database": "/tmp/delhi_dlm1.db",
+    "primary_database_size_bytes": 362848256,
+    "primary_database_stops_count": 6862,
+    "primary_database_routes_count": 2574,
+    "primary_database_trips_count": 80357,
+    "legacy_database": "/tmp/delhi_mdb.db",
+    "legacy_database_size_bytes": 281448448,
+    "legacy_database_stops_count": 6862,
+    "legacy_database_routes_count": 1395,
+    "legacy_database_trips_count": 38167
+  },
+  "test_suite_audit": {
+    "total_pytest_test_definitions": 151,
+    "dlm1_execution": {
+      "db_path": "/tmp/delhi_dlm1.db",
+      "exit_code": 1,
+      "passed": 141,
+      "failed": 10,
+      "skipped": 0,
+      "errored": 0,
+      "failing_tests": [
+        "backend/tests/test_milestone6_1_audit.py::test_freshness_four_canonical_states",
+        "backend/tests/test_milestone6_1_audit.py::test_freshness_warning_propagation_to_every_leg",
+        "backend/tests/test_milestone6_1_audit.py::test_current_verified_leg_has_no_stale_warning",
+        "backend/tests/test_milestone6_1_audit.py::test_error_envelope_sanitization",
+        "backend/tests/test_milestone6_api.py::test_api_timetable_status_states",
+        "backend/tests/test_milestone6_api.py::test_api_journey_planning_success",
+        "backend/tests/test_milestone6_api.py::test_api_journey_planning_expired_strict_mode",
+        "backend/tests/test_milestone6_api.py::test_api_prediction_source_metadata_and_heuristics",
+        "backend/tests/test_milestone6_api.py::test_api_experimental_ml_gating",
+        "backend/tests/test_milestone8_api.py::test_journey_planner_regression_north_gt_road"
+      ],
+      "failure_root_cause": "All 10 failures stem from legacy test files asserting legacy mdb-1262 calendar date range (2022-01-01 to 2024-01-01) and legacy stop pair IDs (239 -> 2024/247). In DLM1, the active calendar is 2025-01-01 to 2040-01-01, making 2026 dates active rather than expired."
+    },
+    "legacy_execution_on_legacy_db": {
+      "db_path": "/tmp/delhi_mdb.db",
+      "exit_code": 0,
+      "total_tests": 34,
+      "passed": 34,
+      "failed": 0,
+      "duration_seconds": 10.05
+    },
+    "dlm1_specific_tests": {
+      "db_path": "/tmp/delhi_dlm1.db",
+      "test_file": "backend/tests/test_milestone11_1_dlm1.py",
+      "exit_code": 0,
+      "total_tests": 12,
+      "passed": 12,
+      "failed": 0,
+      "duration_seconds": 1.48
+    }
+  },
+  "long_transfer_journey_investigation": {
+    "query": {
+      "origin_stop_id": "2280",
+      "origin_stop_name": "Nehru Nagar",
+      "dest_stop_id": "5321",
+      "dest_stop_name": "Alipur Blk.(BDO Office)",
+      "departure_date": "2026-10-01",
+      "departure_time": "08:00:00",
+      "max_transfers": 2
+    },
+    "result": {
+      "journey_id": "journey_1",
+      "num_transfers": 1,
+      "departure_time": "08:00:00",
+      "arrival_time": "17:48:44",
+      "total_journey_duration_s": 35324.0,
+      "total_journey_duration_hours": 9.81,
+      "legs": [
+        {
+          "leg_index": 0,
+          "leg_type": "TRANSIT",
+          "route_id": "2734",
+          "trip_id": "2734_FULL_07_55",
+          "board_stop_id": "2280",
+          "board_stop_name": "Nehru Nagar",
+          "alight_stop_id": "257",
+          "alight_stop_name": "GTB Nagar",
+          "departure_time": "08:04:06",
+          "arrival_time": "09:44:12",
+          "ride_duration_s": 6006.0,
+          "prediction_tier": "LEVEL_4_GTFS_SCHEDULED",
+          "prediction_source": "GTFS_TIMETABLE"
+        },
+        {
+          "leg_index": 1,
+          "leg_type": "TRANSFER",
+          "from_stop_id": "257",
+          "from_stop_name": "GTB Nagar",
+          "to_stop_id": "568",
+          "to_stop_name": "GTB Nagar / GTB Nagar Metro Station",
+          "start_time": "09:44:12",
+          "end_time": "09:45:34",
+          "walk_duration_s": 82.68,
+          "walk_distance_m": 79.5
+        },
+        {
+          "leg_index": 2,
+          "leg_type": "TRANSIT",
+          "route_id": "3232",
+          "trip_id": "3232_FULL_16_50",
+          "board_stop_id": "568",
+          "board_stop_name": "GTB Nagar / GTB Nagar Metro Station",
+          "alight_stop_id": "5322",
+          "alight_stop_name": "Alipur GT Road",
+          "departure_time": "17:03:24",
+          "arrival_time": "17:45:21",
+          "ride_duration_s": 2517.0,
+          "prediction_tier": "LEVEL_4_GTFS_SCHEDULED",
+          "prediction_source": "GTFS_TIMETABLE"
+        },
+        {
+          "leg_index": 3,
+          "leg_type": "TRANSFER",
+          "from_stop_id": "5322",
+          "from_stop_name": "Alipur GT Road",
+          "to_stop_id": "5321",
+          "to_stop_name": "Alipur Blk.(BDO Office)",
+          "start_time": "17:45:21",
+          "end_time": "17:48:44",
+          "walk_duration_s": 202.98,
+          "walk_distance_m": 195.2
+        }
+      ],
+      "accounting": {
+        "access_walking_time_s": 0.0,
+        "initial_waiting_time_s": 246.0,
+        "in_vehicle_duration_s": 8523.0,
+        "transfer_walking_time_s": 285.66,
+        "transfer_waiting_time_s": 26269.32,
+        "egress_walking_time_s": 0.0,
+        "total_duration_s": 35323.98,
+        "discrepancy_s": 0.0,
+        "is_valid_identity": true
+      },
+      "root_cause": "Route 3232 is an intercity express peak service operating early morning (~05:00-06:00) and late afternoon (17:00-18:00) with zero scheduled departures during midday. Arriving at GTB Nagar at 09:44:12 forces a 7.3-hour transfer wait under a 1-transfer constraint.",
+      "multi_transfer_alternative": {
+        "max_transfers": 3,
+        "num_transfers": 2,
+        "total_duration_s": 8516.0,
+        "total_duration_hours": 2.37,
+        "itinerary": "Route 1965 (Nehru Nagar -> Regal) -> Route 1506 (Regal -> GTK Depot) -> Route 276 (GTK Depot -> Alipur BDO)",
+        "transfer_waiting_time_s": 1500.0
+      },
+      "ui_recommendation": "Display advisory warning banner when transfer_waiting_time_s exceeds 7200s (2 hours) without suppressing Pareto-optimal timetable results."
+    }
+  },
+  "journey_quality_audit": {
+    "representative_samples": [
+      {
+        "description": "Direct pilot corridor on Route 1598 (Stop 239 -> Stop 247)",
+        "http_status": 200,
+        "journeys_count": 1,
+        "duration_s": 1021.5,
+        "prediction_tier": "LEVEL_1_DIRECT_OBSERVED",
+        "prediction_source": "GROUND_TRUTH_OBSERVED",
+        "is_fallback": false,
+        "verified_current_service": true
+      },
+      {
+        "description": "Direct non-pilot corridor on Route 284 (Stop 284 -> Stop 5146)",
+        "http_status": 200,
+        "journeys_count": 1,
+        "duration_s": 527.0,
+        "prediction_tier": "LEVEL_4_GTFS_SCHEDULED",
+        "prediction_source": "GTFS_TIMETABLE",
+        "is_fallback": true,
+        "fallback_reason": "Unobserved corridor outside North GT Road ground-truth scope"
+      },
+      {
+        "description": "1-Transfer cross-city journey (Stop 2280 -> Stop 5321)",
+        "http_status": 200,
+        "journeys_count": 1,
+        "duration_s": 35324.0,
+        "num_transfers": 1,
+        "prediction_tier": "LEVEL_4_GTFS_SCHEDULED",
+        "discrepancy_s": 0.0
+      }
+    ],
+    "negative_samples": [
+      {
+        "description": "Unknown Stop ID (999999 -> 284)",
+        "http_status": 200,
+        "journeys_count": 0,
+        "journeys": []
+      },
+      {
+        "description": "Identical origin and destination (284 -> 284)",
+        "http_status": 422,
+        "error": "Value error, Origin stop and destination stop cannot be identical."
+      },
+      {
+        "description": "Invalid departure time format (29:00:00)",
+        "http_status": 422,
+        "error": "Value error, Time hours component must be between 0 and 28."
+      }
+    ]
+  },
+  "live_feed_audit": {
+    "total_snapshots": 3,
+    "feed_endpoint": "https://dts-backend.transportstack.in/api/dataset/otd/get-file?agency=delhi-buses&category=realtime_gtfs&filename=VehiclePositions.pb",
+    "snapshots": [
+      {
+        "snapshot_index": 1,
+        "timestamp_utc": "2026-11-21T18:58:02+00:00",
+        "latency_seconds": 0.733,
+        "payload_bytes": 73008,
+        "raw_entities": 667,
+        "valid_vehicles": 667,
+        "rejected_positions": 0,
+        "fresh_vehicles": 667,
+        "stale_vehicles": 0,
+        "unique_active_routes_count": 293,
+        "dlm1_matched_routes_count": 293,
+        "dlm1_unmatched_routes_count": 0,
+        "route_match_percentage": 100.0,
+        "min_timestamp_age_s": 14,
+        "max_timestamp_age_s": 886
+      },
+      {
+        "snapshot_index": 2,
+        "timestamp_utc": "2026-11-21T18:58:09+00:00",
+        "latency_seconds": 1.352,
+        "payload_bytes": 73008,
+        "raw_entities": 667,
+        "valid_vehicles": 667,
+        "rejected_positions": 0,
+        "fresh_vehicles": 667,
+        "stale_vehicles": 0,
+        "unique_active_routes_count": 293,
+        "dlm1_matched_routes_count": 293,
+        "dlm1_unmatched_routes_count": 0,
+        "route_match_percentage": 100.0,
+        "min_timestamp_age_s": 21,
+        "max_timestamp_age_s": 893
+      },
+      {
+        "snapshot_index": 3,
+        "timestamp_utc": "2026-11-21T18:58:16+00:00",
+        "latency_seconds": 0.956,
+        "payload_bytes": 73008,
+        "raw_entities": 667,
+        "valid_vehicles": 667,
+        "rejected_positions": 0,
+        "fresh_vehicles": 667,
+        "stale_vehicles": 0,
+        "unique_active_routes_count": 293,
+        "dlm1_matched_routes_count": 293,
+        "dlm1_unmatched_routes_count": 0,
+        "route_match_percentage": 100.0,
+        "min_timestamp_age_s": 28,
+        "max_timestamp_age_s": 900
+      }
+    ],
+    "denominator_specification": "Observed active route denominator is exactly 293 distinct active route IDs in the live midnight telemetry stream. 293 of 293 (100.00%) matched DLM1 static routes. This is NOT a claim of 100% universal system-wide network match against all 2,574 DLM1 routes."
+  },
+  "historical_data_integrity": {
+    "total_observations": 136,
+    "source_file": "data/processed/gps_parquet/observed_segments.parquet",
+    "service_dates_count": 5,
+    "service_dates_breakdown": {
+      "2026-10-01": 27,
+      "2026-10-02": 30,
+      "2026-10-05": 28,
+      "2026-10-06": 25,
+      "2026-10-07": 26
+    },
+    "route_breakdown": {
+      "1598": 124,
+      "1445": 11,
+      "1657": 1
+    },
+    "unique_physical_stop_pairs": 21,
+    "unique_directional_route_stop_pairs": 26,
+    "unique_vehicles": 31,
+    "crosswalk_partitioning": {
+      "high_confidence_dlm1_pairs": 5,
+      "high_confidence_dlm1_observations": 29,
+      "high_confidence_percentage": 21.32,
+      "quarantined_legacy_pairs": 16,
+      "quarantined_legacy_observations": 107,
+      "quarantined_percentage": 78.68,
+      "silent_migrations_detected": 0
+    }
+  },
+  "security_audit": {
+    "scanned_targets": [
+      ".env",
+      ".env.example",
+      ".gitignore",
+      "git_tracked_files",
+      "api_endpoints",
+      "backend_logs",
+      "frontend_production_bundles",
+      "reports"
+    ],
+    "detected_and_remediated_exposures": [
+      {
+        "file": "reports/milestone11_3_post_cutover_validation.md",
+        "line": 166,
+        "exposure_type": "Prose narrative description in documentation",
+        "action_taken": "Immediately redacted literal key and replaced with [REDACTED_DTS_API_KEY]"
+      }
+    ],
+    "current_unredacted_exposures_count": 0,
+    "git_tracked_leaks_count": 0,
+    "env_protection_status": ".env and backend/.env correctly listed in .gitignore",
+    "recommendation": "Recommend defensive rotation of the DTS API key on the Delhi Transport Stack portal due to previous presence in local markdown documentation."
+  }
+}
+

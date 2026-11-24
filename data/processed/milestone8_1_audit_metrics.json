@@ -1,0 +1,130 @@
+{
+  "milestone": "8.1",
+  "title": "Historical Data Reconciliation & Final Verification",
+  "audit_timestamp_utc": "2026-11-21T12:56:00Z",
+  "operational_status": "DEGRADE",
+  "overall_verdict": "PASS",
+  "reconciliation": {
+    "total_observations": 136,
+    "observations_by_route": {
+      "1598": 124,
+      "1445": 11,
+      "1657": 1
+    },
+    "route_percentage": {
+      "1598": 91.18,
+      "1445": 8.09,
+      "1657": 0.74
+    },
+    "distinct_route_stop_pairs_count": 26,
+    "distinct_physical_stop_pairs_count": 21,
+    "distinct_physical_stop_pairs_by_route": {
+      "1598": 20,
+      "1445": 5,
+      "1657": 1
+    },
+    "physical_stop_pairs_shared_count": 5,
+    "distinct_vehicles_count": 31,
+    "distinct_vehicles_by_route": {
+      "1598": 25,
+      "1445": 5,
+      "1657": 1
+    },
+    "vehicle_cross_route_overlap_count": 0,
+    "distinct_service_dates": [
+      "2026-10-01",
+      "2026-10-02",
+      "2026-10-03",
+      "2026-10-04",
+      "2026-10-07"
+    ],
+    "distinct_service_dates_count": 5,
+    "observed_hours_ist": [7, 8, 9, 10, 12, 13, 14, 15, 16, 17, 18, 20, 21],
+    "observed_hours_count": 13,
+    "unobserved_hours_ist": [0, 1, 2, 3, 4, 5, 6, 11, 19, 22, 23],
+    "unobserved_hours_count": 11,
+    "temporal_coverage_ratio": 0.5417,
+    "core_fields_null_count": 0,
+    "dwell_time_null_count": 130
+  },
+  "profile_validation": {
+    "bottleneck_segment_1598_241_242_hr7": {
+      "sample_count": 3,
+      "distinct_service_dates_count": 2,
+      "distinct_vehicles_count": 3,
+      "median_time_s": 304.06,
+      "mean_time_s": 320.14,
+      "std_time_s": 264.22,
+      "p25_time_s": 184.19,
+      "p75_time_s": 448.04,
+      "iqr_time_s": 263.86,
+      "min_time_s": 64.32,
+      "max_time_s": 592.03,
+      "median_speed_kmh": 7.42,
+      "profile_status": "OBSERVED"
+    },
+    "empty_bin_validation_1598_241_242_hr11": {
+      "sample_count": 0,
+      "profile_status": "UNAVAILABLE",
+      "all_stats_null": true,
+      "distance_preserved_m": 626.79
+    },
+    "corridor_hourly_bins_count": 24,
+    "route_hourly_bins_count": 72,
+    "stop_pair_hourly_bins_count": 624,
+    "total_bins_in_json": 720,
+    "aggregate_profiles_isolated_from_direct_obs": true
+  },
+  "live_feed_readiness": {
+    "endpoint_url": "https://dts-backend.transportstack.in/api/dataset/otd/get-file?agency=delhi-buses&category=realtime_gtfs&filename=VehiclePositions.pb",
+    "feed_availability_status": "AUTH_REQUIRED",
+    "feed_enabled": false,
+    "secret_exposure_detected": false,
+    "network_polling_suppressed_on_missing_key": true,
+    "max_staleness_seconds_configured": 900,
+    "max_staleness_seconds_configurable": true,
+    "prd_nominal_staleness_seconds": 600,
+    "protobuf_scope": "SCHEMA_LIBRARY_VALIDATION_ONLY",
+    "real_feed_parsing_claimed": false
+  },
+  "command_verifications": {
+    "backend_tests": {
+      "command": "pytest -q backend/tests/",
+      "exit_code": 0,
+      "passed": 125,
+      "failed": 0,
+      "warnings": 6,
+      "duration_s": 35.05
+    },
+    "frontend_tests": {
+      "command": "cd frontend && npm test",
+      "exit_code": 0,
+      "passed": 26,
+      "failed": 0,
+      "test_files": 6,
+      "live_unmocked_tests": 8,
+      "duration_s": 1.13
+    },
+    "frontend_build": {
+      "command": "cd frontend && npm run build",
+      "exit_code": 0,
+      "bundle_size_kb": 353.12,
+      "duration_s": 1.32
+    },
+    "live_status_endpoint": {
+      "command": "curl -s -i http://127.0.0.1:8000/api/v1/live/status",
+      "exit_code": 0,
+      "http_status": 200,
+      "status_field": "AUTH_REQUIRED"
+    },
+    "profile_engine_generation": {
+      "command": "python3 -c ...",
+      "exit_code": 0,
+      "verified_observations": 136,
+      "verified_routes": ["1445", "1598", "1657"]
+    },
+    "total_stack_tests_passed": 151,
+    "total_stack_tests_failed": 0,
+    "overall_pass_rate_pct": 100.0
+  }
+}

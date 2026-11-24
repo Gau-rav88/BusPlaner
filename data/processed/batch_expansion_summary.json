@@ -1,0 +1,26 @@
+{
+  "2026-10-03": {
+    "service_date": "2026-10-03",
+    "raw_records": 31516372,
+    "clean_records": 20003508,
+    "stop_crossings": 45,
+    "observed_segments": 30,
+    "status": "SUCCESS"
+  },
+  "2026-10-04": {
+    "service_date": "2026-10-04",
+    "raw_records": 30213040,
+    "clean_records": 19556176,
+    "stop_crossings": 35,
+    "observed_segments": 22,
+    "status": "SUCCESS"
+  },
+  "2026-10-07": {
+    "service_date": "2026-10-07",
+    "raw_records": 25535790,
+    "clean_records": 15780626,
+    "stop_crossings": 39,
+    "observed_segments": 30,
+    "status": "SUCCESS"
+  }
+}

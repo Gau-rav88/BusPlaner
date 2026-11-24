@@ -1,0 +1,56 @@
+# Model and Prediction Configuration
+# Delhi Real-Time Bus Traffic Model & Journey Planner
+
+time_bins:
+  resolution_minutes: 30
+  day_types:
+    - weekday
+    - saturday
+    - sunday_holiday
+  timezone: "Asia/Kolkata"
+
+fallback_hierarchy:
+  levels:
+    L0: "same_segment_same_bin_same_daytype"
+    L1: "same_segment_neighbouring_bins_same_daytype"
+    L2: "same_segment_all_hours_scaled_by_route_profile"
+    L3: "physical_stoppair_cross_route_adjusted"
+    L4: "route_median_speed_for_bin"
+    L5: "city_median_speed_for_bin_then_gtfs_schedule"
+  shrinkage_k: 5.0  # Shrinkage weighting parameter
+
+candidate_models:
+  M0:
+    name: "Hierarchical Historical Median Baseline"
+    type: "statistical"
+  M1:
+    name: "Ridge Regression on Log Travel Time"
+    type: "linear"
+    alpha: 1.0
+  M2:
+    name: "Random Forest Regressor"
+    type: "tree_ensemble"
+    n_estimators: 100
+  M3:
+    name: "XGBoost Regressor"
+    type: "gradient_boosting"
+    target: "log_segment_time_s"
+    n_estimators: 200
+    learning_rate: 0.05
+    max_depth: 6
+
+conformal_prediction:
+  confidence_level: 0.90
+  calibration_method: "split_conformal"
+  grouped_by:
+    - fallback_level
+    - peak_status
+
+live_fusion:
+  enabled: false  # Retain only if replay evaluation shows improvement over pure historical
+  freshness_threshold_minutes: 10
+  observation_window_minutes: 20
+  min_distinct_vehicles: 2
+  max_live_horizon_minutes: 30
+  speed_ratio_clip: [0.5, 2.0]
+

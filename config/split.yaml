@@ -1,0 +1,26 @@
+# Chronological Dataset Split Configuration
+# Delhi Real-Time Bus Traffic Model & Journey Planner
+
+# Full October 2026 Archive: 31 days (2026-10-01 to 2026-10-31)
+# Strictly chronological whole-day partitions to prevent temporal leakage
+
+train:
+  start_date: "2026-10-01"
+  end_date: "2026-10-18"
+  days_count: 18
+  approx_share: 0.58
+
+validation:
+  start_date: "2026-10-19"
+  end_date: "2026-10-24"
+  days_count: 6
+  approx_share: 0.19
+
+test:
+  start_date: "2026-10-25"
+  end_date: "2026-10-31"
+  days_count: 7
+  approx_share: 0.23
+
+leakage_verification_rule: "max(train_timestamp) < min(validation_timestamp) < min(test_timestamp)"
+

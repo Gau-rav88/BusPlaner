@@ -1,0 +1,161 @@
+{
+  "milestone": "12",
+  "audit_name": "Full Historical GPS Dataset Ingestion Planning & Feasibility Audit",
+  "governing_specification": "PRD v3.0",
+  "timestamp_utc": "2026-11-22T01:59:00Z",
+  "evaluated_verdict": "READY_WITH_STORAGE_CONSTRAINTS",
+  "overall_operational_status": "DEGRADE",
+  "execution_boundary": {
+    "planning_only": true,
+    "extracted_remaining_days": false,
+    "remaining_days_count": 26,
+    "pilot_days_count": 5,
+    "total_calendar_days": 31,
+    "operator_approval_required_before_extraction": true
+  },
+  "host_storage_audit": {
+    "volume_mount": "/",
+    "filesystem_device": "/dev/disk3s1s1",
+    "total_capacity_bytes": 245107195904,
+    "total_capacity_gib": 228.27,
+    "total_capacity_gb": 245.11,
+    "used_bytes": 236227846144,
+    "used_gib": 220.00,
+    "used_gb": 236.23,
+    "free_bytes": 8879349760,
+    "free_gib": 8.27,
+    "free_gb": 8.88,
+    "available_bytes": 8879349760,
+    "available_gib": 8.27,
+    "available_gb": 8.88,
+    "volume_utilization_pct": 96.38,
+    "critical_safety_floor_gib": 1.50,
+    "effective_usable_buffer_gib": 6.77
+  },
+  "remote_archive_specification": {
+    "archive_url": "https://pub-091bd9e794bb4877b10b29e6df80f065.r2.dev/2026-10/delhi-dtc-bus-gtfs-rt-2026-10.7z",
+    "archive_format": "7z (non-solid, LZMA2:24, 31 independent blocks)",
+    "compressed_archive_bytes": 16077235732,
+    "compressed_archive_gib": 14.97,
+    "compressed_archive_gb": 16.08,
+    "uncompressed_total_bytes": 124016046080,
+    "uncompressed_total_gib": 115.50,
+    "uncompressed_total_gb": 124.02,
+    "pilot_5_dates_uncompressed_bytes": 16177823744,
+    "pilot_5_dates_uncompressed_gib": 15.07,
+    "pilot_5_dates_uncompressed_gb": 16.18,
+    "remaining_26_dates_uncompressed_bytes": 107838222336,
+    "remaining_26_dates_uncompressed_gib": 100.43,
+    "remaining_26_dates_uncompressed_gb": 107.84,
+    "daily_raw_sqlite_size_profile": {
+      "min_daily_bytes": 2796498944,
+      "min_daily_gib": 2.60,
+      "min_date": "2026-10-07",
+      "max_daily_bytes": 4775137280,
+      "max_daily_gib": 4.45,
+      "max_date": "2026-10-31",
+      "avg_daily_gib": 3.73
+    }
+  },
+  "empirical_compression_ratios": {
+    "clean_parquet_ratio": 0.152287,
+    "clean_parquet_ratio_pct": 15.23,
+    "total_parquet_ratio_with_quarantine": 0.200579,
+    "total_parquet_ratio_with_quarantine_pct": 20.06,
+    "projected_clean_parquet_26_days_gib": 15.29,
+    "projected_clean_parquet_26_days_gb": 16.42,
+    "projected_total_parquet_26_days_gib": 20.15,
+    "projected_total_parquet_26_days_gb": 21.63,
+    "projected_clean_parquet_full_month_gib": 17.59,
+    "projected_total_parquet_full_month_gib": 23.17
+  },
+  "storage_deficit_analysis": {
+    "sqlite_full_month_deficit_gib": -107.23,
+    "sqlite_remaining_26_days_deficit_gib": -92.16,
+    "parquet_clean_remaining_26_days_deficit_gib": -7.02,
+    "parquet_total_remaining_26_days_deficit_gib": -11.88,
+    "single_day_peak_transient_workspace_gib": 6.50,
+    "single_day_transient_headroom_gib": 1.77,
+    "max_consecutive_days_before_local_exhaustion": 3,
+    "full_month_processing_gated": true,
+    "gating_reason": "HOST_DISK_CAPACITY_EXHAUSTION_AND_OPERATOR_GATE"
+  },
+  "storage_options_evaluation": {
+    "option_a_external_nvme": {
+      "name": "Local High-Performance External NVMe/SSD",
+      "mount_target": "/Volumes/DelhiTransit_Ext",
+      "weighted_score": 4.60,
+      "rank": 1,
+      "status": "RECOMMENDED_PRIMARY",
+      "capacity_available": "500GB - 2TB",
+      "root_disk_impact_bytes": 0
+    },
+    "option_b_network_nas": {
+      "name": "Network Attached Storage (SMB/NFS)",
+      "mount_target": "smb://nas.local/delhi_hacks_storage",
+      "weighted_score": 3.25,
+      "rank": 4,
+      "status": "NOT_RECOMMENDED_IO_LOCKING_ISSUES"
+    },
+    "option_c_cloud_r2_compute": {
+      "name": "Cloud Compute & Remote Cloudflare R2 / AWS S3",
+      "target_bucket": "s3://delhi-gps-parquet/",
+      "weighted_score": 4.25,
+      "rank": 2,
+      "status": "RECOMMENDED_CLOUD_ALTERNATIVE",
+      "root_disk_impact_bytes": 0
+    },
+    "option_d_streaming_reclaim": {
+      "name": "Strict Day-by-Day Streaming Ingestion with Host Space Reclamation",
+      "prerequisite_reclaim_gib": 25.0,
+      "weighted_score": 3.30,
+      "rank": 3,
+      "status": "VIABLE_ONLY_WITH_HOST_CLEANUP"
+    }
+  },
+  "existing_work_preservation": {
+    "pilot_5_dates_parquet_intact": true,
+    "pilot_clean_parquet_bytes": 2463672815,
+    "pilot_quarantine_parquet_bytes": 781257322,
+    "ground_truth_observations_intact": 136,
+    "dlm1_mapped_observations": 29,
+    "legacy_quarantined_observations": 107,
+    "active_primary_db": {
+      "path": "/tmp/delhi_dlm1.db",
+      "size_bytes": 362852352,
+      "size_mb": 346.04,
+      "stops_count": 6862,
+      "routes_count": 2574,
+      "trips_count": 80357,
+      "shapes_count": 965607,
+      "intact": true
+    },
+    "legacy_reference_db": {
+      "path": "/tmp/delhi_mdb.db",
+      "size_bytes": 281452544,
+      "size_mb": 268.41,
+      "intact": true
+    }
+  },
+  "validation_rubric_dimensions": [
+    "Dimension 1: Source Row Count Integrity (N_raw)",
+    "Dimension 2: Exact Duplicate Deduplication (N_dedup)",
+    "Dimension 3: Telemetry Conflict Quarantine (N_conflict)",
+    "Dimension 4: Spatial Bounding Box Filter (N_oob: Lat 28.40-28.90, Lon 76.80-77.45)",
+    "Dimension 5: Vehicle ID Hygiene (N_invalid_id)",
+    "Dimension 6: Temporal Monotonicity & Plausibility (N_temporal)",
+    "Dimension 7: DLM1 Static Network Alignment Rate (R_DLM1_match >= 80%)",
+    "Dimension 8: Stop-Crossing Detection Fidelity (N_crossings: CPA <= 50m, speed <= 15 km/h)",
+    "Dimension 9: Mathematical Conservation Identity (Delta_accounting == 0.0000)",
+    "Dimension 10: PyArrow Schema & Type Compliance"
+  ],
+  "deliverables_generated": [
+    "reports/milestone12_storage_feasibility.md",
+    "reports/milestone12_storage_options.md",
+    "reports/milestone12_ingestion_architecture.md",
+    "reports/milestone12_validation_specification.md",
+    "reports/milestone12_execution_plan.md",
+    "data/processed/milestone12_metrics.json"
+  ]
+}
+

@@ -1,0 +1,122 @@
+{
+  "milestone": "5.1.1",
+  "timestamp_utc": "2026-11-21T09:35:00Z",
+  "governing_status": "DEGRADE",
+  "feed_metadata": {
+    "feed_start_date": "2022-01-01",
+    "feed_end_date": "2024-01-01",
+    "feed_provenance": "Mobility Database / Delhi Transport Corporation (DTC) Static GTFS archive",
+    "service_id": "1",
+    "active_days": "Monday through Sunday (all days active)",
+    "calendar_dates_table_present": false
+  },
+  "timetable_status_audit": {
+    "CURRENT_VERIFIED": {
+      "test_date": "2023-05-15",
+      "status": "CURRENT_VERIFIED",
+      "is_verified_current_service": true,
+      "warning": null,
+      "journeys_returned": 1
+    },
+    "ASSUMED_RECURRING": {
+      "test_date": "2026-10-01",
+      "allow_assumed_recurring": true,
+      "status": "ASSUMED_RECURRING",
+      "is_verified_current_service": false,
+      "warning": "STALE TIMETABLE WARNING: The underlying GTFS schedule expired on 2024-01-01. Requested service date (2026-10-01) is outside feed validity [2022-01-01 to 2024-01-01]. Historical weekly service patterns are being reused under demonstration assumption (ASSUMED_RECURRING). Departures and trip times are NOT verified as currently operating in Delhi in 2026.",
+      "journeys_returned": 1
+    },
+    "EXPIRED": {
+      "test_date": "2026-10-01",
+      "allow_assumed_recurring": false,
+      "status": "EXPIRED",
+      "is_verified_current_service": false,
+      "warning": "EXPIRED TIMETABLE ERROR: The underlying GTFS schedule expired on 2024-01-01. Requested service date (2026-10-01) is outside feed validity period [2022-01-01 to 2024-01-01]. Current operating schedule is unverified.",
+      "journeys_returned": 0
+    },
+    "UNAVAILABLE": {
+      "test_date": "2026-10-01",
+      "status": "UNAVAILABLE",
+      "is_verified_current_service": false,
+      "warning": "UNAVAILABLE: No usable timetable is available or transit network is empty.",
+      "journeys_returned": 0
+    }
+  },
+  "journey_safeguards_audit": {
+    "journey_timetable_status": "ASSUMED_RECURRING",
+    "journey_is_verified_current_service": false,
+    "journey_stale_warning": "STALE TIMETABLE WARNING: The underlying GTFS schedule expired on 2024-01-01. Requested service date (2026-10-01) is outside feed validity [2022-01-01 to 2024-01-01]. Historical weekly service patterns are being reused under demonstration assumption (ASSUMED_RECURRING). Departures and trip times are NOT verified as currently operating in Delhi in 2026.",
+    "transit_leg_timetable_status": "ASSUMED_RECURRING",
+    "transit_leg_is_verified_current_service": false,
+    "warning_propagated_to_all_results": true
+  },
+  "prediction_confidence_audit": {
+    "all_scores_labeled_heuristic": true,
+    "calibrated_probabilities_claimed": false,
+    "tiers": {
+      "LEVEL_1_DIRECT_OBSERVED": {
+        "tier": "LEVEL_1_DIRECT_OBSERVED",
+        "source": "GROUND_TRUTH_OBSERVED",
+        "confidence_raw": 1.0,
+        "heuristic_confidence_score": 1.0,
+        "confidence_score_type": "HEURISTIC",
+        "confidence_explanation": "Heuristic score based on direct GPS stop-crossing observations on North GT Road (n >= 3). High empirical support for this link under October 2026 conditions; NOT a calibrated probability.",
+        "is_calibrated_probability": false,
+        "is_fallback": false,
+        "warning": null
+      },
+      "LEVEL_2_HISTORICAL_BASELINE_M0": {
+        "tier": "LEVEL_2_HISTORICAL_BASELINE_M0",
+        "source": "M0_TIER_4_ROUTE_BASELINE",
+        "confidence_raw": 0.4,
+        "heuristic_confidence_score": 0.4,
+        "confidence_score_type": "HEURISTIC",
+        "confidence_explanation": "Heuristic score: M0 corridor-level velocity or route baseline fallback. Lower empirical support; NOT a calibrated probability.",
+        "is_calibrated_probability": false,
+        "is_fallback": true,
+        "warning": "Default corridor baseline scaled with local detour factor k=1.262."
+      },
+      "LEVEL_3_EXPERIMENTAL_RF": {
+        "tier": "LEVEL_3_EXPERIMENTAL_RF",
+        "source": "M2_RANDOM_FOREST",
+        "confidence_raw": 0.7,
+        "heuristic_confidence_score": 0.7,
+        "confidence_score_type": "HEURISTIC",
+        "confidence_explanation": "Heuristic score: Candidate Random Forest ML prediction. Conformal radius provides bounded intervals under historical coverage assumptions, but point confidence is a heuristic rank score; NOT an empirical probability.",
+        "is_calibrated_probability": false,
+        "is_fallback": false,
+        "warning": "Candidate Random Forest ML model (experimental, unverified network-wide)."
+      },
+      "LEVEL_4_GTFS_SCHEDULED": {
+        "tier": "LEVEL_4_GTFS_SCHEDULED",
+        "source": "GTFS_TIMETABLE",
+        "confidence_raw": 0.3,
+        "heuristic_confidence_score": 0.3,
+        "confidence_score_type": "HEURISTIC",
+        "confidence_explanation": "Heuristic score: Static GTFS timetable running time for unobserved corridors. Low confidence because static schedules fail to reflect real-world Delhi congestion; NOT a calibrated probability.",
+        "is_calibrated_probability": false,
+        "is_fallback": true,
+        "warning": "Unobserved corridor: static GTFS timetable running time applied. Low confidence."
+      },
+      "LEVEL_5_STATIC_FALLBACK": {
+        "tier": "LEVEL_5_STATIC_FALLBACK",
+        "source": "STATIC_VELOCITY_FALLBACK",
+        "confidence_raw": 0.1,
+        "heuristic_confidence_score": 0.1,
+        "confidence_score_type": "HEURISTIC",
+        "confidence_explanation": "Heuristic score: Static Euclidean distance fallback (15 km/h assumed bus speed) for missing or invalid schedule. Extreme low confidence; speculative heuristic, NOT a calibrated probability.",
+        "is_calibrated_probability": false,
+        "is_fallback": true,
+        "warning": "Missing or invalid timetable running time: static distance-based fallback applied. Extreme low confidence."
+      }
+    }
+  },
+  "operational_readiness_matrix": {
+    "raptor_algorithm": "Validated against 15 documented GTFS ground-truth cases and 225 itineraries.",
+    "historical_timetable_routing": "Validated against supplied static GTFS timetable archive.",
+    "current_delhi_service_accuracy": "UNVERIFIED (underlying GTFS calendar expired on 2024-01-01).",
+    "traffic_prediction": "Restricted strictly to the North GT Road pilot corridor (N=136 observations).",
+    "production_readiness_claim": "REMOVED / NOT CLAIMED.",
+    "system_status": "DEGRADE"
+  }
+}

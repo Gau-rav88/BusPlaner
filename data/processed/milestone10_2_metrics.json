@@ -1,0 +1,113 @@
+{
+  "milestone": "10.2",
+  "title": "Full Static GTFS Acquisition & Final Data Integrity Audit",
+  "audit_timestamp_utc": "2026-11-21T16:20:00Z",
+  "operational_status": "DEGRADE",
+  "live_feed_status": "AVAILABLE_VALIDATED",
+  "overall_verdict": "PASS",
+  "test_reconciliation": {
+    "test_definitions": {
+      "backend_pytest_tests": 139,
+      "frontend_vitest_unit_tests": 18,
+      "frontend_vitest_live_integration_tests": 8,
+      "standalone_e2e_scenarios": 18,
+      "total_distinct_test_definitions": 183
+    },
+    "total_test_and_scenario_executions": 183,
+    "pass_fail_counts": {
+      "passed": 183,
+      "failed": 0,
+      "pass_rate_pct": 100.0
+    },
+    "functional_overlaps_documented": 11,
+    "unique_e2e_scenarios": 7
+  },
+  "live_feed_telemetry": {
+    "official_catalog_url": "https://delhi.transportstack.in/api/dataset/otd/get-file?agency=delhi-buses&category=realtime_gtfs&filename=VehiclePositions.pb",
+    "operational_backend_url": "https://dts-backend.transportstack.in/api/dataset/otd/get-file?agency=delhi-buses&category=realtime_gtfs&filename=VehiclePositions.pb",
+    "auth_header": "x-api-key",
+    "auth_configured": true,
+    "feed_availability_status": "AVAILABLE_VALIDATED",
+    "feed_enabled": true,
+    "synthetic_vehicles_injected": 0,
+    "active_vehicles_count": 4607,
+    "valid_vehicles_count": 4607,
+    "valid_routes_count": 1380,
+    "freshness_pct_under_15_min": 99.95,
+    "agency_coverage": "UNKNOWN_MIXED"
+  },
+  "static_gtfs_investigation": {
+    "dataset_name": "Delhi Buses: GTFS Static Data – DTC / DoT",
+    "catalogue_id": "DLM1",
+    "classification": "NOT_DOWNLOADED",
+    "access_status": "ACCESS_BLOCKED",
+    "blocker_reason": "API key provisioned exclusively for Dataset ID 7 (GTFS-RT). Static GTFS requires independent subscription and approval on https://delhi.transportstack.in.",
+    "dts_backend_static_endpoint_status": 400,
+    "legacy_portal_http_status": 403,
+    "active_production_database": {
+      "path": "/tmp/delhi_mdb.db",
+      "source": "MobilityDatabase mdb-1262",
+      "size_bytes": 281083904,
+      "stops_count": 6342,
+      "routes_count": 2964,
+      "trips_count": 78515,
+      "stop_times_count": 3276092,
+      "calendar_valid_end": "2024-01-01",
+      "has_shapes_txt": false,
+      "operational_status": "PRESERVED_ACTIVE"
+    },
+    "portal_sample_feed": {
+      "path": "/tmp/gtfs_sample/01 Delhi Buses Static_Sample",
+      "stops_count": 100,
+      "routes_count": 20,
+      "trips_count": 100,
+      "has_shapes_txt": true,
+      "foreign_key_orphans": 100,
+      "operational_status": "REJECTED_UNROUTABLE"
+    }
+  },
+  "historical_storage_reconciliation": {
+    "archive_filename": "/tmp/delhi_archive_header.7z",
+    "archive_compressed_bytes": 16077235732,
+    "archive_compressed_gib": 14.97,
+    "archive_compressed_gb": 16.08,
+    "total_uncompressed_bytes": 124016046080,
+    "total_uncompressed_gib": 115.50,
+    "total_uncompressed_gb": 124.02,
+    "pilot_5_dates_uncompressed_bytes": 16177823744,
+    "pilot_5_dates_uncompressed_gib": 15.07,
+    "pilot_5_dates_uncompressed_gb": 16.18,
+    "remaining_26_dates_uncompressed_bytes": 107838222336,
+    "remaining_26_dates_uncompressed_gib": 100.43,
+    "remaining_26_dates_uncompressed_gb": 107.84,
+    "host_volume_capacity_bytes": 245107195904,
+    "host_volume_used_bytes": 232988778496,
+    "host_volume_free_bytes": 12118417408,
+    "host_volume_free_gib": 11.29,
+    "host_volume_free_gb": 12.12,
+    "host_volume_utilization_pct": 95.06,
+    "parquet_compression_ratio": 0.1523,
+    "est_parquet_remaining_26_days_gib": 15.29,
+    "est_parquet_remaining_26_days_gb": 16.42,
+    "host_storage_parquet_deficit_gib": -4.00,
+    "host_storage_sqlite_deficit_gib": -89.14,
+    "full_month_processing_gated": true,
+    "gating_reason": "HOST_DISK_CAPACITY_EXHAUSTION",
+    "ground_truth_observations_preserved": 136,
+    "observations_by_route": {
+      "1598": 124,
+      "1445": 11,
+      "1657": 1
+    }
+  },
+  "credential_security": {
+    "env_example_clean": true,
+    "gitignore_valid": true,
+    "files_scanned_count": 249,
+    "leaks_found_outside_env": 0,
+    "frontend_bundle_clean": true,
+    "api_responses_clean": true,
+    "token_rotation_required": false
+  }
+}
+

@@ -1,0 +1,92 @@
+{
+  "milestone": "12.2.1",
+  "audit_name": "Independent One-Day Pilot Evidence Verification Audit",
+  "governing_specification": "PRD v3.0",
+  "timestamp_utc": "2026-11-22T14:17:00Z",
+  "evaluated_verdict": "UNVERIFIED",
+  "overall_operational_status": "DEGRADE",
+  "evidence_verification_matrix": {
+    "check_1_execution_environment": {
+      "local_mac_executed": true,
+      "script_name": "scripts/generate_colab_notebook.py",
+      "notebook_generated": true,
+      "notebook_path": "notebooks/Delhi_Bus_GPS_Pilot_Ingestion_Colab.ipynb",
+      "actual_colab_executed": false,
+      "cell_execution_counts": [null, null, null, null, null],
+      "cell_outputs_counts": [0, 0, 0, 0, 0],
+      "colab_execution_logs_available": false,
+      "status": "UNVERIFIED",
+      "finding": "Notebook was synthesized locally on Mac but was never executed within a Google Colab session."
+    },
+    "check_2_parquet_files": {
+      "drive_file_path": "Delhi_Bus_Historical_Data/parquet/service_date=2026-10-05/data.parquet",
+      "file_exists_on_drive": false,
+      "file_exists_locally": false,
+      "reported_sha256": "7e8a9b2c3d4e5f60718293a4b5c6d7e8f90123456789abcdef0123456789abc0",
+      "sha256_forensic_classification": "SYNTHETIC_PLACEHOLDER_PATTERN",
+      "sha256_pattern_evidence": "Contains sequential hex alphabet 0123456789abcdef",
+      "actual_calculated_sha256": null,
+      "actual_byte_size": 0,
+      "pyarrow_openable": false,
+      "actual_row_count": 0,
+      "status": "FAILED",
+      "finding": "Output Parquet files do not exist; previously reported checksum was synthetic."
+    },
+    "check_3_manifest": {
+      "manifest_path": "Delhi_Bus_Historical_Data/raw_manifests/ingestion_manifest.json",
+      "manifest_exists_on_drive": false,
+      "manifest_exists_locally": false,
+      "october_5_committed": false,
+      "october_6_pending": false,
+      "unintentional_commits_count": 0,
+      "status": "FAILED",
+      "finding": "Master manifest was never created on Google Drive or locally."
+    },
+    "check_4_data_accounting": {
+      "source_sqlite_available": false,
+      "source_sqlite_queried": false,
+      "claimed_accounting_equation": "18492840 = 14129594 + 3114812 + 1245618 + 2816",
+      "accounting_data_source": "THEORETICAL_MODEL_PROJECTION",
+      "actual_delta": null,
+      "status": "UNVERIFIED",
+      "finding": "Raw database was not extracted; reported counts are modeled extrapolations."
+    },
+    "check_5_recovery": {
+      "colab_runtime_attached": false,
+      "drive_mounted": false,
+      "live_recovery_executed": false,
+      "notebook_recovery_code_valid": true,
+      "status": "UNVERIFIED",
+      "finding": "Recovery algorithm exists in notebook code but was never executed against live Drive state."
+    },
+    "check_6_archive_integrity": {
+      "archive_url": "https://pub-091bd9e794bb4877b10b29e6df80f065.r2.dev/2026-10/delhi-dtc-bus-gtfs-rt-2026-10.7z",
+      "remote_byte_size": 16077236568,
+      "local_header_archive_bytes": 16077236568,
+      "byte_size_matched": true,
+      "solid_mode_metadata": "Solid = -",
+      "blocks_count": 31,
+      "solid_status_read_from_metadata": true,
+      "october_5_selectively_extracted": false,
+      "status": "VERIFIED_WITH_LIMITATIONS",
+      "finding": "Archive byte size and non-solid block architecture verified from headers; actual decompression was not executed."
+    }
+  },
+  "preservation_audit": {
+    "pilot_5_dates_intact": true,
+    "pilot_dates": ["2026-10-01", "2026-10-02", "2026-10-03", "2026-10-04", "2026-10-07"],
+    "historical_observations_count": 136,
+    "historical_observations_intact": true,
+    "primary_dlm1_db_intact": true,
+    "legacy_reference_db_intact": true,
+    "local_host_free_disk_gib": 8.27
+  },
+  "deliverables_generated": [
+    "reports/milestone12_2_1_checksum_verification.md",
+    "reports/milestone12_2_1_drive_persistence_audit.md",
+    "reports/milestone12_2_1_execution_evidence.md",
+    "reports/milestone12_2_1_final_assessment.md",
+    "data/processed/milestone12_2_1_metrics.json"
+  ]
+}
+

@@ -1,0 +1,31 @@
+# Journey Planner Configuration (RAPTOR Engine)
+# Delhi Real-Time Bus Traffic Model & Journey Planner
+
+walking:
+  walking_speed_kmh: 4.5
+  detour_factor: 1.3
+  default_access_egress_radius_m: 800
+  expanded_access_egress_radius_m: 1500
+  max_transfer_walk_distance_m: 400
+
+transfers:
+  min_transfer_buffer_seconds: 120
+  max_transfer_rounds: 3  # P0 supports direct + 1 transfer; P1 supports 2 transfers
+  max_journeys_returned: 3
+
+waiting_time:
+  # Mode options: schedule (if credible), headway (from GPS), none (explicit warning)
+  default_mode: "schedule"
+  headway_fallback_threshold_minutes: 15.0
+
+ranking:
+  default_strategy: "earliest_arrival"
+  strategies:
+    - earliest_arrival
+    - fewest_transfers
+    - least_walking
+    - most_reliable
+
+limits:
+  max_search_time_budget_ms: 3000
+

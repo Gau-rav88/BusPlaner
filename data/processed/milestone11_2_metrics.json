@@ -1,0 +1,105 @@
+{
+  "milestone": "11.2",
+  "title": "DLM1 Primary Database Cutover Preparation & Dual Validation",
+  "governing_operational_status": "DEGRADE",
+  "verdict": "CUTOVER_READY_WITH_LIMITATIONS",
+  "cutover_status": "PREPARATION_COMPLETE_DEFERRED_UNTIL_APPROVAL",
+  "legacy_configuration": {
+    "health": {
+      "status": "PASS",
+      "operational_status": "DEGRADE"
+    },
+    "timetable_status": {
+      "status": "PASS",
+      "timetable_status": "ASSUMED_RECURRING"
+    },
+    "historical_prediction_available": {
+      "status": "PASS",
+      "origin": "239",
+      "dest": "247",
+      "tier": "LEVEL_1_DIRECT_OBSERVED",
+      "source": "GROUND_TRUTH_OBSERVED"
+    },
+    "route_1598_geometry": {
+      "status": "PASS",
+      "stops_count": 29,
+      "has_shape_geometry": false
+    },
+    "crosswalk_lookup": {
+      "status": "PASS",
+      "legacy_id": "239",
+      "dlm1_id": "7587"
+    }
+  },
+  "dlm1_configuration": {
+    "health": {
+      "status": "PASS",
+      "operational_status": "DEGRADE"
+    },
+    "timetable_status": {
+      "status": "PASS",
+      "timetable_status": "CURRENT_VERIFIED"
+    },
+    "direct_journey": {
+      "status": "PASS",
+      "origin": "284",
+      "dest": "5146",
+      "duration_s": 527.0,
+      "tier": "LEVEL_4_GTFS_SCHEDULED",
+      "source": "GTFS_TIMETABLE"
+    },
+    "transfer_journey": {
+      "status": "PASS",
+      "transfers": 1,
+      "duration_s": 35324.0
+    },
+    "route_1598_road_geometry": {
+      "status": "PASS",
+      "stops_count": 59,
+      "has_shape_geometry": true,
+      "shape_points": 416
+    },
+    "historical_prediction_unavailability": {
+      "status": "PASS",
+      "unobserved_pair_tier": "LEVEL_4_GTFS_SCHEDULED",
+      "unobserved_pair_source": "GTFS_TIMETABLE"
+    },
+    "unknown_stop_handling": {
+      "status": "PASS",
+      "journeys_count": 0
+    },
+    "crosswalk_lookup": {
+      "status": "PASS",
+      "legacy_id": "239",
+      "dlm1_id": "7587"
+    },
+    "live_vehicles": {
+      "status": "PASS",
+      "feed_status": "AVAILABLE_VALIDATED",
+      "sample_count": 100
+    }
+  },
+  "database_audit": {
+    "legacy_mdb": {
+      "path": "/tmp/delhi_mdb.db",
+      "size_mb": 268.41,
+      "role": "Historical reference (pilot_v1_legacy)",
+      "status": "PRESERVED_UNTOUCHED"
+    },
+    "primary_dlm1": {
+      "path": "/tmp/delhi_dlm1.db",
+      "size_mb": 346.04,
+      "role": "Primary transit network & road geometry candidate",
+      "status": "STAGED_AND_VALIDATED"
+    }
+  },
+  "historical_predictions_breakdown": {
+    "total_observations": 136,
+    "high_confidence_crosswalk_observations": 29,
+    "high_confidence_pct": 21.32,
+    "review_required_observations": 107,
+    "review_required_pct": 78.68,
+    "dataset_version": "pilot_v1_legacy",
+    "crosswalk_table_rows": 6342
+  }
+}

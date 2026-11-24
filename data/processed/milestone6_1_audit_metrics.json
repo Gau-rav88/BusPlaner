@@ -1,0 +1,214 @@
+{
+  "milestone": "6.1",
+  "project": "Delhi Real-Time Bus Traffic Prediction & Journey Planner",
+  "governing_prd": "v3.0",
+  "governing_status": "DEGRADE",
+  "timestamp_utc": "2026-11-21T10:14:13Z",
+  "environment": {
+    "hardware_platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "processor": "arm",
+    "python_version": "3.13.5 (v3.13.5:6cb20a219a8, Jun 11 2025, 12:23:45) [Clang 16.0.0 (clang-1600.0.26.6)]",
+    "fastapi_app": "backend.app.main:app",
+    "database_path": "/tmp/delhi_mdb.db"
+  },
+  "lifecycle_latencies_ms": {
+    "app_creation_and_prewarming_ms": 0.19,
+    "cold_first_journey_query_ms": 5443.23
+  },
+  "percentile_methodology": {
+    "method": "Nearest-rank on sorted array: index = floor(N * p)",
+    "warmup": "1 discarded warmup request per endpoint before measurement"
+  },
+  "benchmarks": {
+    "in_process_asgi_testclient": {
+      "health": {
+        "iterations": 100,
+        "mean_ms": 1.08,
+        "std_ms": 0.07,
+        "p50_ms": 1.06,
+        "p90_ms": 1.16,
+        "p99_ms": 1.36,
+        "min_ms": 0.93,
+        "max_ms": 1.36
+      },
+      "timetable_status": {
+        "iterations": 100,
+        "mean_ms": 1.11,
+        "std_ms": 0.06,
+        "p50_ms": 1.1,
+        "p90_ms": 1.19,
+        "p99_ms": 1.31,
+        "min_ms": 0.98,
+        "max_ms": 1.31
+      },
+      "stop_search": {
+        "iterations": 100,
+        "mean_ms": 1.54,
+        "std_ms": 0.11,
+        "p50_ms": 1.52,
+        "p90_ms": 1.64,
+        "p99_ms": 2.25,
+        "min_ms": 1.42,
+        "max_ms": 2.25
+      },
+      "stops_nearby": {
+        "iterations": 100,
+        "mean_ms": 1.96,
+        "std_ms": 0.08,
+        "p50_ms": 1.95,
+        "p90_ms": 2.08,
+        "p99_ms": 2.2,
+        "min_ms": 1.78,
+        "max_ms": 2.2
+      },
+      "route_detail": {
+        "iterations": 100,
+        "mean_ms": 1.66,
+        "std_ms": 0.14,
+        "p50_ms": 1.61,
+        "p90_ms": 1.86,
+        "p99_ms": 2.52,
+        "min_ms": 1.49,
+        "max_ms": 2.52
+      },
+      "journey_planning_direct": {
+        "iterations": 25,
+        "mean_ms": 217.2,
+        "std_ms": 5.9,
+        "p50_ms": 215.55,
+        "p90_ms": 220.06,
+        "p99_ms": 243.35,
+        "min_ms": 212.34,
+        "max_ms": 243.35
+      },
+      "journey_planning_coord": {
+        "iterations": 15,
+        "mean_ms": 147.65,
+        "std_ms": 6.13,
+        "p50_ms": 146.33,
+        "p90_ms": 149.23,
+        "p99_ms": 169.15,
+        "min_ms": 143.66,
+        "max_ms": 169.15
+      }
+    },
+    "live_http_tcp_socket": {
+      "health": {
+        "iterations": 100,
+        "mean_ms": 0.61,
+        "std_ms": 0.03,
+        "p50_ms": 0.6,
+        "p90_ms": 0.65,
+        "p99_ms": 0.77,
+        "min_ms": 0.54,
+        "max_ms": 0.77
+      },
+      "timetable_status": {
+        "iterations": 100,
+        "mean_ms": 0.9,
+        "std_ms": 2.13,
+        "p50_ms": 0.63,
+        "p90_ms": 0.74,
+        "p99_ms": 21.51,
+        "min_ms": 0.53,
+        "max_ms": 21.51
+      },
+      "stop_search": {
+        "iterations": 100,
+        "mean_ms": 1.0,
+        "std_ms": 0.05,
+        "p50_ms": 1.0,
+        "p90_ms": 1.06,
+        "p99_ms": 1.26,
+        "min_ms": 0.92,
+        "max_ms": 1.26
+      },
+      "stops_nearby": {
+        "iterations": 100,
+        "mean_ms": 0.7,
+        "std_ms": 0.04,
+        "p50_ms": 0.69,
+        "p90_ms": 0.75,
+        "p99_ms": 0.84,
+        "min_ms": 0.65,
+        "max_ms": 0.84
+      },
+      "route_detail": {
+        "iterations": 100,
+        "mean_ms": 1.18,
+        "std_ms": 0.14,
+        "p50_ms": 1.12,
+        "p90_ms": 1.41,
+        "p99_ms": 1.76,
+        "min_ms": 1.04,
+        "max_ms": 1.76
+      },
+      "journey_planning_direct": {
+        "iterations": 25,
+        "mean_ms": 218.49,
+        "std_ms": 15.47,
+        "p50_ms": 214.4,
+        "p90_ms": 219.45,
+        "p99_ms": 289.19,
+        "min_ms": 209.92,
+        "max_ms": 289.19
+      },
+      "journey_planning_coord": {
+        "iterations": 15,
+        "mean_ms": 145.27,
+        "std_ms": 1.69,
+        "p50_ms": 145.59,
+        "p90_ms": 146.34,
+        "p99_ms": 149.7,
+        "min_ms": 142.54,
+        "max_ms": 149.7
+      }
+    }
+  },
+  "transport_comparison_delta_ms": {
+    "health": {
+      "in_process_p50_ms": 1.06,
+      "live_tcp_p50_ms": 0.6,
+      "tcp_overhead_ms": -0.46
+    },
+    "timetable_status": {
+      "in_process_p50_ms": 1.1,
+      "live_tcp_p50_ms": 0.63,
+      "tcp_overhead_ms": -0.47
+    },
+    "stop_search": {
+      "in_process_p50_ms": 1.52,
+      "live_tcp_p50_ms": 1.0,
+      "tcp_overhead_ms": -0.52
+    },
+    "stops_nearby": {
+      "in_process_p50_ms": 1.95,
+      "live_tcp_p50_ms": 0.69,
+      "tcp_overhead_ms": -1.26
+    },
+    "route_detail": {
+      "in_process_p50_ms": 1.61,
+      "live_tcp_p50_ms": 1.12,
+      "tcp_overhead_ms": -0.49
+    },
+    "journey_planning_direct": {
+      "in_process_p50_ms": 215.55,
+      "live_tcp_p50_ms": 214.4,
+      "tcp_overhead_ms": -1.15
+    },
+    "journey_planning_coord": {
+      "in_process_p50_ms": 146.33,
+      "live_tcp_p50_ms": 145.59,
+      "tcp_overhead_ms": -0.74
+    }
+  },
+  "audit_classification": {
+    "timetable_freshness_consistency": "PASS",
+    "journey_response_and_accounting": "PASS",
+    "endpoint_and_validation": "PASS",
+    "security_and_cors": "PASS",
+    "performance_and_transparency": "PASS WITH LIMITATIONS"
+  },
+  "overall_operational_status": "DEGRADE"
+}

@@ -1,0 +1,120 @@
+{
+  "milestone": "6",
+  "project": "Delhi Real-Time Bus Traffic Prediction & Journey Planner",
+  "governing_prd": "v3.0",
+  "verdict": "DEGRADE",
+  "timestamp_utc": "2026-11-21T10:00:40Z",
+  "environment": {
+    "python_version": "3.13.5 (v3.13.5:6cb20a219a8, Jun 11 2025, 12:23:45) [Clang 16.0.0 (clang-1600.0.26.6)]",
+    "fastapi_app": "backend.app.main:app",
+    "database_path": "/tmp/delhi_mdb.db",
+    "prewarm_latency_ms": 0.2
+  },
+  "endpoints_benchmarked": {
+    "health": {
+      "iterations": 100,
+      "all_status_200": true,
+      "latency_mean_ms": 1.02,
+      "latency_std_ms": 0.07,
+      "latency_median_p50_ms": 1.01,
+      "latency_p90_ms": 1.07,
+      "latency_p99_ms": 1.55,
+      "latency_min_ms": 0.92,
+      "latency_max_ms": 1.55
+    },
+    "timetable_status": {
+      "iterations": 100,
+      "all_status_200": true,
+      "latency_mean_ms": 1.1,
+      "latency_std_ms": 0.09,
+      "latency_median_p50_ms": 1.08,
+      "latency_p90_ms": 1.16,
+      "latency_p99_ms": 1.79,
+      "latency_min_ms": 0.99,
+      "latency_max_ms": 1.79
+    },
+    "stop_search": {
+      "iterations": 100,
+      "all_status_200": true,
+      "latency_mean_ms": 1.5,
+      "latency_std_ms": 0.07,
+      "latency_median_p50_ms": 1.49,
+      "latency_p90_ms": 1.59,
+      "latency_p99_ms": 1.85,
+      "latency_min_ms": 1.4,
+      "latency_max_ms": 1.85
+    },
+    "stops_nearby": {
+      "iterations": 100,
+      "all_status_200": true,
+      "latency_mean_ms": 1.97,
+      "latency_std_ms": 0.09,
+      "latency_median_p50_ms": 1.95,
+      "latency_p90_ms": 2.11,
+      "latency_p99_ms": 2.28,
+      "latency_min_ms": 1.83,
+      "latency_max_ms": 2.28
+    },
+    "route_detail": {
+      "iterations": 100,
+      "all_status_200": true,
+      "latency_mean_ms": 1.68,
+      "latency_std_ms": 0.12,
+      "latency_median_p50_ms": 1.65,
+      "latency_p90_ms": 1.87,
+      "latency_p99_ms": 2.12,
+      "latency_min_ms": 1.53,
+      "latency_max_ms": 2.12
+    },
+    "journey_planning_direct": {
+      "iterations": 25,
+      "all_status_200": true,
+      "latency_mean_ms": 221.76,
+      "latency_std_ms": 10.51,
+      "latency_median_p50_ms": 218.03,
+      "latency_p90_ms": 245.3,
+      "latency_p99_ms": 250.34,
+      "latency_min_ms": 210.65,
+      "latency_max_ms": 250.34
+    },
+    "journey_planning_coordinate": {
+      "iterations": 15,
+      "all_status_200": true,
+      "latency_mean_ms": 148.26,
+      "latency_std_ms": 4.9,
+      "latency_median_p50_ms": 147.0,
+      "latency_p90_ms": 148.51,
+      "latency_p99_ms": 165.68,
+      "latency_min_ms": 145.6,
+      "latency_max_ms": 165.68
+    }
+  },
+  "validation_scenarios": {
+    "expired_rejection_status": 400,
+    "expired_rejection_error_code": "EXPIRED_TIMETABLE",
+    "expired_rejection_has_action": true,
+    "invalid_coord_status": 422,
+    "invalid_time_status": 422,
+    "accounting_identity_satisfied": true,
+    "max_accounting_discrepancy_s": 0.0,
+    "num_alternatives_generated": 1,
+    "timetable_status_code": 200,
+    "timetable_status_state": "ASSUMED_RECURRING",
+    "actual_operations_verified_is_false": true,
+    "prediction_confidence_scores_labeled_heuristic": true
+  },
+  "automated_test_suite": {
+    "total_tests": 83,
+    "passed": 83,
+    "failed": 0,
+    "milestone6_api_tests": 16,
+    "previous_milestone_tests": 67
+  },
+  "operational_limitations": [
+    "Timetable calendar expired (2024-01-01); November 2026 queries require allow_assumed_recurring=true.",
+    "actual_operations_verified is strictly False across all responses as static GTFS cannot prove physical bus movement.",
+    "Prediction hierarchy empirical traffic observations are confined strictly to North GT Road pilot corridor (Route 1598, 26 stop pairs).",
+    "Confidence scores are strictly HEURISTIC, not calibrated probabilistic distributions.",
+    "Random Forest ML candidate model is non-operational for Delhi-wide deployment and disabled by default."
+  ]
+}

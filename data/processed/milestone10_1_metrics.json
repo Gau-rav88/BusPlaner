@@ -1,0 +1,135 @@
+{
+  "milestone": "10.1",
+  "title": "Final Evidence Audit and Static GTFS Integration Status",
+  "audit_timestamp_utc": "2026-11-21T16:05:00Z",
+  "operational_status": "DEGRADE",
+  "live_feed_status": "AVAILABLE_VALIDATED",
+  "overall_verdict": "PASS",
+  "test_reconciliation": {
+    "test_definitions": {
+      "backend_pytest_tests": 139,
+      "frontend_vitest_unit_tests": 18,
+      "frontend_vitest_live_integration_tests": 8,
+      "standalone_e2e_scenarios": 18,
+      "total_distinct_test_definitions": 183
+    },
+    "total_test_and_scenario_executions": 183,
+    "pass_fail_counts": {
+      "passed": 183,
+      "failed": 0,
+      "pass_rate_pct": 100.0
+    },
+    "functional_overlaps_documented": 11,
+    "unique_e2e_scenarios": 7
+  },
+  "live_feed_telemetry_probes": [
+    {
+      "run_id": 1,
+      "timestamp_utc": "2026-11-21T15:55:36Z",
+      "endpoint": "https://dts-backend.transportstack.in/api/dataset/otd/get-file?agency=delhi-buses&category=realtime_gtfs&filename=VehiclePositions.pb",
+      "http_status": 200,
+      "content_type": "application/octet-stream",
+      "payload_size_bytes": 466869,
+      "latency_seconds": 1.27,
+      "raw_entities": 4268,
+      "valid_vehicles": 4258,
+      "rejected_entities": 10,
+      "rejection_reason": "OUT_OF_BBOX",
+      "unique_vehicles": 4258,
+      "unique_routes": 1339,
+      "oldest_timestamp_utc": "2026-11-21T15:40:34Z",
+      "newest_timestamp_utc": "2026-11-21T15:55:13Z",
+      "fresh_positions_count": 4256,
+      "fresh_positions_pct": 99.95,
+      "stale_positions_count": 2,
+      "future_timestamps_count": 0
+    },
+    {
+      "run_id": 2,
+      "timestamp_utc": "2026-11-21T15:55:41Z",
+      "endpoint": "https://dts-backend.transportstack.in/api/dataset/otd/get-file?agency=delhi-buses&category=realtime_gtfs&filename=VehiclePositions.pb",
+      "http_status": 200,
+      "content_type": "application/octet-stream",
+      "payload_size_bytes": 466869,
+      "latency_seconds": 1.27,
+      "raw_entities": 4268,
+      "valid_vehicles": 4258,
+      "rejected_entities": 10,
+      "unique_vehicles": 4258,
+      "unique_routes": 1339,
+      "fresh_positions_pct": 99.95
+    },
+    {
+      "run_id": 3,
+      "timestamp_utc": "2026-11-21T15:55:45Z",
+      "endpoint": "https://dts-backend.transportstack.in/api/dataset/otd/get-file?agency=delhi-buses&category=realtime_gtfs&filename=VehiclePositions.pb",
+      "http_status": 200,
+      "content_type": "application/octet-stream",
+      "payload_size_bytes": 466869,
+      "latency_seconds": 0.90,
+      "raw_entities": 4268,
+      "valid_vehicles": 4258,
+      "rejected_entities": 10,
+      "unique_vehicles": 4258,
+      "unique_routes": 1339,
+      "fresh_positions_pct": 99.95
+    }
+  ],
+  "static_gtfs_audit": {
+    "official_dataset_name": "Delhi Buses: GTFS Static Data – DTC / DoT",
+    "official_catalogue_id": "DLM1",
+    "classification": "NOT_DOWNLOADED",
+    "legacy_portal_download_status": "ACCESS_BLOCKED",
+    "legacy_portal_http_status": 403,
+    "legacy_portal_error": "CSRF verification failed",
+    "dts_backend_static_endpoint_status": 400,
+    "active_production_database": {
+      "path": "/tmp/delhi_mdb.db",
+      "source": "MobilityDatabase mdb-1262",
+      "size_bytes": 281083904,
+      "stops_count": 6342,
+      "routes_count": 2964,
+      "trips_count": 78515,
+      "stop_times_count": 3116420,
+      "calendar_valid_end": "2024-01-01",
+      "has_shapes_txt": false
+    },
+    "bundled_sample_dataset": {
+      "path": "/tmp/gtfs_sample/01 Delhi Buses Static_Sample",
+      "stops_count": 100,
+      "routes_count": 20,
+      "trips_count": 100,
+      "calendar_valid_end": "2040-01-01",
+      "has_shapes_txt": true
+    }
+  },
+  "historical_data_audit": {
+    "archive_filename": "/tmp/delhi_archive_header.7z",
+    "archive_size_bytes": 16073932800,
+    "archive_size_gb": 14.97,
+    "daily_sqlite_files_in_archive": 31,
+    "host_available_disk_space_gb": 11.33,
+    "host_disk_utilization_pct": 96,
+    "required_transient_space_gb": 88.0,
+    "required_permanent_parquet_space_gb": 12.5,
+    "full_month_processing_gated": true,
+    "gating_reason": "INSUFFICIENT_HOST_DISK_CAPACITY",
+    "processed_pilot_dates_count": 5,
+    "ground_truth_observations_total": 136,
+    "observations_by_route": {
+      "1598": 124,
+      "1445": 11,
+      "1657": 1
+    },
+    "route_specific_stop_pairs_count": 26,
+    "physical_stop_pairs_count": 21
+  },
+  "security_audit": {
+    "secrets_committed": false,
+    "env_example_complete": true,
+    "cors_origins_restricted": true,
+    "api_key_leakage_detected": false,
+    "payload_sanitation_verified": true
+  }
+}
+

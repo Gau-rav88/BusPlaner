@@ -1,0 +1,266 @@
+{
+  "milestone": "5.1",
+  "audit_timestamp_utc": "2026-11-21T08:45:50Z",
+  "governing_status": "DEGRADE",
+  "audit_decision": "DEGRADE",
+  "summary": {
+    "gtfs_cases_total": 15,
+    "gtfs_cases_passed": 15,
+    "gtfs_pass_rate_pct": 100.0,
+    "total_journeys_audited": 225,
+    "accounting_violations": 0,
+    "transfer_buffer_violations": 0
+  },
+  "gtfs_independent_cases": [
+    {
+      "case_id": "CASE_01_DIRECT_CORRIDOR",
+      "category": "Direct Transit",
+      "description": "Direct corridor trip on Route 1598 (Azad Pur Terminal -> Mukarba Chowk)",
+      "source_gtfs": {
+        "trip_id": "1598_12_38",
+        "route_id": "1598",
+        "exp_dep": 45480,
+        "exp_arr": 46372,
+        "exp_dur": 892
+      },
+      "verified_against": "Source GTFS SQLite Records",
+      "verification_type": "Independently verified against GTFS",
+      "passed": true
+    },
+    {
+      "case_id": "CASE_02_EARLY_MORNING",
+      "category": "Early Morning Transit",
+      "description": "Early morning service on Route 1269 (Trip 1269_04_00, dep 14400s = 04:00:00)",
+      "source_gtfs": {
+        "trip_id": "1269_04_00",
+        "orig": "1728",
+        "dest": "1477",
+        "dep": 14400,
+        "arr": 14864
+      },
+      "verified_against": "Source GTFS SQLite Records",
+      "verification_type": "Independently verified against GTFS",
+      "passed": true
+    },
+    {
+      "case_id": "CASE_03_LATE_EVENING",
+      "category": "Late Evening Transit",
+      "description": "Late evening service on Route 0 (Trip 0_23_00, dep 82800s = 23:00:00)",
+      "source_gtfs": {
+        "trip_id": "0_23_00",
+        "orig": "3127",
+        "dest": "2024",
+        "dep": 82800,
+        "arr": 84209
+      },
+      "verified_against": "Source GTFS SQLite Records",
+      "verification_type": "Independently verified against GTFS",
+      "passed": true
+    },
+    {
+      "case_id": "CASE_04_MULTIPLE_COMPETING_ROUTES",
+      "category": "Earliest Boarding Selection",
+      "description": "Multiple routes departing Stop 239 after 12:30:00. Earliest candidate: 124_12_30 at 45000s",
+      "source_gtfs": {
+        "earliest_trip": "124_12_30",
+        "departure_sec": 45000,
+        "total_candidates": 5
+      },
+      "verified_against": "Source GTFS SQLite Records",
+      "verification_type": "Independently verified against GTFS",
+      "passed": true
+    },
+    {
+      "case_id": "CASE_05_ONE_TRANSFER_DIRECT",
+      "category": "One-Transfer Transit",
+      "description": "One-transfer connection from Stop 239 to Stop 1",
+      "source_gtfs": {
+        "transfers": 1,
+        "transfer_wait_min": 120.0
+      },
+      "verified_against": "Calculated Expected Result",
+      "verification_type": "Verified against a manually calculated expected result",
+      "passed": true
+    },
+    {
+      "case_id": "CASE_06_ONE_TRANSFER_FOOTPATH",
+      "category": "Footpath Transfer Transit",
+      "description": "Transfer involving walking connection between distinct physical stops within 400m",
+      "source_gtfs": {
+        "max_transfer_distance_m": 400.0
+      },
+      "verified_against": "Calculated Expected Result",
+      "verification_type": "Verified against a manually calculated expected result",
+      "passed": true
+    },
+    {
+      "case_id": "CASE_07_TWO_TRANSFER_JOURNEY",
+      "category": "Two-Transfer Transit",
+      "description": "Cross-city transit journey across 3 transit legs (Round 3)",
+      "source_gtfs": {
+        "max_transfers_allowed": 2
+      },
+      "verified_against": "Calculated Expected Result",
+      "verification_type": "Verified against a manually calculated expected result",
+      "passed": true
+    },
+    {
+      "case_id": "CASE_08_COORDINATE_ROUTING",
+      "category": "Coordinate Routing",
+      "description": "End-to-end routing from (28.715, 77.181) to (28.735, 77.165) with access and egress walk",
+      "source_gtfs": {
+        "orig_coord": [
+          28.715,
+          77.181
+        ],
+        "dest_coord": [
+          28.735,
+          77.165
+        ],
+        "walking_speed": 4.5,
+        "detour": 1.3
+      },
+      "verified_against": "Calculated Expected Result",
+      "verification_type": "Verified against a manually calculated expected result",
+      "passed": true
+    },
+    {
+      "case_id": "CASE_09_TRANSFER_BUFFER_SUFFICIENT",
+      "category": "Transfer Buffer",
+      "description": "Transfer connection where passenger reaches platform with ample waiting time (>=120s)",
+      "source_gtfs": {
+        "min_buffer": 120.0
+      },
+      "verified_against": "Calculated Expected Result",
+      "verification_type": "Verified against a manually calculated expected result",
+      "passed": true
+    },
+    {
+      "case_id": "CASE_10_TRANSFER_BUFFER_EXACT_INVARIANT",
+      "category": "Transfer Buffer",
+      "description": "Verification that no connecting departure is boarded before arrival + 120.0s",
+      "source_gtfs": {
+        "min_transfer_buffer_seconds": 120.0
+      },
+      "verified_against": "Calculated Expected Result",
+      "verification_type": "Verified against a manually calculated expected result",
+      "passed": true
+    },
+    {
+      "case_id": "CASE_11_DELAY_PROPAGATION_NEXT_TRIP",
+      "category": "Delay Propagation",
+      "description": "Traffic delay propagation advancing connecting leg to next feasible departure satisfying >=120s",
+      "source_gtfs": {
+        "propagation_mechanism": "searchsorted(deps_col, arrival + buffer)"
+      },
+      "verified_against": "Calculated Expected Result",
+      "verification_type": "Verified against a manually calculated expected result",
+      "passed": true
+    },
+    {
+      "case_id": "CASE_12_MIDNIGHT_CROSSING",
+      "category": "Midnight Service",
+      "description": "Trip 0_23_00 departing before midnight (82800s) and crossing midnight to Stop 238 (86901s)",
+      "source_gtfs": {
+        "trip_id": "0_23_00",
+        "dep_0": 82800,
+        "arr_end": 86901
+      },
+      "verified_against": "Source GTFS SQLite Records",
+      "verification_type": "Independently verified against GTFS",
+      "passed": true
+    },
+    {
+      "case_id": "CASE_13_SERVICE_CALENDAR_EXPIRY",
+      "category": "Calendar Logic",
+      "description": "Calendar expiration check: service_id=1 expired 20240101, explicitly assumed active per PRD 8.2",
+      "source_gtfs": {
+        "service_id": "1",
+        "start_date": "20220101",
+        "end_date": "20240101"
+      },
+      "verified_against": "Source GTFS SQLite Records",
+      "verification_type": "Independently verified against GTFS",
+      "passed": true
+    },
+    {
+      "case_id": "CASE_14_NO_SERVICE_STOP",
+      "category": "Unreachable Destination",
+      "description": "Query to non-existent stop ID returns clean empty itinerary list []",
+      "source_gtfs": {
+        "invalid_stop_id": "INVALID_STOP_999999"
+      },
+      "verified_against": "Calculated Expected Result",
+      "verification_type": "Verified against a manually calculated expected result",
+      "passed": true
+    },
+    {
+      "case_id": "CASE_15_OUT_OF_BOUNDS_COORD",
+      "category": "Unreachable Destination",
+      "description": "Coordinates in Thar Desert (25.0, 70.0) with zero stops within 1500m walking radius",
+      "source_gtfs": {
+        "max_access_radius_m": 1500.0
+      },
+      "verified_against": "Calculated Expected Result",
+      "verification_type": "Verified against a manually calculated expected result",
+      "passed": true
+    }
+  ],
+  "performance_audit": {
+    "warmup_queries": 5,
+    "repeated_runs_per_query": 3,
+    "total_query_executions": 150,
+    "latencies_ms": {
+      "mean": 95.01,
+      "median": 104.9,
+      "p90": 167.49,
+      "p95": 192.23,
+      "min": 4.47,
+      "max": 212.24
+    },
+    "query_latency_includes_data_loading": false,
+    "memory_overhead": {
+      "max_rss_mb": 1389.11,
+      "platform": "darwin"
+    },
+    "footpath_timer_audit": {
+      "coordinate_array_time_s": 0.0,
+      "kdtree_build_time_s": 0.0014,
+      "query_pairs_time_s": 0.0028,
+      "footpath_objects_dict_time_s": 0.0191,
+      "total_footpath_generation_time_s": 0.0233,
+      "total_footpaths_created": 42982,
+      "distinct_transfer_footpaths": 36640
+    },
+    "accounting_validation": {
+      "total_journeys_audited": 225,
+      "accounting_violations": 0,
+      "accounting_pass_rate_pct": 100.0,
+      "transfer_buffer_violations": 0,
+      "transfer_buffer_pass_rate_pct": 100.0
+    },
+    "prediction_tiers_audited": {
+      "counts": {
+        "LEVEL_1_DIRECT_OBSERVED": 219,
+        "LEVEL_2_HISTORICAL_BASELINE_M0": 6,
+        "LEVEL_3_EXPERIMENTAL_RF": 0,
+        "LEVEL_4_GTFS_SCHEDULED": 171,
+        "LEVEL_5_STATIC_FALLBACK": 0
+      },
+      "total_legs": 396
+    }
+  },
+  "prediction_hierarchy_audit": {
+    "distinct_levels_implemented": [
+      "LEVEL_1_DIRECT_OBSERVED",
+      "LEVEL_2_HISTORICAL_BASELINE_M0",
+      "LEVEL_3_EXPERIMENTAL_RF",
+      "LEVEL_4_GTFS_SCHEDULED",
+      "LEVEL_5_STATIC_FALLBACK"
+    ],
+    "rf_disabled_by_default": true,
+    "detour_factor_restricted_to_corridor": true,
+    "source_and_confidence_recorded_on_every_prediction": true,
+    "timetable_fallback_labelled_as_observed": false
+  }
+}

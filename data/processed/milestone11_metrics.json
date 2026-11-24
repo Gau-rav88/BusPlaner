@@ -1,0 +1,171 @@
+{
+  "milestone": "11",
+  "title": "Controlled DLM1 Static GTFS Migration & Staging Audit",
+  "generated_at": "2026-11-21T22:30:30+05:30",
+  "operational_status": "DEGRADE",
+  "migration_verdict": "READY_WITH_LIMITATIONS",
+  "archive_metadata": {
+    "file_path": "/Users/gauravchauhan/Downloads/delhi_buses_static_gtfs_v1.zip",
+    "file_size_bytes": 30058932,
+    "sha256": "8eb05d9c21e7a6b42d7b49de45cb095b70ddee5b8f7716859330c9784c322f05",
+    "dataset_name": "Delhi Buses: GTFS Static Data - DTC / DoT (DLM1)"
+  },
+  "staged_database": {
+    "db_path": "/tmp/delhi_dlm1.db",
+    "db_size_bytes": 362852352,
+    "table_counts": {
+      "agency": 2,
+      "calendar": 1,
+      "feed_info": 2,
+      "routes": 2574,
+      "stops": 6862,
+      "trips": 80357,
+      "stop_times": 2737136,
+      "shapes": 965607,
+      "legacy_stop_crosswalk": 6342
+    },
+    "indexes_created": [
+      "idx_routes_id",
+      "idx_stops_id",
+      "idx_trips_id",
+      "idx_trips_route",
+      "idx_trips_shape",
+      "idx_stop_times_trip",
+      "idx_stop_times_stop",
+      "idx_shapes_id",
+      "idx_cw_legacy",
+      "idx_cw_dlm1"
+    ],
+    "referential_integrity": {
+      "orphan_trips_count": 0,
+      "orphan_stop_times_trips_count": 0,
+      "orphan_stop_times_stops_count": 0,
+      "orphan_shapes_count": 0,
+      "foreign_key_violations": 0
+    },
+    "utm_projection": "EPSG:32643 (UTM Zone 43N)"
+  },
+  "route_1598_audit": {
+    "route_id": "1598",
+    "route_short_name": "144UP",
+    "route_long_name": "Old Delhi Railway Station (T) to Singhu Border GT Road",
+    "trips_count": 135,
+    "primary_shape_id": "shp_3_2423",
+    "primary_shape_points": 416,
+    "primary_shape_length_km": 32.463,
+    "corridor_stop_count": 59,
+    "max_stop_distance_to_shape_m": 75.4
+  },
+  "calendar_validity": {
+    "service_id": "1",
+    "start_date": "20250101",
+    "end_date": "20400101",
+    "current_date_valid": true,
+    "expiry_status": "CURRENT_VALID_TO_2040"
+  },
+  "stop_crosswalk": {
+    "total_legacy_stops": 6342,
+    "high_confidence_count": 2581,
+    "high_confidence_pct": 40.6969,
+    "review_required_count": 3413,
+    "review_required_pct": 53.8158,
+    "unmatched_count": 348,
+    "unmatched_pct": 5.4872,
+    "match_criteria": {
+      "distance_threshold_m": 150.0,
+      "high_confidence_distance_max_m": 80.0,
+      "high_confidence_name_similarity_min": 0.50
+    },
+    "artifacts": {
+      "table": "legacy_stop_crosswalk",
+      "csv": "data/processed/legacy_stop_crosswalk.csv",
+      "parquet": "data/processed/legacy_stop_crosswalk.parquet"
+    }
+  },
+  "historical_observations_compatibility": {
+    "total_observations": 136,
+    "route_1598_observations": 124,
+    "route_1445_observations": 11,
+    "route_1657_observations": 1,
+    "distinct_route_stop_pairs": 26,
+    "distinct_physical_stop_pairs": 21,
+    "service_dates_count": 5,
+    "mapping_evaluation": {
+      "high_confidence_observations": 29,
+      "high_confidence_pct": 21.3235,
+      "review_required_observations": 107,
+      "review_required_pct": 78.6765,
+      "unmapped_observations": 0,
+      "unmapped_pct": 0.0
+    },
+    "governance_decision": "Retained as pilot_v1_legacy dataset to avoid synthetic distortion from platform/gate splitting."
+  },
+  "shapes_validation": {
+    "total_points": 965607,
+    "total_shapes": 3498,
+    "non_monotonic_distance_steps": 0,
+    "frontend_integration": {
+      "schema_updated": true,
+      "has_shape_geometry_supported": true,
+      "fallback_retained": true,
+      "disclaimer_conditional": true
+    }
+  },
+  "live_feed_gtfs_rt_overlap": {
+    "live_feed_routes_sampled": 1078,
+    "live_feed_routes_total": 1173,
+    "matching_routes_in_dlm1": 1173,
+    "match_percentage_dlm1": 100.0,
+    "match_percentage_legacy_mdb": 46.64
+  },
+  "regression_test_results": {
+    "staged_dlm1_script": {
+      "command": "python3 scripts/test_staged_dlm1.py",
+      "status": "PASS",
+      "exit_code": 0,
+      "checks_passed": 5,
+      "checks_total": 5
+    },
+    "backend_pytest": {
+      "command": "pytest backend/tests -q",
+      "status": "PASS",
+      "exit_code": 0,
+      "passed": 139,
+      "failed": 0,
+      "warnings": 6
+    },
+    "frontend_vitest": {
+      "command": "npm test -- --run",
+      "status": "PASS",
+      "exit_code": 0,
+      "total_tests": 26,
+      "component_tests": 18,
+      "integration_tests": 8
+    },
+    "frontend_typecheck": {
+      "command": "npx tsc -b",
+      "status": "PASS",
+      "exit_code": 0
+    },
+    "frontend_build": {
+      "command": "npm run build",
+      "status": "PASS",
+      "exit_code": 0,
+      "bundle_time_s": 1.59
+    },
+    "e2e_scenarios": {
+      "command": "python3 scripts/validate_milestone9_e2e.py",
+      "status": "PASS",
+      "exit_code": 0,
+      "scenarios_passed": 18,
+      "scenarios_total": 18
+    },
+    "live_feed_probe": {
+      "command": "python3 scripts/probe_live_feed.py",
+      "status": "PASS",
+      "exit_code": 0,
+      "vehicles_parsed": 2658,
+      "http_status": 200
+    }
+  }
+}

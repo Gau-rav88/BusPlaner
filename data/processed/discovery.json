@@ -1,0 +1,361 @@
+{
+  "generated_at": "2026-11-20T19:03:27.786099+00:00",
+  "milestone": 0,
+  "archive_summary": {
+    "archive_url": "https://pub-091bd9e794bb4877b10b29e6df80f065.r2.dev/2026-10/delhi-dtc-bus-gtfs-rt-2026-10.7z",
+    "archive_format": "7z (non-solid, LZMA2:24, 31 independent blocks)",
+    "total_files": 31,
+    "total_uncompressed_bytes": 124016046080,
+    "total_uncompressed_gb": 115.5,
+    "total_compressed_bytes": 16077235732,
+    "total_compressed_gb": 14.97,
+    "date_range": "2026-10-01 to 2026-10-31",
+    "missing_days": 0,
+    "anomalous_days": [
+      {
+        "name": "bus_movements_2026_10_07.db",
+        "uncompressed_bytes": 2796498944,
+        "compressed_bytes": 381903738,
+        "date": "2026-10-07",
+        "flag": "partial_day_anomalous"
+      },
+      {
+        "name": "bus_movements_2026_10_10.db",
+        "uncompressed_bytes": 2934251520,
+        "compressed_bytes": 405277656,
+        "date": "2026-10-10",
+        "flag": "saturday"
+      },
+      {
+        "name": "bus_movements_2026_10_11.db",
+        "uncompressed_bytes": 2870554624,
+        "compressed_bytes": 394348822,
+        "date": "2026-10-11",
+        "flag": "sunday"
+      },
+      {
+        "name": "bus_movements_2026_10_14.db",
+        "uncompressed_bytes": 4447977472,
+        "compressed_bytes": 564170327,
+        "date": "2026-10-14",
+        "flag": "fleet_addition_step_change"
+      },
+      {
+        "name": "bus_movements_2026_10_20.db",
+        "uncompressed_bytes": 4222730240,
+        "compressed_bytes": 543161475,
+        "date": "2026-10-20",
+        "flag": "dussehra_holiday"
+      },
+      {
+        "name": "bus_movements_2026_10_25.db",
+        "uncompressed_bytes": 4531556352,
+        "compressed_bytes": 579840712,
+        "date": "2026-10-25",
+        "flag": "sunday"
+      },
+      {
+        "name": "bus_movements_2026_10_31.db",
+        "uncompressed_bytes": 4775137280,
+        "compressed_bytes": 596188158,
+        "date": "2026-10-31",
+        "flag": "diwali_weekend"
+      }
+    ]
+  },
+  "gps_quality": {
+    "file_inspected": "bus_movements_2026_10_01.db",
+    "table_name": "vehicle_feed",
+    "columns": [
+      {
+        "column_name": "vehicle_id",
+        "data_type": "VARCHAR"
+      },
+      {
+        "column_name": "lat",
+        "data_type": "VARCHAR"
+      },
+      {
+        "column_name": "lng",
+        "data_type": "VARCHAR"
+      },
+      {
+        "column_name": "speed",
+        "data_type": "DOUBLE"
+      },
+      {
+        "column_name": "route_id",
+        "data_type": "DOUBLE"
+      },
+      {
+        "column_name": "trip_id",
+        "data_type": "VARCHAR"
+      },
+      {
+        "column_name": "timestamp",
+        "data_type": "VARCHAR"
+      },
+      {
+        "column_name": "date",
+        "data_type": "DATE"
+      },
+      {
+        "column_name": "time",
+        "data_type": "VARCHAR"
+      }
+    ],
+    "indexes": "None (unindexed heap table in raw SQLite archive)",
+    "total_records": 31290299,
+    "distinct_vehicles": 6264,
+    "distinct_routes": 2201,
+    "distinct_trips": 80637,
+    "null_counts": {
+      "null_vehicle_id": 0,
+      "null_lat": 0,
+      "null_lng": 0,
+      "null_speed": 0,
+      "null_route_id": 0,
+      "null_trip_id": 0,
+      "null_timestamp": 0,
+      "null_date": 0,
+      "null_time": 0
+    },
+    "timestamps": {
+      "format": "Unix epoch seconds (UTC) stored as text",
+      "min_raw": 1790791251,
+      "max_raw": 1790879384,
+      "min_utc": "2026-09-30 18:00:51 UTC",
+      "max_utc": "2026-10-01 18:29:44 UTC",
+      "min_ist": "2026-09-30 23:30:51 IST",
+      "max_ist": "2026-10-01 23:59:44 IST",
+      "local_columns": "date and time columns represent Asia/Kolkata (IST) local service time"
+    },
+    "duplicates": {
+      "total_duplicate_rows": 17532169,
+      "duplicate_timestamp_pairs": 5460844,
+      "exact_duplicate_rows": 17508859,
+      "exact_duplicate_pct": 55.96,
+      "effective_clean_rows": 19218974
+    },
+    "speed": {
+      "unit": "km/h",
+      "min": 0.0,
+      "max": 54.72222137451172,
+      "mean": 9.77,
+      "p10": 0.0,
+      "p25": 3.3333332538604736,
+      "p50_median": 8.813461303710938,
+      "p75": 14.86306095123291,
+      "p90": 19.912943267822264,
+      "p99": 31.995491256713862,
+      "stationary_count": 3891124,
+      "stationary_pct": 12.44,
+      "negative_speed_count": 0,
+      "high_speed_count_gt_100": 0
+    },
+    "coordinates": {
+      "delhi_ncr_bounding_box": {
+        "lat_range": [
+          28.0,
+          29.2
+        ],
+        "lng_range": [
+          76.5,
+          77.8
+        ]
+      },
+      "out_of_bounds_count": 5325,
+      "out_of_bounds_pct": 0.017,
+      "valid_coordinate_pct": 99.983
+    },
+    "ping_intervals": {
+      "total_intervals": 19212710,
+      "p10_s": 11.0,
+      "p25_s": 11.0,
+      "p50_median_s": 11.0,
+      "p75_s": 11.0,
+      "p90_s": 22.0,
+      "p95_s": 42.0,
+      "p99_s": 120.0,
+      "mean_s": 20.82,
+      "pct_gt_60s": 2.49,
+      "pct_gt_120s": 0.89,
+      "pct_gt_300s": 0.0983
+    }
+  },
+  "gtfs_summary": {
+    "files_available": {
+      "agency.txt": {
+        "present": true,
+        "rows": 2,
+        "columns": [
+          "agency_id",
+          "agency_name",
+          "agency_url",
+          "agency_timezone",
+          "agency_lang",
+          "agency_phone",
+          "agency_fare_url",
+          "agency_email"
+        ]
+      },
+      "calendar.txt": {
+        "present": true,
+        "rows": 1,
+        "columns": [
+          "service_id",
+          "monday",
+          "tuesday",
+          "wednesday",
+          "thursday",
+          "friday",
+          "saturday",
+          "sunday",
+          "start_date",
+          "end_date"
+        ]
+      },
+      "feed_info.txt": {
+        "present": true,
+        "rows": 2,
+        "columns": [
+          "feed_publisher_name",
+          "feed_publisher_url",
+          "feed_lang",
+          "feed_start_date",
+          "feed_end_date",
+          "feed_version"
+        ]
+      },
+      "routes.txt": {
+        "present": true,
+        "rows": 20,
+        "columns": [
+          "agency_id",
+          "route_id",
+          "route_long_name",
+          "route_short_name",
+          "route_desc",
+          "route_type"
+        ]
+      },
+      "shapes.txt": {
+        "present": true,
+        "rows": 100,
+        "columns": [
+          "shape_id",
+          "shape_pt_lat",
+          "shape_pt_lon",
+          "shape_pt_sequence",
+          "shape_dist_traveled"
+        ]
+      },
+      "stop_times.txt": {
+        "present": true,
+        "rows": 100,
+        "columns": [
+          "trip_id",
+          "arrival_time",
+          "departure_time",
+          "stop_id",
+          "stop_sequence",
+          "fare_stage",
+          "stop_dist"
+        ]
+      },
+      "stops.txt": {
+        "present": true,
+        "rows": 100,
+        "columns": [
+          "stop_id",
+          "stop_code",
+          "stop_name",
+          "stop_lat",
+          "stop_lon"
+        ]
+      },
+      "trips.txt": {
+        "present": true,
+        "rows": 100,
+        "columns": [
+          "route_id",
+          "service_id",
+          "trip_id",
+          "trip_headsign",
+          "trip_short_name",
+          "direction_id",
+          "block_id",
+          "shape_id",
+          "wheelchair_accessible",
+          "bikes_allowed"
+        ]
+      }
+    },
+    "calendar_dates_present": false,
+    "frequencies_present": false,
+    "transfers_present": false,
+    "sample_counts": {
+      "routes": 20,
+      "trips": 100,
+      "stops": 100,
+      "shapes": 1,
+      "stop_times": 100
+    },
+    "full_catalog_official_metadata": {
+      "source": "Delhi Transport Stack (delhi.transportstack.in) DLM1 dataset",
+      "official_stops": 10559,
+      "official_routes": 2403,
+      "official_trips": 89393,
+      "avg_stops_per_trip": 41
+    },
+    "times_exceeding_24h": 0
+  },
+  "compatibility": {
+    "gps_distinct_routes": 2201,
+    "gtfs_sample_routes": 20,
+    "matched_sample_routes": 16,
+    "matched_sample_route_pct": 80.0,
+    "gps_trip_sample_size": 80637,
+    "gtfs_sample_trips": 100,
+    "matched_sample_trips_exact": 39,
+    "matched_sample_trips_prefix": 39,
+    "identifier_patterns": {
+      "gps_route_id_type": "FLOAT in raw sqlite (e.g. 1000.0) -> must be cast to integer string '1000' to match GTFS route_id",
+      "gps_trip_id_structure": "Matches GTFS '{route_id}_{HH}_{MM}' or carries run suffix '{route_id}_{HH}_{MM}_{suffix}'. Prefix extraction yields exact GTFS trip_id match.",
+      "coordinate_system": "GPS coordinates WGS84 (EPSG:4326) match GTFS stop and shape coordinates directly."
+    }
+  },
+  "realtime_feed": {
+    "endpoint": "https://dts-backend.transportstack.in/api/dataset/otd/get-file?agency=delhi-buses&category=realtime_gtfs&filename=VehiclePositions.pb",
+    "frontend_alias": "https://delhi.transportstack.in/api/dataset/otd/get-file?agency=delhi-buses&category=realtime_gtfs&filename=VehiclePositions.pb",
+    "accessible": true,
+    "http_status": 401,
+    "response_snippet": "{\"error\":\"API key is required. Please provide x-api-key header.\"}",
+    "auth_required": true,
+    "auth_header": "x-api-key",
+    "registration_instructions": "Requires free registration on delhi.transportstack.in -> request Dataset 7 (GTFS-RT feed) -> API key emailed."
+  },
+  "feasibility": {
+    "gps_data_quality": {
+      "status": "GO",
+      "justification": "11.0s median ping interval (well below 30s threshold). 99.98% coordinates valid. 0% missing fields. High volume (31.29M rows/day, 19.22M deduplicated pings/day, 6,264 buses/day)."
+    },
+    "stop_crossing_extraction": {
+      "status": "GO",
+      "justification": "11.0s median ping interval and 97.5% of pings < 60s enables high-precision linear stop-crossing interpolation along shapes."
+    },
+    "gps_to_gtfs_matching": {
+      "status": "GO",
+      "justification": "80% of sample GTFS routes match GPS route IDs directly after casting float to int string. Trip IDs match GTFS scheduled departures with regex prefix extraction."
+    },
+    "historical_travel_time_ground_truth": {
+      "status": "GO",
+      "justification": "Robust stop-to-stop arrival-to-arrival elapsed time ground truth can be derived across all 31 days with minimal interpolation error."
+    },
+    "realtime_feed_integration": {
+      "status": "DEGRADE",
+      "justification": "Live feed endpoint is operational but requires an individual authenticated x-api-key from Transport Stack. System architecture adheres to PRD: core historical predictor and RAPTOR planner operate autonomously without live feed; live feed is a pluggable bounded correction layer."
+    },
+    "overall_milestone_0_decision": "GO"
+  }
+}

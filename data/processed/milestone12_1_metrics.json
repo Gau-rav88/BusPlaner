@@ -1,0 +1,114 @@
+{
+  "milestone": "12.1",
+  "audit_name": "Revised Cloud Readiness: Google Drive + Google Colab Architecture Assessment",
+  "governing_specification": "PRD v3.0",
+  "timestamp_utc": "2026-11-22T13:35:00Z",
+  "evaluated_verdict": "GOOGLE_CLOUD_READY_WITH_LIMITATIONS",
+  "overall_operational_status": "DEGRADE",
+  "architecture_revision": {
+    "storage_backend": "Google Drive (Enterprise / One)",
+    "compute_engine": "Google Colab Free-Tier (CPU Runtime)",
+    "query_engine": "DuckDB (In-Process Columnar Vectorized Engine)",
+    "local_mac_runtime": "Untouched / Shielded (FastAPI on Port 8000, DLM1 primary DB)"
+  },
+  "google_drive_storage_audit": {
+    "total_capacity_bytes": 5497558138880,
+    "total_capacity_tb": 5.0,
+    "used_bytes": 25651585024,
+    "used_gb": 23.89,
+    "available_bytes": 5471906553856,
+    "available_tb": 4.98,
+    "available_gb": 5096.11,
+    "projected_repository_footprint": {
+      "source_archive_bytes": 16077235732,
+      "source_archive_gib": 14.97,
+      "clean_parquet_31_days_gib": 15.29,
+      "quarantine_parquet_31_days_gib": 4.86,
+      "manifests_and_reports_gib": 0.03,
+      "total_projected_footprint_gib": 35.15,
+      "total_projected_footprint_gb": 37.74,
+      "capacity_utilization_pct": 0.71,
+      "remaining_available_drive_tb": 4.94
+    }
+  },
+  "colab_free_tier_compute_profile": {
+    "hardware": {
+      "vcpus": 2,
+      "cpu_model": "Intel Xeon @ 2.20GHz / AMD EPYC",
+      "ram_gib": 12.7,
+      "root_disk_total_gib": 107.7,
+      "content_workspace_available_gib": 80.0
+    },
+    "runtime_limits": {
+      "idle_timeout_minutes": 90,
+      "hard_session_limit_hours": 12,
+      "gpu_acceleration_required": false,
+      "gpu_quota_burn_risk": "ZERO_CPU_ONLY"
+    },
+    "storage_headroom_analysis": {
+      "archive_staged_gib": 14.97,
+      "single_day_sqlite_peak_gib": 4.45,
+      "duckdb_temp_buffer_gib": 2.0,
+      "staged_parquet_gib": 0.73,
+      "peak_transient_workspace_gib": 22.15,
+      "safety_buffer_gib": 57.85,
+      "safety_multiple": 3.61,
+      "simultaneous_extraction_feasibility": "FATAL_EXCEEDS_DISK_BY_50_GIB",
+      "sliding_window_selective_extraction": "MANDATORY"
+    }
+  },
+  "cost_and_runtime_projections": {
+    "financial_cost_usd": 0.0,
+    "bandwidth_ingress_cost_usd": 0.0,
+    "bandwidth_egress_cost_usd": 0.0,
+    "runtime_budget": {
+      "source_archive_download_minutes": 3.5,
+      "daily_average_processing_seconds": 108.0,
+      "daily_average_processing_minutes": 1.8,
+      "remaining_26_days_processing_minutes": 46.8,
+      "total_full_month_pipeline_minutes": 53.3,
+      "session_utilization_pct_of_12h": 7.4,
+      "completed_within_single_session": true
+    },
+    "drive_upload_bandwidth_headroom": {
+      "daily_upload_volume_gib": 0.66,
+      "total_26_days_upload_gib": 16.76,
+      "google_drive_daily_limit_gb": 750.0,
+      "daily_quota_utilization_pct": 2.23
+    }
+  },
+  "security_and_credential_hygiene": {
+    "zero_credential_notebook": true,
+    "authentication_method": "Native Interactive Browser OAuth2 (drive.mount)",
+    "r2_archive_access": "Public Anonymous HTTP GET (Zero Keys)",
+    "local_mac_env_isolated": true,
+    "credentials_pasted_to_chatgpt": false,
+    "cryptographic_verification": "SHA-256 for archive and all 31 Parquet partitions"
+  },
+  "preservation_of_local_work": {
+    "local_mac_free_disk_gib": 8.27,
+    "primary_dlm1_db_intact": true,
+    "primary_dlm1_path": "/tmp/delhi_dlm1.db",
+    "primary_dlm1_size_mb": 346.04,
+    "legacy_reference_db_intact": true,
+    "legacy_reference_path": "/tmp/delhi_mdb.db",
+    "legacy_reference_size_mb": 268.41,
+    "pilot_5_dates_observations_intact": 136,
+    "zero_data_deleted_or_altered": true
+  },
+  "limitations_identified": [
+    "Google Colab Free-Tier instances are ephemeral; session disconnections wipe /content, requiring stateful manifest resumption.",
+    "Google Drive FUSE filesystem (/content/drive) exhibits high latency and lacks atomic POSIX locking; SQLite/DuckDB cannot execute directly on Drive.",
+    "Extraction must be executed strictly one day at a time in /content/scratch/ with immediate raw file deletion; simultaneous extraction exceeds Colab disk by 50 GiB.",
+    "An active browser session must be maintained during the ~53-minute execution run to prevent Colab 90-minute idle disconnects."
+  ],
+  "deliverables_generated": [
+    "reports/milestone12_1_google_drive_architecture.md",
+    "reports/milestone12_1_colab_compute_assessment.md",
+    "reports/milestone12_1_cost_and_runtime_estimate.md",
+    "reports/milestone12_1_security_plan.md",
+    "reports/milestone12_1_execution_runbook.md",
+    "data/processed/milestone12_1_metrics.json"
+  ]
+}
+

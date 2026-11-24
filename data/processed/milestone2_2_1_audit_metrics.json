@@ -1,0 +1,997 @@
+{
+  "date_inventory_summary": {
+    "total_archive_dates": 31,
+    "pilot_dates_processed": 5,
+    "unprocessed_dates": 26,
+    "dates": [
+      {
+        "service_date": "2026-10-01",
+        "archive_filename": "bus_movements_2026_10_01.db",
+        "available_in_archive": true,
+        "extraction_attempted": true,
+        "extraction_successful": true,
+        "ingestion_successful": true,
+        "stop_crossing_processing_successful": true,
+        "status": "PILOT_PROCESSED",
+        "reason_if_unprocessed": null
+      },
+      {
+        "service_date": "2026-10-02",
+        "archive_filename": "bus_movements_2026_10_02.db",
+        "available_in_archive": true,
+        "extraction_attempted": true,
+        "extraction_successful": true,
+        "ingestion_successful": true,
+        "stop_crossing_processing_successful": true,
+        "status": "PILOT_PROCESSED",
+        "reason_if_unprocessed": null
+      },
+      {
+        "service_date": "2026-10-03",
+        "archive_filename": "bus_movements_2026_10_03.db",
+        "available_in_archive": true,
+        "extraction_attempted": true,
+        "extraction_successful": true,
+        "ingestion_successful": true,
+        "stop_crossing_processing_successful": true,
+        "status": "PILOT_PROCESSED",
+        "reason_if_unprocessed": null
+      },
+      {
+        "service_date": "2026-10-04",
+        "archive_filename": "bus_movements_2026_10_04.db",
+        "available_in_archive": true,
+        "extraction_attempted": true,
+        "extraction_successful": true,
+        "ingestion_successful": true,
+        "stop_crossing_processing_successful": true,
+        "status": "PILOT_PROCESSED",
+        "reason_if_unprocessed": null
+      },
+      {
+        "service_date": "2026-10-05",
+        "archive_filename": "bus_movements_2026_10_05.db",
+        "available_in_archive": true,
+        "extraction_attempted": false,
+        "extraction_successful": false,
+        "ingestion_successful": false,
+        "stop_crossing_processing_successful": false,
+        "status": "UNPROCESSED_DISK_CAPACITY_LIMIT",
+        "reason_if_unprocessed": "Preserving host disk safety headroom: Full 31-day ingestion requires ~24 GB storage (15 GB clean Parquet + 9 GB quarantine), exceeding the 11 GiB available host capacity."
+      },
+      {
+        "service_date": "2026-10-06",
+        "archive_filename": "bus_movements_2026_10_06.db",
+        "available_in_archive": true,
+        "extraction_attempted": false,
+        "extraction_successful": false,
+        "ingestion_successful": false,
+        "stop_crossing_processing_successful": false,
+        "status": "UNPROCESSED_DISK_CAPACITY_LIMIT",
+        "reason_if_unprocessed": "Preserving host disk safety headroom: Full 31-day ingestion requires ~24 GB storage (15 GB clean Parquet + 9 GB quarantine), exceeding the 11 GiB available host capacity."
+      },
+      {
+        "service_date": "2026-10-07",
+        "archive_filename": "bus_movements_2026_10_07.db",
+        "available_in_archive": true,
+        "extraction_attempted": true,
+        "extraction_successful": true,
+        "ingestion_successful": true,
+        "stop_crossing_processing_successful": true,
+        "status": "PARTIAL_DAY_OUTAGE",
+        "reason_if_unprocessed": null
+      },
+      {
+        "service_date": "2026-10-08",
+        "archive_filename": "bus_movements_2026_10_08.db",
+        "available_in_archive": true,
+        "extraction_attempted": true,
+        "extraction_successful": true,
+        "ingestion_successful": false,
+        "stop_crossing_processing_successful": false,
+        "status": "UNPROCESSED_DISK_CAPACITY_LIMIT",
+        "reason_if_unprocessed": "Preserving host disk safety headroom: Full 31-day ingestion requires ~24 GB storage (15 GB clean Parquet + 9 GB quarantine), exceeding the 11 GiB available host capacity."
+      },
+      {
+        "service_date": "2026-10-09",
+        "archive_filename": "bus_movements_2026_10_09.db",
+        "available_in_archive": true,
+        "extraction_attempted": false,
+        "extraction_successful": false,
+        "ingestion_successful": false,
+        "stop_crossing_processing_successful": false,
+        "status": "UNPROCESSED_DISK_CAPACITY_LIMIT",
+        "reason_if_unprocessed": "Preserving host disk safety headroom: Full 31-day ingestion requires ~24 GB storage (15 GB clean Parquet + 9 GB quarantine), exceeding the 11 GiB available host capacity."
+      },
+      {
+        "service_date": "2026-10-10",
+        "archive_filename": "bus_movements_2026_10_10.db",
+        "available_in_archive": true,
+        "extraction_attempted": false,
+        "extraction_successful": false,
+        "ingestion_successful": false,
+        "stop_crossing_processing_successful": false,
+        "status": "UNPROCESSED_DISK_CAPACITY_LIMIT",
+        "reason_if_unprocessed": "Preserving host disk safety headroom: Full 31-day ingestion requires ~24 GB storage (15 GB clean Parquet + 9 GB quarantine), exceeding the 11 GiB available host capacity."
+      },
+      {
+        "service_date": "2026-10-11",
+        "archive_filename": "bus_movements_2026_10_11.db",
+        "available_in_archive": true,
+        "extraction_attempted": false,
+        "extraction_successful": false,
+        "ingestion_successful": false,
+        "stop_crossing_processing_successful": false,
+        "status": "UNPROCESSED_DISK_CAPACITY_LIMIT",
+        "reason_if_unprocessed": "Preserving host disk safety headroom: Full 31-day ingestion requires ~24 GB storage (15 GB clean Parquet + 9 GB quarantine), exceeding the 11 GiB available host capacity."
+      },
+      {
+        "service_date": "2026-10-12",
+        "archive_filename": "bus_movements_2026_10_12.db",
+        "available_in_archive": true,
+        "extraction_attempted": false,
+        "extraction_successful": false,
+        "ingestion_successful": false,
+        "stop_crossing_processing_successful": false,
+        "status": "UNPROCESSED_DISK_CAPACITY_LIMIT",
+        "reason_if_unprocessed": "Preserving host disk safety headroom: Full 31-day ingestion requires ~24 GB storage (15 GB clean Parquet + 9 GB quarantine), exceeding the 11 GiB available host capacity."
+      },
+      {
+        "service_date": "2026-10-13",
+        "archive_filename": "bus_movements_2026_10_13.db",
+        "available_in_archive": true,
+        "extraction_attempted": false,
+        "extraction_successful": false,
+        "ingestion_successful": false,
+        "stop_crossing_processing_successful": false,
+        "status": "UNPROCESSED_DISK_CAPACITY_LIMIT",
+        "reason_if_unprocessed": "Preserving host disk safety headroom: Full 31-day ingestion requires ~24 GB storage (15 GB clean Parquet + 9 GB quarantine), exceeding the 11 GiB available host capacity."
+      },
+      {
+        "service_date": "2026-10-14",
+        "archive_filename": "bus_movements_2026_10_14.db",
+        "available_in_archive": true,
+        "extraction_attempted": false,
+        "extraction_successful": false,
+        "ingestion_successful": false,
+        "stop_crossing_processing_successful": false,
+        "status": "UNPROCESSED_DISK_CAPACITY_LIMIT",
+        "reason_if_unprocessed": "Preserving host disk safety headroom: Full 31-day ingestion requires ~24 GB storage (15 GB clean Parquet + 9 GB quarantine), exceeding the 11 GiB available host capacity."
+      },
+      {
+        "service_date": "2026-10-15",
+        "archive_filename": "bus_movements_2026_10_15.db",
+        "available_in_archive": true,
+        "extraction_attempted": false,
+        "extraction_successful": false,
+        "ingestion_successful": false,
+        "stop_crossing_processing_successful": false,
+        "status": "UNPROCESSED_DISK_CAPACITY_LIMIT",
+        "reason_if_unprocessed": "Preserving host disk safety headroom: Full 31-day ingestion requires ~24 GB storage (15 GB clean Parquet + 9 GB quarantine), exceeding the 11 GiB available host capacity."
+      },
+      {
+        "service_date": "2026-10-16",
+        "archive_filename": "bus_movements_2026_10_16.db",
+        "available_in_archive": true,
+        "extraction_attempted": false,
+        "extraction_successful": false,
+        "ingestion_successful": false,
+        "stop_crossing_processing_successful": false,
+        "status": "UNPROCESSED_DISK_CAPACITY_LIMIT",
+        "reason_if_unprocessed": "Preserving host disk safety headroom: Full 31-day ingestion requires ~24 GB storage (15 GB clean Parquet + 9 GB quarantine), exceeding the 11 GiB available host capacity."
+      },
+      {
+        "service_date": "2026-10-17",
+        "archive_filename": "bus_movements_2026_10_17.db",
+        "available_in_archive": true,
+        "extraction_attempted": false,
+        "extraction_successful": false,
+        "ingestion_successful": false,
+        "stop_crossing_processing_successful": false,
+        "status": "UNPROCESSED_DISK_CAPACITY_LIMIT",
+        "reason_if_unprocessed": "Preserving host disk safety headroom: Full 31-day ingestion requires ~24 GB storage (15 GB clean Parquet + 9 GB quarantine), exceeding the 11 GiB available host capacity."
+      },
+      {
+        "service_date": "2026-10-18",
+        "archive_filename": "bus_movements_2026_10_18.db",
+        "available_in_archive": true,
+        "extraction_attempted": false,
+        "extraction_successful": false,
+        "ingestion_successful": false,
+        "stop_crossing_processing_successful": false,
+        "status": "UNPROCESSED_DISK_CAPACITY_LIMIT",
+        "reason_if_unprocessed": "Preserving host disk safety headroom: Full 31-day ingestion requires ~24 GB storage (15 GB clean Parquet + 9 GB quarantine), exceeding the 11 GiB available host capacity."
+      },
+      {
+        "service_date": "2026-10-19",
+        "archive_filename": "bus_movements_2026_10_19.db",
+        "available_in_archive": true,
+        "extraction_attempted": false,
+        "extraction_successful": false,
+        "ingestion_successful": false,
+        "stop_crossing_processing_successful": false,
+        "status": "UNPROCESSED_DISK_CAPACITY_LIMIT",
+        "reason_if_unprocessed": "Preserving host disk safety headroom: Full 31-day ingestion requires ~24 GB storage (15 GB clean Parquet + 9 GB quarantine), exceeding the 11 GiB available host capacity."
+      },
+      {
+        "service_date": "2026-10-20",
+        "archive_filename": "bus_movements_2026_10_20.db",
+        "available_in_archive": true,
+        "extraction_attempted": false,
+        "extraction_successful": false,
+        "ingestion_successful": false,
+        "stop_crossing_processing_successful": false,
+        "status": "UNPROCESSED_DISK_CAPACITY_LIMIT",
+        "reason_if_unprocessed": "Preserving host disk safety headroom: Full 31-day ingestion requires ~24 GB storage (15 GB clean Parquet + 9 GB quarantine), exceeding the 11 GiB available host capacity."
+      },
+      {
+        "service_date": "2026-10-21",
+        "archive_filename": "bus_movements_2026_10_21.db",
+        "available_in_archive": true,
+        "extraction_attempted": false,
+        "extraction_successful": false,
+        "ingestion_successful": false,
+        "stop_crossing_processing_successful": false,
+        "status": "UNPROCESSED_DISK_CAPACITY_LIMIT",
+        "reason_if_unprocessed": "Preserving host disk safety headroom: Full 31-day ingestion requires ~24 GB storage (15 GB clean Parquet + 9 GB quarantine), exceeding the 11 GiB available host capacity."
+      },
+      {
+        "service_date": "2026-10-22",
+        "archive_filename": "bus_movements_2026_10_22.db",
+        "available_in_archive": true,
+        "extraction_attempted": false,
+        "extraction_successful": false,
+        "ingestion_successful": false,
+        "stop_crossing_processing_successful": false,
+        "status": "UNPROCESSED_DISK_CAPACITY_LIMIT",
+        "reason_if_unprocessed": "Preserving host disk safety headroom: Full 31-day ingestion requires ~24 GB storage (15 GB clean Parquet + 9 GB quarantine), exceeding the 11 GiB available host capacity."
+      },
+      {
+        "service_date": "2026-10-23",
+        "archive_filename": "bus_movements_2026_10_23.db",
+        "available_in_archive": true,
+        "extraction_attempted": false,
+        "extraction_successful": false,
+        "ingestion_successful": false,
+        "stop_crossing_processing_successful": false,
+        "status": "UNPROCESSED_DISK_CAPACITY_LIMIT",
+        "reason_if_unprocessed": "Preserving host disk safety headroom: Full 31-day ingestion requires ~24 GB storage (15 GB clean Parquet + 9 GB quarantine), exceeding the 11 GiB available host capacity."
+      },
+      {
+        "service_date": "2026-10-24",
+        "archive_filename": "bus_movements_2026_10_24.db",
+        "available_in_archive": true,
+        "extraction_attempted": false,
+        "extraction_successful": false,
+        "ingestion_successful": false,
+        "stop_crossing_processing_successful": false,
+        "status": "UNPROCESSED_DISK_CAPACITY_LIMIT",
+        "reason_if_unprocessed": "Preserving host disk safety headroom: Full 31-day ingestion requires ~24 GB storage (15 GB clean Parquet + 9 GB quarantine), exceeding the 11 GiB available host capacity."
+      },
+      {
+        "service_date": "2026-10-25",
+        "archive_filename": "bus_movements_2026_10_25.db",
+        "available_in_archive": true,
+        "extraction_attempted": false,
+        "extraction_successful": false,
+        "ingestion_successful": false,
+        "stop_crossing_processing_successful": false,
+        "status": "UNPROCESSED_DISK_CAPACITY_LIMIT",
+        "reason_if_unprocessed": "Preserving host disk safety headroom: Full 31-day ingestion requires ~24 GB storage (15 GB clean Parquet + 9 GB quarantine), exceeding the 11 GiB available host capacity."
+      },
+      {
+        "service_date": "2026-10-26",
+        "archive_filename": "bus_movements_2026_10_26.db",
+        "available_in_archive": true,
+        "extraction_attempted": false,
+        "extraction_successful": false,
+        "ingestion_successful": false,
+        "stop_crossing_processing_successful": false,
+        "status": "UNPROCESSED_DISK_CAPACITY_LIMIT",
+        "reason_if_unprocessed": "Preserving host disk safety headroom: Full 31-day ingestion requires ~24 GB storage (15 GB clean Parquet + 9 GB quarantine), exceeding the 11 GiB available host capacity."
+      },
+      {
+        "service_date": "2026-10-27",
+        "archive_filename": "bus_movements_2026_10_27.db",
+        "available_in_archive": true,
+        "extraction_attempted": false,
+        "extraction_successful": false,
+        "ingestion_successful": false,
+        "stop_crossing_processing_successful": false,
+        "status": "UNPROCESSED_DISK_CAPACITY_LIMIT",
+        "reason_if_unprocessed": "Preserving host disk safety headroom: Full 31-day ingestion requires ~24 GB storage (15 GB clean Parquet + 9 GB quarantine), exceeding the 11 GiB available host capacity."
+      },
+      {
+        "service_date": "2026-10-28",
+        "archive_filename": "bus_movements_2026_10_28.db",
+        "available_in_archive": true,
+        "extraction_attempted": false,
+        "extraction_successful": false,
+        "ingestion_successful": false,
+        "stop_crossing_processing_successful": false,
+        "status": "UNPROCESSED_DISK_CAPACITY_LIMIT",
+        "reason_if_unprocessed": "Preserving host disk safety headroom: Full 31-day ingestion requires ~24 GB storage (15 GB clean Parquet + 9 GB quarantine), exceeding the 11 GiB available host capacity."
+      },
+      {
+        "service_date": "2026-10-29",
+        "archive_filename": "bus_movements_2026_10_29.db",
+        "available_in_archive": true,
+        "extraction_attempted": false,
+        "extraction_successful": false,
+        "ingestion_successful": false,
+        "stop_crossing_processing_successful": false,
+        "status": "UNPROCESSED_DISK_CAPACITY_LIMIT",
+        "reason_if_unprocessed": "Preserving host disk safety headroom: Full 31-day ingestion requires ~24 GB storage (15 GB clean Parquet + 9 GB quarantine), exceeding the 11 GiB available host capacity."
+      },
+      {
+        "service_date": "2026-10-30",
+        "archive_filename": "bus_movements_2026_10_30.db",
+        "available_in_archive": true,
+        "extraction_attempted": false,
+        "extraction_successful": false,
+        "ingestion_successful": false,
+        "stop_crossing_processing_successful": false,
+        "status": "UNPROCESSED_DISK_CAPACITY_LIMIT",
+        "reason_if_unprocessed": "Preserving host disk safety headroom: Full 31-day ingestion requires ~24 GB storage (15 GB clean Parquet + 9 GB quarantine), exceeding the 11 GiB available host capacity."
+      },
+      {
+        "service_date": "2026-10-31",
+        "archive_filename": "bus_movements_2026_10_31.db",
+        "available_in_archive": true,
+        "extraction_attempted": false,
+        "extraction_successful": false,
+        "ingestion_successful": false,
+        "stop_crossing_processing_successful": false,
+        "status": "UNPROCESSED_DISK_CAPACITY_LIMIT",
+        "reason_if_unprocessed": "Preserving host disk safety headroom: Full 31-day ingestion requires ~24 GB storage (15 GB clean Parquet + 9 GB quarantine), exceeding the 11 GiB available host capacity."
+      }
+    ]
+  },
+  "reconciled_quarantine_accounting": {
+    "total_raw_observations": 147869768,
+    "clean_retained_rows": 93389652,
+    "metadata_identical_telemetry_repeats": 54411931,
+    "genuine_conflicting_telemetry": 42659,
+    "rule_e02_peer_oob_drops": 8770,
+    "rule_e03_spatial_out_of_bounds": 16756,
+    "accounting_sum": 147869768,
+    "accounting_is_exact": true,
+    "daily_accounting": [
+      {
+        "service_date": "2026-10-01",
+        "raw_observations": 31290299,
+        "clean_retained": 19215508,
+        "identical_telemetry_repeats": 12059383,
+        "genuine_conflicting_telemetry": 10083,
+        "rule_e02_peer_oob_drops": 1859,
+        "rule_e03_out_of_bounds": 3466,
+        "accounting_sum": 31290299,
+        "matches_raw": true
+      },
+      {
+        "service_date": "2026-10-02",
+        "raw_observations": 29314267,
+        "clean_retained": 18833834,
+        "identical_telemetry_repeats": 10468506,
+        "genuine_conflicting_telemetry": 6643,
+        "rule_e02_peer_oob_drops": 1608,
+        "rule_e03_out_of_bounds": 3676,
+        "accounting_sum": 29314267,
+        "matches_raw": true
+      },
+      {
+        "service_date": "2026-10-03",
+        "raw_observations": 31516372,
+        "clean_retained": 20003508,
+        "identical_telemetry_repeats": 11498613,
+        "genuine_conflicting_telemetry": 8946,
+        "rule_e02_peer_oob_drops": 1928,
+        "rule_e03_out_of_bounds": 3377,
+        "accounting_sum": 31516372,
+        "matches_raw": true
+      },
+      {
+        "service_date": "2026-10-04",
+        "raw_observations": 30213040,
+        "clean_retained": 19556176,
+        "identical_telemetry_repeats": 10643589,
+        "genuine_conflicting_telemetry": 8494,
+        "rule_e02_peer_oob_drops": 1446,
+        "rule_e03_out_of_bounds": 3335,
+        "accounting_sum": 30213040,
+        "matches_raw": true
+      },
+      {
+        "service_date": "2026-10-07",
+        "raw_observations": 25535790,
+        "clean_retained": 15780626,
+        "identical_telemetry_repeats": 9741840,
+        "genuine_conflicting_telemetry": 8493,
+        "rule_e02_peer_oob_drops": 1929,
+        "rule_e03_out_of_bounds": 2902,
+        "accounting_sum": 25535790,
+        "matches_raw": true
+      }
+    ]
+  },
+  "global_ground_truth": {
+    "globally_distinct_vehicles": 31,
+    "globally_distinct_physical_stop_pairs": 26,
+    "globally_distinct_routes": 3,
+    "total_observed_segments": 136,
+    "total_stop_crossings": 199,
+    "segments_by_date": {
+      "2026-10-01": 34,
+      "2026-10-03": 30,
+      "2026-10-07": 30,
+      "2026-10-04": 22,
+      "2026-10-02": 20
+    },
+    "segments_by_route": {
+      "1598": 124,
+      "1445": 11,
+      "1657": 1
+    },
+    "top_vehicles": {
+      "DL51EV3788": 12,
+      "DL51EV8634": 9,
+      "DL51EV3776": 9,
+      "DL51EV4080": 9,
+      "DL51EV3533": 8,
+      "DL51EV3114": 7,
+      "DL51EV3618": 6,
+      "DL51EV3761": 6,
+      "DL51EV3524": 6,
+      "DL1PD5209": 6,
+      "DL51EV3762": 5,
+      "DL51EV3516": 5,
+      "DL51EV3851": 4,
+      "DL1PD5269": 4,
+      "DL51EV8669": 4,
+      "DL51EV3554": 4,
+      "DL51EV3878": 4,
+      "DL51EV1844": 4,
+      "DL51EV1973": 4,
+      "DL1PD5254": 3,
+      "DL51EV3536": 3,
+      "DL1PD5198": 3,
+      "DL51EV3950": 2,
+      "DL1PD7932": 2,
+      "DL51EV4118": 1,
+      "DL1PD5249": 1,
+      "DL1PD9238": 1,
+      "DL51EV4150": 1,
+      "DL51EV4195": 1,
+      "DL1PD9231": 1,
+      "DL51EV3581": 1
+    },
+    "segments_by_stop_pair": [
+      {
+        "segment_key": "1598_dir0_pat0_seq6",
+        "stop_name_from": "Jahangir Puri Metro Station",
+        "stop_name_to": "GTK Depot",
+        "count": 15
+      },
+      {
+        "segment_key": "1598_dir0_pat0_seq2",
+        "stop_name_from": "Adarsh Nagar / Bharola Village",
+        "stop_name_to": "Sarai Peepal Thala",
+        "count": 13
+      },
+      {
+        "segment_key": "1598_dir0_pat0_seq1",
+        "stop_name_from": "New Sabzi Mandi",
+        "stop_name_to": "Adarsh Nagar / Bharola Village",
+        "count": 12
+      },
+      {
+        "segment_key": "1598_dir0_pat0_seq3",
+        "stop_name_from": "Sarai Peepal Thala",
+        "stop_name_to": "Mahindra Park",
+        "count": 11
+      },
+      {
+        "segment_key": "1598_dir0_pat0_seq7",
+        "stop_name_from": "GTK Depot",
+        "stop_name_to": "Mukarba Chowk",
+        "count": 11
+      },
+      {
+        "segment_key": "1598_dir0_pat0_seq4",
+        "stop_name_from": "Mahindra Park",
+        "stop_name_to": "Jahangir Puri GT Road",
+        "count": 10
+      },
+      {
+        "segment_key": "1598_dir0_pat0_seq5",
+        "stop_name_from": "Jahangir Puri GT Road",
+        "stop_name_to": "Jahangir Puri Metro Station",
+        "count": 10
+      },
+      {
+        "segment_key": "1598_dir0_pat0_seq8",
+        "stop_name_from": "Mukarba Chowk",
+        "stop_name_to": "Sanjay Gandhi Transport Nagar",
+        "count": 9
+      },
+      {
+        "segment_key": "1598_dir0_pat0_seq9",
+        "stop_name_from": "Sanjay Gandhi Transport Nagar",
+        "stop_name_to": "Libas Pur GT Road",
+        "count": 6
+      },
+      {
+        "segment_key": "1598_dir0_pat0_seq10",
+        "stop_name_from": "Libas Pur GT Road",
+        "stop_name_to": "Swaroop Nagar GT Road",
+        "count": 5
+      },
+      {
+        "segment_key": "1598_dir0_pat0_seq12",
+        "stop_name_from": "Gurudwara Siraspur GT Road",
+        "stop_name_to": "Nangli Puna",
+        "count": 4
+      },
+      {
+        "segment_key": "1598_dir0_pat0_seq11",
+        "stop_name_from": "Swaroop Nagar GT Road",
+        "stop_name_to": "Gurudwara Siraspur GT Road",
+        "count": 4
+      },
+      {
+        "segment_key": "1598_dir0_pat0_seq15",
+        "stop_name_from": "Budhpur GT Road",
+        "stop_name_to": "Bdo Office",
+        "count": 4
+      },
+      {
+        "segment_key": "1598_dir0_pat0_seq16",
+        "stop_name_from": "Bdo Office",
+        "stop_name_to": "Alipur Village GT Road",
+        "count": 3
+      },
+      {
+        "segment_key": "1445_dir0_pat0_seq4",
+        "stop_name_from": "Mahindra Park",
+        "stop_name_to": "Jahangir Puri GT Road",
+        "count": 3
+      },
+      {
+        "segment_key": "1445_dir0_pat0_seq1",
+        "stop_name_from": "New Sabzi Mandi",
+        "stop_name_to": "Adarsh Nagar / Bharola Village",
+        "count": 3
+      },
+      {
+        "segment_key": "1445_dir0_pat0_seq2",
+        "stop_name_from": "Adarsh Nagar / Bharola Village",
+        "stop_name_to": "Sarai Peepal Thala",
+        "count": 2
+      },
+      {
+        "segment_key": "1598_dir0_pat0_seq18",
+        "stop_name_from": "Pwd Office",
+        "stop_name_to": "Palla More",
+        "count": 2
+      },
+      {
+        "segment_key": "1445_dir0_pat0_seq3",
+        "stop_name_from": "Sarai Peepal Thala",
+        "stop_name_to": "Mahindra Park",
+        "count": 2
+      },
+      {
+        "segment_key": "1598_dir0_pat0_seq17",
+        "stop_name_from": "Alipur Village GT Road",
+        "stop_name_to": "Pwd Office",
+        "count": 1
+      },
+      {
+        "segment_key": "1598_dir0_pat0_seq20",
+        "stop_name_from": "Bakhtawar Pur School",
+        "stop_name_to": "Triveni Colony",
+        "count": 1
+      },
+      {
+        "segment_key": "1598_dir0_pat0_seq19",
+        "stop_name_from": "Palla More",
+        "stop_name_to": "Bakhtawar Pur School",
+        "count": 1
+      },
+      {
+        "segment_key": "1598_dir0_pat0_seq14",
+        "stop_name_from": "Jain Mandir",
+        "stop_name_to": "Budhpur GT Road",
+        "count": 1
+      },
+      {
+        "segment_key": "1598_dir0_pat0_seq13",
+        "stop_name_from": "Nangli Puna",
+        "stop_name_to": "Jain Mandir",
+        "count": 1
+      },
+      {
+        "segment_key": "1445_dir0_pat0_seq6",
+        "stop_name_from": "Jahangir Puri Metro Station",
+        "stop_name_to": "GTK Depot",
+        "count": 1
+      },
+      {
+        "segment_key": "1657_dir0_pat0_seq3",
+        "stop_name_from": "Sarai Peepal Thala",
+        "stop_name_to": "Jahangirpuri GT Road",
+        "count": 1
+      }
+    ]
+  },
+  "hourly_coverage": {
+    "zero_observation_hours": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      11,
+      19,
+      22,
+      23
+    ],
+    "table": [
+      {
+        "hour_ist": 0,
+        "Public Holiday (Gandhi Jayanti)": 0.0,
+        "Weekday (Regular)": 0.0,
+        "Weekend": 0.0,
+        "total_obs": 0.0,
+        "median_speed": 0.0,
+        "mean_speed": 0.0,
+        "min_speed": 0.0,
+        "max_speed": 0.0
+      },
+      {
+        "hour_ist": 1,
+        "Public Holiday (Gandhi Jayanti)": 0.0,
+        "Weekday (Regular)": 0.0,
+        "Weekend": 0.0,
+        "total_obs": 0.0,
+        "median_speed": 0.0,
+        "mean_speed": 0.0,
+        "min_speed": 0.0,
+        "max_speed": 0.0
+      },
+      {
+        "hour_ist": 2,
+        "Public Holiday (Gandhi Jayanti)": 0.0,
+        "Weekday (Regular)": 0.0,
+        "Weekend": 0.0,
+        "total_obs": 0.0,
+        "median_speed": 0.0,
+        "mean_speed": 0.0,
+        "min_speed": 0.0,
+        "max_speed": 0.0
+      },
+      {
+        "hour_ist": 3,
+        "Public Holiday (Gandhi Jayanti)": 0.0,
+        "Weekday (Regular)": 0.0,
+        "Weekend": 0.0,
+        "total_obs": 0.0,
+        "median_speed": 0.0,
+        "mean_speed": 0.0,
+        "min_speed": 0.0,
+        "max_speed": 0.0
+      },
+      {
+        "hour_ist": 4,
+        "Public Holiday (Gandhi Jayanti)": 0.0,
+        "Weekday (Regular)": 0.0,
+        "Weekend": 0.0,
+        "total_obs": 0.0,
+        "median_speed": 0.0,
+        "mean_speed": 0.0,
+        "min_speed": 0.0,
+        "max_speed": 0.0
+      },
+      {
+        "hour_ist": 5,
+        "Public Holiday (Gandhi Jayanti)": 0.0,
+        "Weekday (Regular)": 0.0,
+        "Weekend": 0.0,
+        "total_obs": 0.0,
+        "median_speed": 0.0,
+        "mean_speed": 0.0,
+        "min_speed": 0.0,
+        "max_speed": 0.0
+      },
+      {
+        "hour_ist": 6,
+        "Public Holiday (Gandhi Jayanti)": 0.0,
+        "Weekday (Regular)": 0.0,
+        "Weekend": 0.0,
+        "total_obs": 0.0,
+        "median_speed": 0.0,
+        "mean_speed": 0.0,
+        "min_speed": 0.0,
+        "max_speed": 0.0
+      },
+      {
+        "hour_ist": 7,
+        "Public Holiday (Gandhi Jayanti)": 0.0,
+        "Weekday (Regular)": 0.0,
+        "Weekend": 24.0,
+        "total_obs": 24.0,
+        "median_speed": 23.369738199779178,
+        "mean_speed": 23.279164302315078,
+        "min_speed": 3.811354821977505,
+        "max_speed": 44.84121838705888
+      },
+      {
+        "hour_ist": 8,
+        "Public Holiday (Gandhi Jayanti)": 0.0,
+        "Weekday (Regular)": 12.0,
+        "Weekend": 5.0,
+        "total_obs": 17.0,
+        "median_speed": 18.60649740276403,
+        "mean_speed": 17.353001069636612,
+        "min_speed": 7.6417238649731996,
+        "max_speed": 26.300001177184182
+      },
+      {
+        "hour_ist": 9,
+        "Public Holiday (Gandhi Jayanti)": 0.0,
+        "Weekday (Regular)": 4.0,
+        "Weekend": 0.0,
+        "total_obs": 4.0,
+        "median_speed": 23.014689235091556,
+        "mean_speed": 23.66405956755955,
+        "min_speed": 19.258720400896166,
+        "max_speed": 29.36813939915893
+      },
+      {
+        "hour_ist": 10,
+        "Public Holiday (Gandhi Jayanti)": 1.0,
+        "Weekday (Regular)": 0.0,
+        "Weekend": 0.0,
+        "total_obs": 1.0,
+        "median_speed": 20.775132840163604,
+        "mean_speed": 20.775132840163604,
+        "min_speed": 20.775132840163604,
+        "max_speed": 20.775132840163604
+      },
+      {
+        "hour_ist": 11,
+        "Public Holiday (Gandhi Jayanti)": 0.0,
+        "Weekday (Regular)": 0.0,
+        "Weekend": 0.0,
+        "total_obs": 0.0,
+        "median_speed": 0.0,
+        "mean_speed": 0.0,
+        "min_speed": 0.0,
+        "max_speed": 0.0
+      },
+      {
+        "hour_ist": 12,
+        "Public Holiday (Gandhi Jayanti)": 0.0,
+        "Weekday (Regular)": 0.0,
+        "Weekend": 1.0,
+        "total_obs": 1.0,
+        "median_speed": 1.8035360203612418,
+        "mean_speed": 1.8035360203612418,
+        "min_speed": 1.8035360203612418,
+        "max_speed": 1.8035360203612418
+      },
+      {
+        "hour_ist": 13,
+        "Public Holiday (Gandhi Jayanti)": 4.0,
+        "Weekday (Regular)": 4.0,
+        "Weekend": 2.0,
+        "total_obs": 10.0,
+        "median_speed": 21.668647453138483,
+        "mean_speed": 20.461014449895686,
+        "min_speed": 9.106417384437195,
+        "max_speed": 34.398997924785604
+      },
+      {
+        "hour_ist": 14,
+        "Public Holiday (Gandhi Jayanti)": 5.0,
+        "Weekday (Regular)": 6.0,
+        "Weekend": 6.0,
+        "total_obs": 17.0,
+        "median_speed": 21.670591805259427,
+        "mean_speed": 21.209430616190502,
+        "min_speed": 4.812668035863346,
+        "max_speed": 36.621693936966565
+      },
+      {
+        "hour_ist": 15,
+        "Public Holiday (Gandhi Jayanti)": 8.0,
+        "Weekday (Regular)": 4.0,
+        "Weekend": 0.0,
+        "total_obs": 12.0,
+        "median_speed": 21.685549890948842,
+        "mean_speed": 19.00996577381268,
+        "min_speed": 4.316794881044375,
+        "max_speed": 32.07596760952456
+      },
+      {
+        "hour_ist": 16,
+        "Public Holiday (Gandhi Jayanti)": 2.0,
+        "Weekday (Regular)": 8.0,
+        "Weekend": 3.0,
+        "total_obs": 13.0,
+        "median_speed": 7.303178012083851,
+        "mean_speed": 13.237185919757659,
+        "min_speed": 2.130995497450985,
+        "max_speed": 30.23828570258764
+      },
+      {
+        "hour_ist": 17,
+        "Public Holiday (Gandhi Jayanti)": 0.0,
+        "Weekday (Regular)": 14.0,
+        "Weekend": 3.0,
+        "total_obs": 17.0,
+        "median_speed": 4.877738085147082,
+        "mean_speed": 9.99974801431268,
+        "min_speed": 1.3728807869712767,
+        "max_speed": 32.02964481458693
+      },
+      {
+        "hour_ist": 18,
+        "Public Holiday (Gandhi Jayanti)": 0.0,
+        "Weekday (Regular)": 7.0,
+        "Weekend": 7.0,
+        "total_obs": 14.0,
+        "median_speed": 12.071871434990957,
+        "mean_speed": 11.691667996341923,
+        "min_speed": 2.0353872401026525,
+        "max_speed": 23.611980325258596
+      },
+      {
+        "hour_ist": 19,
+        "Public Holiday (Gandhi Jayanti)": 0.0,
+        "Weekday (Regular)": 0.0,
+        "Weekend": 0.0,
+        "total_obs": 0.0,
+        "median_speed": 0.0,
+        "mean_speed": 0.0,
+        "min_speed": 0.0,
+        "max_speed": 0.0
+      },
+      {
+        "hour_ist": 20,
+        "Public Holiday (Gandhi Jayanti)": 0.0,
+        "Weekday (Regular)": 3.0,
+        "Weekend": 0.0,
+        "total_obs": 3.0,
+        "median_speed": 1.2887335679667709,
+        "mean_speed": 1.5793541095093337,
+        "min_speed": 1.2682773771349833,
+        "max_speed": 2.1810513834262473
+      },
+      {
+        "hour_ist": 21,
+        "Public Holiday (Gandhi Jayanti)": 0.0,
+        "Weekday (Regular)": 2.0,
+        "Weekend": 1.0,
+        "total_obs": 3.0,
+        "median_speed": 20.83150296536223,
+        "mean_speed": 17.243747529226784,
+        "min_speed": 6.620173517968085,
+        "max_speed": 24.27956610435004
+      },
+      {
+        "hour_ist": 22,
+        "Public Holiday (Gandhi Jayanti)": 0.0,
+        "Weekday (Regular)": 0.0,
+        "Weekend": 0.0,
+        "total_obs": 0.0,
+        "median_speed": 0.0,
+        "mean_speed": 0.0,
+        "min_speed": 0.0,
+        "max_speed": 0.0
+      },
+      {
+        "hour_ist": 23,
+        "Public Holiday (Gandhi Jayanti)": 0.0,
+        "Weekday (Regular)": 0.0,
+        "Weekend": 0.0,
+        "total_obs": 0.0,
+        "median_speed": 0.0,
+        "mean_speed": 0.0,
+        "min_speed": 0.0,
+        "max_speed": 0.0
+      }
+    ]
+  },
+  "october_7_outage": {
+    "service_date": "2026-10-07",
+    "earliest_observation_utc": "2026-10-06 18:00:47 UTC",
+    "earliest_observation_ist": "2026-10-06 23:30:47 IST",
+    "latest_observation_utc": "2026-10-07 14:23:23 UTC",
+    "latest_observation_ist": "2026-10-07 19:53:23 IST",
+    "october_8_resumption_utc": "2026-10-07 20:32:10 UTC",
+    "october_8_resumption_ist": "2026-10-08 02:02:10 IST",
+    "outage_duration_seconds": 22127,
+    "outage_duration_hours": 6.146,
+    "outage_duration_formatted": "6 hours 8 minutes 47 seconds",
+    "retained_pings_in_oct7_partition": 15780626,
+    "pings_after_142323_utc_in_oct7_partition": 0,
+    "pings_after_142323_ist_in_oct7_partition": 4007818,
+    "segments_before_142323_ist": 20,
+    "segments_after_142323_ist": 10,
+    "stop_crossings_before_142323_ist": 25,
+    "stop_crossings_after_142323_ist": 14,
+    "explanation": "Outage occurred upstream at 14:23:23 UTC, corresponding to 19:53:23 IST (evening commute). Telemetry remained active throughout 14:00 to 19:53 IST before abruptly halting, and resumed at 02:02:10 IST on October 8."
+  },
+  "detour_calibration": {
+    "sections": [
+      {
+        "segment": "New Sabzi Mandi -> Adarsh Nagar",
+        "straight_m": 274.7,
+        "gps_m": 318.1,
+        "ratio": 1.158,
+        "road_type": "Curvilinear Arterial",
+        "status": "EXPLORATORY_CORRIDOR"
+      },
+      {
+        "segment": "Adarsh Nagar -> Sarai Peepal Thala",
+        "straight_m": 626.8,
+        "gps_m": 1514.9,
+        "ratio": 2.417,
+        "road_type": "Terminal Turnaround Loop",
+        "status": "LOCAL_LOOP_ONLY"
+      },
+      {
+        "segment": "Sarai Peepal Thala -> Mahindra Park",
+        "straight_m": 156.6,
+        "gps_m": 197.7,
+        "ratio": 1.262,
+        "road_type": "Arterial Bus Bay & Curve",
+        "status": "EXPLORATORY_CORRIDOR"
+      },
+      {
+        "segment": "Jahangir Puri GT Road -> Jahangirpuri Metro",
+        "straight_m": 291.5,
+        "gps_m": 312.4,
+        "ratio": 1.072,
+        "road_type": "Straight Highway Tangent",
+        "status": "LOCAL_HIGHWAY_TANGENT"
+      },
+      {
+        "segment": "GTK Depot -> Mukarba Chowk",
+        "straight_m": 474.5,
+        "gps_m": 739.7,
+        "ratio": 1.559,
+        "road_type": "Elevated Flyover Ramp",
+        "status": "LOCAL_INTERCHANGE_ONLY"
+      },
+      {
+        "segment": "Mukarba Chowk -> Sanjay Gandhi Tpt Nagar",
+        "straight_m": 434.7,
+        "gps_m": 618.0,
+        "ratio": 1.422,
+        "road_type": "Cloverleaf Merge Weave",
+        "status": "LOCAL_INTERCHANGE_ONLY"
+      },
+      {
+        "segment": "Swaroop Nagar -> Gurudwara Siraspur",
+        "straight_m": 788.6,
+        "gps_m": 1164.6,
+        "ratio": 1.477,
+        "road_type": "Arterial Curve & Underpass",
+        "status": "EXPLORATORY_CORRIDOR"
+      },
+      {
+        "segment": "Budhpur GT Road -> BDO Office",
+        "straight_m": 1258.8,
+        "gps_m": 1353.7,
+        "ratio": 1.075,
+        "road_type": "Straight Expressway Tangent",
+        "status": "LOCAL_HIGHWAY_TANGENT"
+      }
+    ],
+    "limitations": "All 8 measured sections are on North GT Road (NH-44). The 1.262 value is an exploratory corridor median and cannot be applied as a validated network-wide median across Delhi."
+  }
+}

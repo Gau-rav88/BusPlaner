@@ -1,0 +1,215 @@
+{
+  "dates_processed": [
+    "2026-10-01",
+    "2026-10-02",
+    "2026-10-03",
+    "2026-10-04",
+    "2026-10-07"
+  ],
+  "total_observed_segments": 136,
+  "total_stop_crossings": 199,
+  "total_unique_vehicles": 31,
+  "total_unique_stop_pairs": 26,
+  "overall_median_speed_kmh": 18.17,
+  "overall_mean_speed_kmh": 17.11,
+  "date_summary": [
+    {
+      "service_date": "2026-10-01 00:00:00",
+      "day_name": "Thu",
+      "day_type": "Weekday",
+      "observed_segments": 34,
+      "distinct_vehicles": 7,
+      "distinct_stop_pairs": 9,
+      "min_speed": 1.27,
+      "median_speed": 5.57,
+      "mean_speed": 7.99,
+      "max_speed": 31.73
+    },
+    {
+      "service_date": "2026-10-02 00:00:00",
+      "day_name": "Fri",
+      "day_type": "Weekday",
+      "observed_segments": 20,
+      "distinct_vehicles": 5,
+      "distinct_stop_pairs": 15,
+      "min_speed": 15.66,
+      "median_speed": 24.76,
+      "mean_speed": 25.67,
+      "max_speed": 34.4
+    },
+    {
+      "service_date": "2026-10-03 00:00:00",
+      "day_name": "Sat",
+      "day_type": "Weekend",
+      "observed_segments": 30,
+      "distinct_vehicles": 9,
+      "distinct_stop_pairs": 15,
+      "min_speed": 1.8,
+      "median_speed": 9.47,
+      "mean_speed": 13.62,
+      "max_speed": 34.5
+    },
+    {
+      "service_date": "2026-10-04 00:00:00",
+      "day_name": "Sun",
+      "day_type": "Weekend",
+      "observed_segments": 22,
+      "distinct_vehicles": 3,
+      "distinct_stop_pairs": 15,
+      "min_speed": 14.79,
+      "median_speed": 26.01,
+      "mean_speed": 27.31,
+      "max_speed": 44.84
+    },
+    {
+      "service_date": "2026-10-07 00:00:00",
+      "day_name": "Wed",
+      "day_type": "Weekday",
+      "observed_segments": 30,
+      "distinct_vehicles": 7,
+      "distinct_stop_pairs": 14,
+      "min_speed": 1.37,
+      "median_speed": 18.61,
+      "mean_speed": 17.73,
+      "max_speed": 29.37
+    }
+  ],
+  "crossings_summary": [
+    {
+      "service_date": "2026-10-01 00:00:00",
+      "total_stop_crossings": 47,
+      "distinct_stops": 10,
+      "distinct_vehicles": 7
+    },
+    {
+      "service_date": "2026-10-02 00:00:00",
+      "total_stop_crossings": 33,
+      "distinct_stops": 18,
+      "distinct_vehicles": 5
+    },
+    {
+      "service_date": "2026-10-03 00:00:00",
+      "total_stop_crossings": 45,
+      "distinct_stops": 15,
+      "distinct_vehicles": 9
+    },
+    {
+      "service_date": "2026-10-04 00:00:00",
+      "total_stop_crossings": 35,
+      "distinct_stops": 20,
+      "distinct_vehicles": 3
+    },
+    {
+      "service_date": "2026-10-07 00:00:00",
+      "total_stop_crossings": 39,
+      "distinct_stops": 12,
+      "distinct_vehicles": 8
+    }
+  ],
+  "hourly_summary": [
+    {
+      "hour_ist": 7,
+      "total_obs": 24,
+      "weekday_obs": 0.0,
+      "weekend_obs": 24.0,
+      "median_speed": 23.37,
+      "mean_speed": 23.28
+    },
+    {
+      "hour_ist": 8,
+      "total_obs": 17,
+      "weekday_obs": 12.0,
+      "weekend_obs": 5.0,
+      "median_speed": 18.61,
+      "mean_speed": 17.35
+    },
+    {
+      "hour_ist": 9,
+      "total_obs": 4,
+      "weekday_obs": 4.0,
+      "weekend_obs": 0.0,
+      "median_speed": 23.01,
+      "mean_speed": 23.66
+    },
+    {
+      "hour_ist": 10,
+      "total_obs": 1,
+      "weekday_obs": 1.0,
+      "weekend_obs": 0.0,
+      "median_speed": 20.78,
+      "mean_speed": 20.78
+    },
+    {
+      "hour_ist": 12,
+      "total_obs": 1,
+      "weekday_obs": 0.0,
+      "weekend_obs": 1.0,
+      "median_speed": 1.8,
+      "mean_speed": 1.8
+    },
+    {
+      "hour_ist": 13,
+      "total_obs": 10,
+      "weekday_obs": 8.0,
+      "weekend_obs": 2.0,
+      "median_speed": 21.67,
+      "mean_speed": 20.46
+    },
+    {
+      "hour_ist": 14,
+      "total_obs": 17,
+      "weekday_obs": 11.0,
+      "weekend_obs": 6.0,
+      "median_speed": 21.67,
+      "mean_speed": 21.21
+    },
+    {
+      "hour_ist": 15,
+      "total_obs": 12,
+      "weekday_obs": 12.0,
+      "weekend_obs": 0.0,
+      "median_speed": 21.69,
+      "mean_speed": 19.01
+    },
+    {
+      "hour_ist": 16,
+      "total_obs": 13,
+      "weekday_obs": 10.0,
+      "weekend_obs": 3.0,
+      "median_speed": 7.3,
+      "mean_speed": 13.24
+    },
+    {
+      "hour_ist": 17,
+      "total_obs": 17,
+      "weekday_obs": 14.0,
+      "weekend_obs": 3.0,
+      "median_speed": 4.88,
+      "mean_speed": 10.0
+    },
+    {
+      "hour_ist": 18,
+      "total_obs": 14,
+      "weekday_obs": 7.0,
+      "weekend_obs": 7.0,
+      "median_speed": 12.07,
+      "mean_speed": 11.69
+    },
+    {
+      "hour_ist": 20,
+      "total_obs": 3,
+      "weekday_obs": 3.0,
+      "weekend_obs": 0.0,
+      "median_speed": 1.29,
+      "mean_speed": 1.58
+    },
+    {
+      "hour_ist": 21,
+      "total_obs": 3,
+      "weekday_obs": 2.0,
+      "weekend_obs": 1.0,
+      "median_speed": 20.83,
+      "mean_speed": 17.24
+    }
+  ]
+}
